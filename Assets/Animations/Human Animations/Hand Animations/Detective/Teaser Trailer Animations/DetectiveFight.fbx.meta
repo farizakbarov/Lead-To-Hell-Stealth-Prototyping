@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: bd0094b548bb7a8408e2f566b3c740ad
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: fightScene:Character1_Ctrl_ChestEndEffector
+    100004: fightScene:Character1_Ctrl_ChestOriginEffector
+    100006: fightScene:Character1_Ctrl_Head
+    100008: fightScene:Character1_Ctrl_HeadEffector
+    100010: fightScene:Character1_Ctrl_Hips
+    100012: fightScene:Character1_Ctrl_HipsEffector
+    100014: fightScene:Character1_Ctrl_LeftAnkleEffector
+    100016: fightScene:Character1_Ctrl_LeftArm
+    100018: fightScene:Character1_Ctrl_LeftElbowEffector
+    100020: fightScene:Character1_Ctrl_LeftFoot
+    100022: fightScene:Character1_Ctrl_LeftFootEffector
+    100024: fightScene:Character1_Ctrl_LeftForeArm
+    100026: fightScene:Character1_Ctrl_LeftHand
+    100028: fightScene:Character1_Ctrl_LeftHandIndex1
+    100030: fightScene:Character1_Ctrl_LeftHandIndex2
+    100032: fightScene:Character1_Ctrl_LeftHandIndexEffector
+    100034: fightScene:Character1_Ctrl_LeftHandThumb1
+    100036: fightScene:Character1_Ctrl_LeftHandThumb2
+    100038: fightScene:Character1_Ctrl_LeftHandThumbEffector
+    100040: fightScene:Character1_Ctrl_LeftHipEffector
+    100042: fightScene:Character1_Ctrl_LeftKneeEffector
+    100044: fightScene:Character1_Ctrl_LeftLeg
+    100046: fightScene:Character1_Ctrl_LeftShoulder
+    100048: fightScene:Character1_Ctrl_LeftShoulderEffector
+    100050: fightScene:Character1_Ctrl_LeftToeBase
+    100052: fightScene:Character1_Ctrl_LeftUpLeg
+    100054: fightScene:Character1_Ctrl_LeftWristEffector
+    100056: fightScene:Character1_Ctrl_Neck
+    100058: fightScene:Character1_Ctrl_RightAnkleEffector
+    100060: fightScene:Character1_Ctrl_RightArm
+    100062: fightScene:Character1_Ctrl_RightElbowEffector
+    100064: fightScene:Character1_Ctrl_RightFoot
+    100066: fightScene:Character1_Ctrl_RightFootEffector
+    100068: fightScene:Character1_Ctrl_RightForeArm
+    100070: fightScene:Character1_Ctrl_RightHand
+    100072: fightScene:Character1_Ctrl_RightHandIndex1
+    100074: fightScene:Character1_Ctrl_RightHandIndex2
+    100076: fightScene:Character1_Ctrl_RightHandIndexEffector
+    100078: fightScene:Character1_Ctrl_RightHandThumb1
+    100080: fightScene:Character1_Ctrl_RightHandThumb2
+    100082: fightScene:Character1_Ctrl_RightHandThumbEffector
+    100084: fightScene:Character1_Ctrl_RightHipEffector
+    100086: fightScene:Character1_Ctrl_RightKneeEffector
+    100088: fightScene:Character1_Ctrl_RightLeg
+    100090: fightScene:Character1_Ctrl_RightShoulder
+    100092: fightScene:Character1_Ctrl_RightShoulderEffector
+    100094: fightScene:Character1_Ctrl_RightToeBase
+    100096: fightScene:Character1_Ctrl_RightUpLeg
+    100098: fightScene:Character1_Ctrl_RightWristEffector
+    100100: fightScene:Character1_Ctrl_Spine
+    100102: fightScene:Character1_Ctrl_Spine1
+    100104: fightScene:Character1_Ctrl_Spine2
+    100106: fightScene:Character1_Head
+    100108: fightScene:Character1_Hips
+    100110: fightScene:Character1_LeftArm
+    100112: fightScene:Character1_LeftFoot
+    100114: fightScene:Character1_LeftForeArm
+    100116: fightScene:Character1_LeftHand
+    100118: fightScene:Character1_LeftHandIndex1
+    100120: fightScene:Character1_LeftHandIndex2
+    100122: fightScene:Character1_LeftHandThumb1
+    100124: fightScene:Character1_LeftHandThumb2
+    100126: fightScene:Character1_LeftLeg
+    100128: fightScene:Character1_LeftShoulder
+    100130: fightScene:Character1_LeftToeBase
+    100132: fightScene:Character1_LeftUpLeg
+    100134: fightScene:Character1_Neck
+    100136: fightScene:Character1_RightArm
+    100138: fightScene:Character1_RightFoot
+    100140: fightScene:Character1_RightForeArm
+    100142: fightScene:Character1_RightHand
+    100144: fightScene:Character1_RightHandIndex1
+    100146: fightScene:Character1_RightHandIndex2
+    100148: fightScene:Character1_RightHandThumb1
+    100150: fightScene:Character1_RightHandThumb2
+    100152: fightScene:Character1_RightLeg
+    100154: fightScene:Character1_RightShoulder
+    100156: fightScene:Character1_RightToeBase
+    100158: fightScene:Character1_RightUpLeg
+    100160: fightScene:Character1_Spine
+    100162: fightScene:Character1_Spine1
+    100164: fightScene:Character1_Spine2
+    400000: //RootNode
+    400002: fightScene:Character1_Ctrl_ChestEndEffector
+    400004: fightScene:Character1_Ctrl_ChestOriginEffector
+    400006: fightScene:Character1_Ctrl_Head
+    400008: fightScene:Character1_Ctrl_HeadEffector
+    400010: fightScene:Character1_Ctrl_Hips
+    400012: fightScene:Character1_Ctrl_HipsEffector
+    400014: fightScene:Character1_Ctrl_LeftAnkleEffector
+    400016: fightScene:Character1_Ctrl_LeftArm
+    400018: fightScene:Character1_Ctrl_LeftElbowEffector
+    400020: fightScene:Character1_Ctrl_LeftFoot
+    400022: fightScene:Character1_Ctrl_LeftFootEffector
+    400024: fightScene:Character1_Ctrl_LeftForeArm
+    400026: fightScene:Character1_Ctrl_LeftHand
+    400028: fightScene:Character1_Ctrl_LeftHandIndex1
+    400030: fightScene:Character1_Ctrl_LeftHandIndex2
+    400032: fightScene:Character1_Ctrl_LeftHandIndexEffector
+    400034: fightScene:Character1_Ctrl_LeftHandThumb1
+    400036: fightScene:Character1_Ctrl_LeftHandThumb2
+    400038: fightScene:Character1_Ctrl_LeftHandThumbEffector
+    400040: fightScene:Character1_Ctrl_LeftHipEffector
+    400042: fightScene:Character1_Ctrl_LeftKneeEffector
+    400044: fightScene:Character1_Ctrl_LeftLeg
+    400046: fightScene:Character1_Ctrl_LeftShoulder
+    400048: fightScene:Character1_Ctrl_LeftShoulderEffector
+    400050: fightScene:Character1_Ctrl_LeftToeBase
+    400052: fightScene:Character1_Ctrl_LeftUpLeg
+    400054: fightScene:Character1_Ctrl_LeftWristEffector
+    400056: fightScene:Character1_Ctrl_Neck
+    400058: fightScene:Character1_Ctrl_RightAnkleEffector
+    400060: fightScene:Character1_Ctrl_RightArm
+    400062: fightScene:Character1_Ctrl_RightElbowEffector
+    400064: fightScene:Character1_Ctrl_RightFoot
+    400066: fightScene:Character1_Ctrl_RightFootEffector
+    400068: fightScene:Character1_Ctrl_RightForeArm
+    400070: fightScene:Character1_Ctrl_RightHand
+    400072: fightScene:Character1_Ctrl_RightHandIndex1
+    400074: fightScene:Character1_Ctrl_RightHandIndex2
+    400076: fightScene:Character1_Ctrl_RightHandIndexEffector
+    400078: fightScene:Character1_Ctrl_RightHandThumb1
+    400080: fightScene:Character1_Ctrl_RightHandThumb2
+    400082: fightScene:Character1_Ctrl_RightHandThumbEffector
+    400084: fightScene:Character1_Ctrl_RightHipEffector
+    400086: fightScene:Character1_Ctrl_RightKneeEffector
+    400088: fightScene:Character1_Ctrl_RightLeg
+    400090: fightScene:Character1_Ctrl_RightShoulder
+    400092: fightScene:Character1_Ctrl_RightShoulderEffector
+    400094: fightScene:Character1_Ctrl_RightToeBase
+    400096: fightScene:Character1_Ctrl_RightUpLeg
+    400098: fightScene:Character1_Ctrl_RightWristEffector
+    400100: fightScene:Character1_Ctrl_Spine
+    400102: fightScene:Character1_Ctrl_Spine1
+    400104: fightScene:Character1_Ctrl_Spine2
+    400106: fightScene:Character1_Head
+    400108: fightScene:Character1_Hips
+    400110: fightScene:Character1_LeftArm
+    400112: fightScene:Character1_LeftFoot
+    400114: fightScene:Character1_LeftForeArm
+    400116: fightScene:Character1_LeftHand
+    400118: fightScene:Character1_LeftHandIndex1
+    400120: fightScene:Character1_LeftHandIndex2
+    400122: fightScene:Character1_LeftHandThumb1
+    400124: fightScene:Character1_LeftHandThumb2
+    400126: fightScene:Character1_LeftLeg
+    400128: fightScene:Character1_LeftShoulder
+    400130: fightScene:Character1_LeftToeBase
+    400132: fightScene:Character1_LeftUpLeg
+    400134: fightScene:Character1_Neck
+    400136: fightScene:Character1_RightArm
+    400138: fightScene:Character1_RightFoot
+    400140: fightScene:Character1_RightForeArm
+    400142: fightScene:Character1_RightHand
+    400144: fightScene:Character1_RightHandIndex1
+    400146: fightScene:Character1_RightHandIndex2
+    400148: fightScene:Character1_RightHandThumb1
+    400150: fightScene:Character1_RightHandThumb2
+    400152: fightScene:Character1_RightLeg
+    400154: fightScene:Character1_RightShoulder
+    400156: fightScene:Character1_RightToeBase
+    400158: fightScene:Character1_RightUpLeg
+    400160: fightScene:Character1_Spine
+    400162: fightScene:Character1_Spine1
+    400164: fightScene:Character1_Spine2
+    7400000: DetectiveFight
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: DetectiveFight
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fightScene:Character1_Hips
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_LeftUpLeg
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_LeftUpLeg/fightScene:Character1_LeftLeg
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_LeftUpLeg/fightScene:Character1_LeftLeg/fightScene:Character1_LeftFoot
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_LeftUpLeg/fightScene:Character1_LeftLeg/fightScene:Character1_LeftFoot/fightScene:Character1_LeftToeBase
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_RightUpLeg
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_RightUpLeg/fightScene:Character1_RightLeg
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_RightUpLeg/fightScene:Character1_RightLeg/fightScene:Character1_RightFoot
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_RightUpLeg/fightScene:Character1_RightLeg/fightScene:Character1_RightFoot/fightScene:Character1_RightToeBase
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm/fightScene:Character1_LeftForeArm
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm/fightScene:Character1_LeftForeArm/fightScene:Character1_LeftHand
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm/fightScene:Character1_LeftForeArm/fightScene:Character1_LeftHand/fightScene:Character1_LeftHandIndex1
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm/fightScene:Character1_LeftForeArm/fightScene:Character1_LeftHand/fightScene:Character1_LeftHandIndex1/fightScene:Character1_LeftHandIndex2
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm/fightScene:Character1_LeftForeArm/fightScene:Character1_LeftHand/fightScene:Character1_LeftHandThumb1
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_LeftShoulder/fightScene:Character1_LeftArm/fightScene:Character1_LeftForeArm/fightScene:Character1_LeftHand/fightScene:Character1_LeftHandThumb1/fightScene:Character1_LeftHandThumb2
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_Neck
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_Neck/fightScene:Character1_Head
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm/fightScene:Character1_RightForeArm
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm/fightScene:Character1_RightForeArm/fightScene:Character1_RightHand
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm/fightScene:Character1_RightForeArm/fightScene:Character1_RightHand/fightScene:Character1_RightHandIndex1
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm/fightScene:Character1_RightForeArm/fightScene:Character1_RightHand/fightScene:Character1_RightHandIndex1/fightScene:Character1_RightHandIndex2
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm/fightScene:Character1_RightForeArm/fightScene:Character1_RightHand/fightScene:Character1_RightHandThumb1
+        weight: 1
+      - path: fightScene:Character1_Hips/fightScene:Character1_Spine/fightScene:Character1_Spine1/fightScene:Character1_Spine2/fightScene:Character1_RightShoulder/fightScene:Character1_RightArm/fightScene:Character1_RightForeArm/fightScene:Character1_RightHand/fightScene:Character1_RightHandThumb1/fightScene:Character1_RightHandThumb2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: fightScene:Character1_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fightScene:Character1_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: DetectiveFight(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_Hips
+      position: {x: .00465875631, y: 2.54794645, z: .00754475594}
+      rotation: {x: .0231919568, y: -.00340850232, z: -.00121807703, w: .999724567}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftUpLeg
+      position: {x: -.231173396, y: -.162677705, z: 8.92356837e-08}
+      rotation: {x: .484148383, y: .487427652, z: .469390243, w: .554695904}
+      scale: {x: .999999821, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftLeg
+      position: {x: -1.16485918, y: 1.19463039e-06, z: 8.7069111e-07}
+      rotation: {x: .999207079, y: .0299670901, z: -.0170817859, w: .0198862106}
+      scale: {x: .999999881, y: .99999994, z: .999999881}
+      transformModified: 1
+    - name: fightScene:Character1_LeftFoot
+      position: {x: -1.05577874, y: -.0291452501, z: .0289886631}
+      rotation: {x: -.634689987, y: .755811095, z: .146913305, w: .0658383295}
+      scale: {x: 1.00000012, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: fightScene:Character1_LeftToeBase
+      position: {x: .396890849, y: -.00033736843, z: -.0129801985}
+      rotation: {x: .00850827433, y: .0295027904, z: .960384607, w: .276981205}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightUpLeg
+      position: {x: .231173351, y: -.162677824, z: 4.48281909e-08}
+      rotation: {x: .457676917, y: .520566046, z: .542141199, w: .475000918}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: fightScene:Character1_RightLeg
+      position: {x: -1.16487169, y: -9.64478204e-06, z: 1.57411591e-06}
+      rotation: {x: .99986434, y: -.00994071923, z: .00192999351, w: -.0129917273}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightFoot
+      position: {x: -1.05577826, y: -.0291531533, z: .0289964732}
+      rotation: {x: -.635616124, y: .770781338, z: .0140719926, w: -.0411138088}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightToeBase
+      position: {x: .396891624, y: -.000338149111, z: -.0129525168}
+      rotation: {x: .0843932778, y: .292360753, z: .915268064, w: .263983577}
+      scale: {x: .99999994, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: fightScene:Character1_Spine
+      position: {x: 4.50320048e-09, y: .181618094, z: 1.25016101e-07}
+      rotation: {x: -.0270133447, y: 0, z: -0, w: .9996351}
+      scale: {x: .99999994, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_Spine1
+      position: {x: -9.08567444e-09, y: .321984321, z: 1.22917243e-07}
+      rotation: {x: -.011660344, y: 0, z: -0, w: .999932051}
+      scale: {x: .99999994, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: fightScene:Character1_Spine2
+      position: {x: 7.92494106e-08, y: .321984202, z: -1.65669888e-07}
+      rotation: {x: -.0115260622, y: -.00176442391, z: -.151275635, w: .988422871}
+      scale: {x: .999999881, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftShoulder
+      position: {x: -.19431223, y: .0127046462, z: 2.42493627e-07}
+      rotation: {x: 5.22924674e-05, y: .00133311376, z: .696465373, w: .717589259}
+      scale: {x: 1.00000012, y: .99999994, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftArm
+      position: {x: -.105224937, y: .135697767, z: -2.06666879e-08}
+      rotation: {x: .157594055, y: .0912894979, z: .944239676, w: .274302483}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftForeArm
+      position: {x: .41148752, y: -.306380808, z: 6.27865546e-08}
+      rotation: {x: -.0742374063, y: -.139304399, z: .810885072, w: -.563514411}
+      scale: {x: .99999994, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: fightScene:Character1_LeftHand
+      position: {x: .16904217, y: .549870193, z: .114310034}
+      rotation: {x: -.094213672, y: -.245115951, z: .849502444, w: -.457588822}
+      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: fightScene:Character1_LeftHandIndex1
+      position: {x: -.230711967, y: -.0192275085, z: -.0221716445}
+      rotation: {x: .337852538, y: .780794621, z: .356925637, w: -.385771364}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftHandIndex2
+      position: {x: .0186913982, y: -.117862105, z: .011442069}
+      rotation: {x: -.0174919218, y: .829162598, z: .442160368, w: -.341581225}
+      scale: {x: .999999881, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftHandThumb1
+      position: {x: -.133993149, y: -.0579634979, z: .0903419182}
+      rotation: {x: .103933215, y: .86725539, z: .407175481, w: -.266971946}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_LeftHandThumb2
+      position: {x: .0507888049, y: -.0442622416, z: .0155396312}
+      rotation: {x: -.0893662125, y: -.594253302, z: -.394017786, w: .695432723}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_Neck
+      position: {x: -.0963023081, y: .30724594, z: .0201206841}
+      rotation: {x: -.571600795, y: .200566128, z: -.0306145102, w: .795052528}
+      scale: {x: 1, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: fightScene:Character1_Head
+      position: {x: -.14725554, y: -.0270814486, z: .167799741}
+      rotation: {x: .451824158, y: -.0482427515, z: .300747424, w: .838497818}
+      scale: {x: .999999881, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightShoulder
+      position: {x: .152296156, y: .12134438, z: 1.41778486e-07}
+      rotation: {x: -.434433073, y: .900530636, z: .0121708885, w: -.0128194708}
+      scale: {x: .99999994, y: 1, z: .99999994}
+      transformModified: 1
+    - name: fightScene:Character1_RightArm
+      position: {x: -.105222061, y: -.135700047, z: -9.29889055e-09}
+      rotation: {x: -.108631119, y: -.0477751605, z: .401889265, w: .907965839}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: fightScene:Character1_RightForeArm
+      position: {x: -.499934077, y: .115138985, z: 1.46086379e-07}
+      rotation: {x: -.287122965, y: .954789042, z: .0770561248, w: .000829743338}
+      scale: {x: 1.00000024, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: fightScene:Character1_RightHand
+      position: {x: .398465008, y: .429436177, z: .0284500644}
+      rotation: {x: .729059398, y: -.551036656, z: .157476917, w: -.374208689}
+      scale: {x: 1.00000024, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightHandIndex1
+      position: {x: -.230710536, y: -.0192237403, z: .0221900176}
+      rotation: {x: -.0909330472, y: .948269367, z: -.0826892257, w: .29270944}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightHandIndex2
+      position: {x: .0314320959, y: -.0751215369, z: -.0879803672}
+      rotation: {x: -.217818037, y: .877219796, z: -.15119417, w: .400226384}
+      scale: {x: .99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightHandThumb1
+      position: {x: -.134001389, y: -.0579588413, z: -.0903322697}
+      rotation: {x: -.0545042269, y: -.180896699, z: .375302255, w: .907443643}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: fightScene:Character1_RightHandThumb2
+      position: {x: -.0403470695, y: -.0125243021, z: .0547304563}
+      rotation: {x: .136488974, y: .828724265, z: .330186963, w: .430770725}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 
