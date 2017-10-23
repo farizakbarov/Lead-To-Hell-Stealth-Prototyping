@@ -70,7 +70,11 @@ public class GameManager : MonoBehaviour {
     public bool BlackAndWhiteMode;
     public int AA_Type;
 
+
     public GameObject GameplayUI;
+
+
+    public float PlayerLighting;
 
     public void OnEnable(){
 		if(Singleton == null){

@@ -36,7 +36,10 @@ public class LightSensor : MonoBehaviour {
 	{
 		ErrorCallbacks ();
 		CountLighting ();
-	}
+
+        GameManager.Singleton.PlayerLighting = LightingTotal;
+
+    }
 
 	//You can use this method to refresh the list of light sources on the scene.
 	//FOR EXAMPLE: If you turn off/on the lights in real time.

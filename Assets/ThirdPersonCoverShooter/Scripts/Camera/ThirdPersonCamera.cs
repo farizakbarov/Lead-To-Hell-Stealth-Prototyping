@@ -105,6 +105,9 @@ namespace CoverShooter
         // Raycast cache.
         private RaycastHit[] _hits = new RaycastHit[64];
 
+
+        public float SmoothTime = 6f;
+
         private void Awake()
         {
             _camera = GetComponent<Camera>();
@@ -212,6 +215,8 @@ namespace CoverShooter
             cameraPosition += _obstacleFix;
 
             transform.position = cameraPosition;
+           // transform.position = Vector3.Lerp(transform.position, cameraPosition, Time.deltaTime * SmoothTime);
+            //SmoothTime
             transform.LookAt(cameraTarget);
 
             {

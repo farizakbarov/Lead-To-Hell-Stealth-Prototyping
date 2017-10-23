@@ -51,6 +51,8 @@ public class GameManagerEditor : Editor {
     SerializedProperty ListOfType2s;
     SerializedProperty ListOfCameras;
 
+    SerializedProperty PlayerLighting;
+
 
 
     void OnEnable()
@@ -98,6 +100,8 @@ public class GameManagerEditor : Editor {
 
         GameplayUI = serializedObject.FindProperty("GameplayUI");
 
+        PlayerLighting = serializedObject.FindProperty("PlayerLighting");
+
     }
 
     public override void OnInspectorGUI()
@@ -131,9 +135,13 @@ public class GameManagerEditor : Editor {
 
         EditorGUILayout.PropertyField(Flashlight);
 
+
+
         EditorGUILayout.LabelField("AI:");
         EditorGUILayout.PropertyField(EnableAISightSwitch);
         EditorGUILayout.PropertyField(EnableAIHearing);
+
+        EditorGUILayout.PropertyField(PlayerLighting);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");
