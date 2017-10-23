@@ -27,6 +27,17 @@ public class AISight : MonoBehaviour
     public float ShadowBonus = 0.25f;
 
 
+    private float DifficultyModifier;
+    public float EasyModifier = 0.5f;
+    public float MediumModifier = 1.0f;
+    public float HardModifer = 2.0f;
+
+
+    private float TimeOfDayModifier;
+    public float DayModifier = 1.0f;
+    public float NightModifer = 0.75f;
+
+
     // Use this for initialization
     void Start()
     {
@@ -89,13 +100,34 @@ public class AISight : MonoBehaviour
                 ShadowModifier = 1.0f;
             }
 
+            if(GameManager.Singleton.Difficulty == GameManager.Difficulties.Easy)
+            {
+                DifficultyModifier = EasyModifier;
+
+            }else if(GameManager.Singleton.Difficulty == GameManager.Difficulties.Medium)
+            {
+                DifficultyModifier = MediumModifier;
+            }
+            else
+            {
+                DifficultyModifier = HardModifer;
+            }
+
+            if(GameManager.Singleton.TimeOfDay == GameManager.TimeOfDays.Day)
+            {
+                TimeOfDayModifier = DayModifier;
+            }
+            else
+            {
+                TimeOfDayModifier = NightModifer;
+            }
 
             if (MainAIScript != null)
             {
                 //If the player is visible, start adding to the alert level + its modifiers
                 if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
                 {
-                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * ShadowModifier;
+                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * ShadowModifier * DifficultyModifier * TimeOfDayModifier;
 
                 }
                 else

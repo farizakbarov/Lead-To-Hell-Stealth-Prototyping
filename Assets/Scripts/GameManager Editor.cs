@@ -54,6 +54,11 @@ public class GameManagerEditor : Editor {
     SerializedProperty PlayerLighting;
 
 
+    SerializedProperty Difficulty;
+
+    SerializedProperty TimeOfDay;
+
+
 
     void OnEnable()
     {
@@ -102,6 +107,10 @@ public class GameManagerEditor : Editor {
 
         PlayerLighting = serializedObject.FindProperty("PlayerLighting");
 
+        Difficulty = serializedObject.FindProperty("Difficulty");
+
+        TimeOfDay = serializedObject.FindProperty("TimeOfDay");
+
     }
 
     public override void OnInspectorGUI()
@@ -111,19 +120,22 @@ public class GameManagerEditor : Editor {
 
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("Main Object Referances", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(GameplayTimeline);
+       // EditorGUILayout.PropertyField(GameplayTimeline);
         EditorGUILayout.PropertyField(MainPlayerCamera);
         EditorGUILayout.PropertyField(ActivePlayer);
         EditorGUILayout.PropertyField(Detective);
         EditorGUILayout.PropertyField(Dog);
         EditorGUILayout.PropertyField(LastSighting);
         EditorGUILayout.LabelField("UI:");
-        EditorGUILayout.PropertyField(AlertBar);
+        //EditorGUILayout.PropertyField(AlertBar);
         EditorGUILayout.PropertyField(GameplayUI);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.PropertyField(TimeOfDay); 
+        EditorGUILayout.PropertyField(Difficulty);
         EditorGUILayout.LabelField("Global Gameplay Settings", EditorStyles.boldLabel);
+        
         EditorGUILayout.LabelField("Player States:");
         EditorGUILayout.PropertyField(Stealth);
 

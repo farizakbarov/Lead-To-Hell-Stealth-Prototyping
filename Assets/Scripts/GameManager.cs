@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
     public bool PlayerSafe;
 	public bool PlayerIsRunning;
 	public GameObject LastSighting;
-	public GameObject AlertBar;
+	//public GameObject AlertBar;
 	public bool Flashlight;
 
 	public GameObject FailMsg;
@@ -73,6 +73,13 @@ public class GameManager : MonoBehaviour {
 
     public GameObject GameplayUI;
 
+    public enum Difficulties { Easy, Medium, Hard };
+
+    public Difficulties Difficulty = Difficulties.Medium;
+
+    public enum TimeOfDays { Day, Night };
+
+    public TimeOfDays TimeOfDay = TimeOfDays.Day;
 
     public float PlayerLighting;
 

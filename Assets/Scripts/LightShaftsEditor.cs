@@ -31,7 +31,7 @@ public class LightShaftsEditor : Editor
     SerializedProperty depthThreshold;
     SerializedProperty interpolationStep;
     SerializedProperty showSamples;
-    SerializedProperty showInterpolatedSamples;
+   // SerializedProperty showInterpolatedSamples;
     SerializedProperty backgroundFade;
     SerializedProperty attenuationCurveOn;
     SerializedProperty attenuationCurve;
@@ -65,7 +65,7 @@ public class LightShaftsEditor : Editor
         depthThreshold = so.FindProperty("m_DepthThreshold");
         interpolationStep = so.FindProperty("m_InterpolationStep");
         showSamples = so.FindProperty("m_ShowSamples");
-        showInterpolatedSamples = so.FindProperty("m_ShowInterpolatedSamples");
+       // showInterpolatedSamples = so.FindProperty("m_ShowInterpolatedSamples");
         backgroundFade = so.FindProperty("m_ShowSamplesBackgroundFade");
 
         attenuationCurveOn = so.FindProperty("m_AttenuationCurveOn");
