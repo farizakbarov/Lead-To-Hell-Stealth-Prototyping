@@ -254,9 +254,9 @@ namespace CoverShooter
             {
                 if (Input.GetKey(KeyCode.G)) _motor.InputTakeGrenade();
 
-                if (Input.GetKey(KeyCode.Alpha1)) _motor.InputWeapon(0);
+                /*if (Input.GetKey(KeyCode.Alpha1)) _motor.InputWeapon(0);
                 if (Input.GetKey(KeyCode.Alpha2)) _motor.InputWeapon(1);
-                if (Input.GetKey(KeyCode.Alpha3)) _motor.InputWeapon(2);
+                if (Input.GetKey(KeyCode.Alpha3)) _motor.InputWeapon(2);*/
 
                 if (Input.mouseScrollDelta.y < 0)
                 {

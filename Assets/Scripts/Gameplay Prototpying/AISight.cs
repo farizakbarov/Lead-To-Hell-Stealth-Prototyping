@@ -128,10 +128,11 @@ public class AISight : MonoBehaviour
                 if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
                 {
                     MainAIScript.AlertLevel += AlertAdd * DistanceModifier * ShadowModifier * DifficultyModifier * TimeOfDayModifier;
-
+                    GameManager.Singleton.PlayerInSight = true;
                 }
                 else
                 {
+                    GameManager.Singleton.PlayerInSight = false;
                     if (myFSM.Fsm.ActiveStateName != "GameOver")
                     {
                         //if the player is not visible, decrease the alert level.
@@ -191,18 +192,16 @@ public class AISight : MonoBehaviour
                         {
                             myFSM.Fsm.Event("SPOTTED");
                         }
-                        //
-                        // MainAIScript.AlertLevel += AlertAdd1;
-
                     }
+
 
                 }
             }
 
-            if (!RearFOV)
+          /*  if (!RearFOV)
             {
                 GameManager.Singleton.PlayerInSight = true;
-            }
+            }*/
         }
     }
 
