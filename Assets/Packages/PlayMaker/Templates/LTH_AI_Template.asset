@@ -1397,8 +1397,8 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: Seek
-          parameterType: GameObject
+        - FunctionName: SeekPlayer
+          parameterType: None
           BoolParameter:
             useVariable: 0
             name: 
@@ -1421,8 +1421,8 @@ MonoBehaviour:
             networkSync: 0
             value: 0
           GameObjectParameter:
-            useVariable: 1
-            name: Player
+            useVariable: 0
+            name: 
             tooltip: 
             showInInspector: 0
             networkSync: 0

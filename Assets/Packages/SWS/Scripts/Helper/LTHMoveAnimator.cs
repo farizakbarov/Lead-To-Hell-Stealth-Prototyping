@@ -103,6 +103,7 @@ public class LTHMoveAnimator : MonoBehaviour
     public float AlertLevel;
     //public float AlertLevelPercentage;
 
+
     //getting component references
     void Start()
     {
@@ -193,6 +194,20 @@ public class LTHMoveAnimator : MonoBehaviour
             MovingToDestination = true;
             isSeeking = true;
         }
+    }
+
+    //Function the FSM calls for Running after the Player after he has been spotted
+    public void SeekPlayer()
+    {
+            //Debug.Log("Begin seeking PlaYER");
+            TurnOnSpot = false;
+            TurnAroundSwitch = false;
+            Sweeping = false;
+            SweepTurn = false;
+            agent.isStopped = false;
+            agent.speed = RunSpeed;
+            MovingToDestination = true;
+            isSeeking = true;
     }
 
     //FSM calls these functions to begin and stop sweeping
@@ -359,7 +374,7 @@ public class LTHMoveAnimator : MonoBehaviour
             AlertBar.fillAmount = AlertLevel;
         }
 
-        if(AlertLevel > 1)
+        if (AlertLevel > 1)
         {
             AlertLevel = 1;
         }
@@ -375,6 +390,7 @@ public class LTHMoveAnimator : MonoBehaviour
             if (isSeeking)
             {
                 agent.SetDestination(GameManager.Singleton.LastSighting.transform.position);
+                //Debug.Log("Seeking");
             }
 
             //If the AI is searching around points of interest for the player
@@ -388,7 +404,10 @@ public class LTHMoveAnimator : MonoBehaviour
             {
                 if (!LookingForPlayer)
                 {
+                   
+                    //Debug.Log("aRRIVED");
                     FSM.Fsm.Event("ARRIVED");
+                    
                     isSeeking = false;
                     MovingToDestination = false;
                     agent.speed = AgentSpeed;
@@ -500,7 +519,7 @@ public class LTHMoveAnimator : MonoBehaviour
     //Function for checking to see if the player is still in sight, if so he is caught
     void CheckIfCaught()
     {
-
+        
         if (RadiusScript.PlayerInRadius)
         {
             if (GameManager.Singleton.PlayerSafe)
@@ -522,6 +541,7 @@ public class LTHMoveAnimator : MonoBehaviour
                 NavMoveScript.Pause();
             }
             agent.isStopped = true;
+            
         }
     }
 

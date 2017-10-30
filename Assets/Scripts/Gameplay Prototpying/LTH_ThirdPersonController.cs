@@ -46,6 +46,7 @@ public class LTH_ThirdPersonController : MonoBehaviour {
         {
             _motor.Grenade.Left = PaperThrowable;
             _motor.Grenade.Right = PaperThrowable;
+            FireExtinguisherThrowable.SetActive(false);
             controller.EnableExposionPreview = false;
         }
 
@@ -53,6 +54,7 @@ public class LTH_ThirdPersonController : MonoBehaviour {
         {
             _motor.Grenade.Left = FireExtinguisherThrowable;
             _motor.Grenade.Right = FireExtinguisherThrowable;
+            PaperThrowable.SetActive(false);
             controller.EnableExposionPreview = true;
         }
 

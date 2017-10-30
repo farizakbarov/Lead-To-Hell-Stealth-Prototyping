@@ -37,6 +37,8 @@ public class AISight : MonoBehaviour
     public float DayModifier = 1.0f;
     public float NightModifer = 0.75f;
 
+    public bool SeekFlip = true;
+
 
     // Use this for initialization
     void Start()
@@ -143,10 +145,19 @@ public class AISight : MonoBehaviour
                     }
                 }
 
+                if (myFSM.Fsm.ActiveStateName == "Wait - Lost Player")
+                {
+                    SeekFlip = true;
+                }
+
                 //if the alert level reaches 1, he has spotted the player
                 if (MainAIScript.AlertLevel >= 1)
                 {
-                    myFSM.Fsm.Event("SPOTTED");
+                    if (SeekFlip)
+                    {
+                        myFSM.Fsm.Event("SPOTTED");
+                        SeekFlip = false;
+                    }
                 }
 
                 if (myFSM.Fsm.ActiveStateName == "Seeking")
