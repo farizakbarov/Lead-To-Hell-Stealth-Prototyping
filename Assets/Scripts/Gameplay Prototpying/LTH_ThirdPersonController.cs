@@ -47,7 +47,9 @@ public class LTH_ThirdPersonController : MonoBehaviour {
             _motor.Grenade.Left = PaperThrowable;
             _motor.Grenade.Right = PaperThrowable;
             FireExtinguisherThrowable.SetActive(false);
+            
             controller.EnableExposionPreview = false;
+           // controller.ExplosionPreview.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))

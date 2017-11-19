@@ -503,9 +503,17 @@ namespace CoverShooter
 
                     if (_explosionPreview != null)
                     {
+                        _explosionPreview.SetActive(true);
                         _explosionPreview.transform.localScale = Vector3.one * _motor.PotentialGrenade.ExplosionRadius * 2;
                         _explosionPreview.transform.position = _grenadePath[_grenadePathLength - 1];
 
+                    }
+                }
+                else
+                {
+                    if(_explosionPreview != null)
+                    {
+                        _explosionPreview.SetActive(false);
                     }
                 }
 
