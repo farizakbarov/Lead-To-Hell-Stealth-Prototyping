@@ -23,19 +23,9 @@ public class AISight : MonoBehaviour
     public float DistanceClose = 5f;
     public float DistnaceFar = 15f;
 
-    private float ShadowModifier;
-    public float ShadowBonus = 0.25f;
+    
 
 
-    private float DifficultyModifier;
-    public float EasyModifier = 0.5f;
-    public float MediumModifier = 1.0f;
-    public float HardModifer = 2.0f;
-
-
-    private float TimeOfDayModifier;
-    public float DayModifier = 1.0f;
-    public float NightModifer = 0.75f;
 
     public bool SeekFlip = true;
 
@@ -80,12 +70,12 @@ public class AISight : MonoBehaviour
             //modify the DistanceModifier value based upon how close/far away the player is
             if (DistanceToPlayer <= DistanceClose)
             {
-                DistanceModifier = 1.5f;
+                DistanceModifier = GameManager.Singleton.DistanceNearModifier;
                 // Debug.Log("near");
             }
             else if (DistanceToPlayer >= DistnaceFar)
             {
-                DistanceModifier = 0.25f;
+                DistanceModifier = GameManager.Singleton.DistanceFarModifier;
             }
             else
             {
@@ -95,33 +85,33 @@ public class AISight : MonoBehaviour
             //modify the ShadowModifier value based if the player is in shadow or not.
             if (GameManager.Singleton.PlayerLighting <= 0.5f)
             {
-                ShadowModifier = 1.0f - ShadowBonus;
+                GameManager.Singleton.ShadowModifier = 1.0f - GameManager.Singleton.ShadowBonus;
             }
             else
             {
-                ShadowModifier = 1.0f;
+                GameManager.Singleton.ShadowModifier = 1.0f;
             }
 
             if(GameManager.Singleton.Difficulty == GameManager.Difficulties.Easy)
             {
-                DifficultyModifier = EasyModifier;
+                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.EasyModifier;
 
             }else if(GameManager.Singleton.Difficulty == GameManager.Difficulties.Medium)
             {
-                DifficultyModifier = MediumModifier;
+                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.MediumModifier;
             }
             else
             {
-                DifficultyModifier = HardModifer;
+                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.HardModifer;
             }
 
             if(GameManager.Singleton.TimeOfDay == GameManager.TimeOfDays.Day)
             {
-                TimeOfDayModifier = DayModifier;
+                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.DayModifier;
             }
             else
             {
-                TimeOfDayModifier = NightModifer;
+                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.NightModifer;
             }
 
             if (MainAIScript != null)
@@ -129,7 +119,7 @@ public class AISight : MonoBehaviour
                 //If the player is visible, start adding to the alert level + its modifiers
                 if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
                 {
-                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * ShadowModifier * DifficultyModifier * TimeOfDayModifier;
+                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * GameManager.Singleton.ShadowModifier * GameManager.Singleton.DifficultyModifier * GameManager.Singleton.TimeOfDayModifier;
                     GameManager.Singleton.PlayerInSight = true;
                 }
                 else

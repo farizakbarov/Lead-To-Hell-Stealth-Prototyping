@@ -83,6 +83,27 @@ public class GameManager : MonoBehaviour {
 
     public float PlayerLighting;
 
+
+    public float ShadowModifier;
+    public float ShadowBonus = 0.25f;
+
+
+    public float DifficultyModifier;
+    public float EasyModifier = 0.5f;
+    public float MediumModifier = 1.0f;
+    public float HardModifer = 2.0f;
+
+
+    public float TimeOfDayModifier;
+    public float DayModifier = 1.0f;
+    public float NightModifer = 0.75f;
+
+    public float DistanceNearModifier = 2.0f;
+    public float DistanceFarModifier = 0.25f;
+
+    public bool EnableAIAlertBars;
+    public bool EnableAIStatusIndicators;
+
     public void OnEnable(){
 		if(Singleton == null){
 			Singleton = this;

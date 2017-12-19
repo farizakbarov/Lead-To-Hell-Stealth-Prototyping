@@ -58,6 +58,23 @@ public class GameManagerEditor : Editor {
 
     SerializedProperty TimeOfDay;
 
+    SerializedProperty ShadowModifier;
+    SerializedProperty ShadowBonus;
+
+
+    SerializedProperty DifficultyModifier;
+    SerializedProperty EasyModifier;
+    SerializedProperty MediumModifier;
+    SerializedProperty HardModifer;
+
+
+    SerializedProperty TimeOfDayModifier;
+    SerializedProperty DayModifier;
+    SerializedProperty NightModifer;
+
+    SerializedProperty DistanceNearModifier;
+    SerializedProperty DistanceFarModifier;
+
 
 
     void OnEnable()
@@ -111,6 +128,23 @@ public class GameManagerEditor : Editor {
 
         TimeOfDay = serializedObject.FindProperty("TimeOfDay");
 
+        ShadowModifier = serializedObject.FindProperty("ShadowModifier");
+        ShadowBonus = serializedObject.FindProperty("ShadowBonus");
+
+
+        DifficultyModifier = serializedObject.FindProperty("DifficultyModifier");
+        EasyModifier = serializedObject.FindProperty("EasyModifier");
+        MediumModifier = serializedObject.FindProperty("MediumModifier");
+        HardModifer = serializedObject.FindProperty("HardModifer");
+
+
+        TimeOfDayModifier = serializedObject.FindProperty("TimeOfDayModifier");
+        DayModifier = serializedObject.FindProperty("DayModifier");
+        NightModifer = serializedObject.FindProperty("NightModifer");
+
+         DistanceNearModifier = serializedObject.FindProperty("DistanceNearModifier");
+         DistanceFarModifier = serializedObject.FindProperty("DistanceFarModifier");
+
     }
 
     public override void OnInspectorGUI()
@@ -130,11 +164,12 @@ public class GameManagerEditor : Editor {
         //EditorGUILayout.PropertyField(AlertBar);
         EditorGUILayout.PropertyField(GameplayUI);
         EditorGUILayout.EndVertical();
-
+        
         EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.LabelField("Global Gameplay Settings", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(TimeOfDay); 
         EditorGUILayout.PropertyField(Difficulty);
-        EditorGUILayout.LabelField("Global Gameplay Settings", EditorStyles.boldLabel);
+       
         
         EditorGUILayout.LabelField("Player States:");
         EditorGUILayout.PropertyField(Stealth);
@@ -148,12 +183,29 @@ public class GameManagerEditor : Editor {
         EditorGUILayout.PropertyField(Flashlight);
 
 
-
-        EditorGUILayout.LabelField("AI:");
+        EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.LabelField("AI:", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(EnableAISightSwitch);
         EditorGUILayout.PropertyField(EnableAIHearing);
 
         EditorGUILayout.PropertyField(PlayerLighting);
+
+        
+        EditorGUILayout.LabelField("AI Alert Bar Modifiers", EditorStyles.boldLabel);
+
+        EditorGUILayout.PropertyField(ShadowBonus);
+
+
+        EditorGUILayout.PropertyField(EasyModifier);
+        EditorGUILayout.PropertyField(MediumModifier);
+        EditorGUILayout.PropertyField(HardModifer);
+
+
+        EditorGUILayout.PropertyField(DayModifier);
+        EditorGUILayout.PropertyField(NightModifer);
+        EditorGUILayout.PropertyField(DistanceNearModifier);
+        EditorGUILayout.PropertyField(DistanceFarModifier);
+        EditorGUILayout.EndVertical();
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");
@@ -187,6 +239,9 @@ public class GameManagerEditor : Editor {
         EditorGUILayout.PropertyField(ListOfType2s);
         EditorGUILayout.PropertyField(ListOfCameras);
         EditorGUILayout.EndVertical();
+
+
+
         serializedObject.ApplyModifiedProperties();
     }
 }

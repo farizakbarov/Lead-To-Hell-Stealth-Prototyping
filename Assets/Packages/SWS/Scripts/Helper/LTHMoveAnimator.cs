@@ -127,6 +127,8 @@ public class LTHMoveAnimator : MonoBehaviour
 
 
 
+
+
         //Add the AI to the lists in the gamemangaer
         if (FSM != null)
         {
@@ -367,6 +369,15 @@ public class LTHMoveAnimator : MonoBehaviour
     private void Update()
     {
 
+        if (!GameManager.Singleton.EnableAIAlertBars)
+        {
+            AlertBar.transform.parent.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            AlertBar.transform.parent.parent.gameObject.SetActive(true);
+        }
+
         //AlertLe0velPercentage = AlertLevel / 1.0f;
 
         if (AlertBar != null)
@@ -460,30 +471,33 @@ public class LTHMoveAnimator : MonoBehaviour
 
         if (FSM != null)
         {
-            if (myIndicator != null)
+            if (GameManager.Singleton.EnableAIStatusIndicators)
             {
-                if (FSM.ActiveStateName == "Alert")
+                if (myIndicator != null)
                 {
-                    myIndicator.GetComponent<Image>().color = new Color(1.0F, 0.5F, 0.0F, 1.0F);
-                }
-                else if (FSM.ActiveStateName == "Seeking")
-                {
-                    myIndicator.GetComponent<Image>().color = Color.red;
-                }
-                else if (FSM.ActiveStateName == "Wait - Lost Player" || FSM.ActiveStateName == "Wait - Lost Player 2")
-                {
-                    myIndicator.GetComponent<Image>().color = Color.gray;
-                }
-                else if (FSM.ActiveStateName == "Looking For Player")
-                {
-                    myIndicator.GetComponent<Image>().color = Color.yellow;
-                }
-                else
-                {
-                    myIndicator.GetComponent<Image>().color = Color.clear;
-                }
+                    if (FSM.ActiveStateName == "Alert")
+                    {
+                        myIndicator.GetComponent<Image>().color = new Color(1.0F, 0.5F, 0.0F, 1.0F);
+                    }
+                    else if (FSM.ActiveStateName == "Seeking")
+                    {
+                        myIndicator.GetComponent<Image>().color = Color.red;
+                    }
+                    else if (FSM.ActiveStateName == "Wait - Lost Player" || FSM.ActiveStateName == "Wait - Lost Player 2")
+                    {
+                        myIndicator.GetComponent<Image>().color = Color.gray;
+                    }
+                    else if (FSM.ActiveStateName == "Looking For Player")
+                    {
+                        myIndicator.GetComponent<Image>().color = Color.yellow;
+                    }
+                    else
+                    {
+                        myIndicator.GetComponent<Image>().color = Color.clear;
+                    }
 
-                //myIndicator.transform.localPosition = myIndicator.transform.localPosition + IndicatorOffset;
+                    //myIndicator.transform.localPosition = myIndicator.transform.localPosition + IndicatorOffset;
+                }
             }
         }
 
@@ -608,7 +622,15 @@ public class LTHMoveAnimator : MonoBehaviour
             // Vector3 velocity = Quaternion.Inverse(transform.rotation) * nAgent.desiredVelocity;
             //angle = Mathf.Atan2(velocity.x, velocity.z) * 180.0f / 3.14159f;
 
-            agent.velocity = animator.deltaPosition / Time.deltaTime;
+            if (!GameManager.Singleton.Paused)
+            {
+                Vector3 NewVelocity = animator.deltaPosition / Time.deltaTime;
+                if (!float.IsNaN(NewVelocity.x))
+                {
+                    agent.velocity = NewVelocity;
+                }
+                
+            }
             transform.rotation = animator.rootRotation;
         }
     }

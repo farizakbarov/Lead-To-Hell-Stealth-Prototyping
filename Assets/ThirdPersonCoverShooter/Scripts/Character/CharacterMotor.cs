@@ -2066,7 +2066,15 @@ namespace CoverShooter
                             _body.velocity = new Vector3(0, _body.velocity.y, 0);
                     }
                     else
-                        _body.velocity = animatorMovement;
+                    {
+
+                        if (!GameManager.Singleton.Paused) {
+                            if (!float.IsNaN(animatorMovement.x))
+                            {
+                                _body.velocity = animatorMovement;
+                            }
+                        }
+                    }
                 }
             }
 
