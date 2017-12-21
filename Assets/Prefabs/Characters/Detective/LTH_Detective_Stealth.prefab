@@ -708,6 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19814a5f16376bf43ac4d518a696ab56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlidingEnabled: 1
   SlideCapsuleHeight: 0.2
   SlideCapsuleCenter: {x: 0, y: 0.34, z: 0}
   IsSliding: 0

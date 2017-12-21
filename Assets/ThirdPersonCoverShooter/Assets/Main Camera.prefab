@@ -20,12 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4709199153285568}
   - component: {fileID: 20360231546573882}
-  - component: {fileID: 92198412126074200}
   - component: {fileID: 124592160197165800}
   - component: {fileID: 81915804352838100}
   - component: {fileID: 114396382626856754}
-  - component: {fileID: 114360892286749716}
-  - component: {fileID: 114460203489475424}
+  - component: {fileID: 114586354114838962}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -88,24 +86,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584278644382348}
   m_Enabled: 1
---- !u!92 &92198412126074200
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584278644382348}
-  m_Enabled: 1
---- !u!114 &114360892286749716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584278644382348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbdc63f3f85bb33438fe7e7cdffbc0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114396382626856754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,11 +105,11 @@ MonoBehaviour:
   IsCrosshairEnabled: 1
   Crosshair: {fileID: 2800000, guid: b5d4f48541ae7564b8d3a0ba84076bbc, type: 3}
   CrosshairSize: 0.07
-  RotateWhenUnlocked: 0
+  RotateWhenUnlocked: 1
   States:
     Default:
       Pivot: {x: 0, y: 2, z: 0}
-      Offset: {x: 0.64, y: 0.1, z: -2.5}
+      Offset: {x: 0.5, y: -0.7, z: -2.5}
       Orientation: {x: 0, y: 0, z: 0}
       FOV: 60
     Aim:
@@ -139,7 +119,7 @@ MonoBehaviour:
       FOV: 60
     Crouch:
       Pivot: {x: 0, y: 2, z: 0}
-      Offset: {x: 0.75, y: -0.8, z: -1}
+      Offset: {x: 0.75, y: -0.8, z: -2}
       Orientation: {x: 0, y: 0, z: 0}
       FOV: 60
     LowCover:
@@ -229,7 +209,8 @@ MonoBehaviour:
       FOV: 40
   Horizontal: 318.5033
   Vertical: 12.926104
---- !u!114 &114460203489475424
+  SmoothTime: 1
+--- !u!114 &114586354114838962
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -237,10 +218,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1584278644382348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbdc63f3f85bb33438fe7e7cdffbc0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 62a81ea9143806d4da8feaa9cf41ba0b, type: 2}
 --- !u!124 &124592160197165800
 Behaviour:
   m_ObjectHideFlags: 1

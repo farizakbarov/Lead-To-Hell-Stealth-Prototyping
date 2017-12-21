@@ -7,9 +7,9 @@ using CoverShooter;
 
 public class CharacterSlide : MonoBehaviour {
 
+    public bool SlidingEnabled;
 
-
-   // private CharacterMotor motor;
+    // private CharacterMotor motor;
     private Animator anim;
     private LTH_ThirdPersonController controller;
 
@@ -23,6 +23,8 @@ public class CharacterSlide : MonoBehaviour {
     public bool IsSliding;
 
     private bool large;
+
+    
 
     // Use this for initialization
     void Start () {
@@ -50,7 +52,7 @@ public class CharacterSlide : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
 
         if (large)
         {
@@ -59,11 +61,15 @@ public class CharacterSlide : MonoBehaviour {
         }
         //Debug.Log(anim.GetFloat("CapsuleHeight"));
 
-        if (Input.GetKeyDown(KeyCode.Z) && controller.isRunning)
+        if (SlidingEnabled)
         {
-            //Debug.Log("Slide");
-            IsSliding = true;
-            anim.SetTrigger("Slide");
+            if (Input.GetKeyDown(KeyCode.Z) && controller.isRunning)
+            {
+                //Debug.Log("Slide");
+                IsSliding = true;
+                anim.SetTrigger("Slide");
+            }
+
         }
 
        /* if (IsAlive)
