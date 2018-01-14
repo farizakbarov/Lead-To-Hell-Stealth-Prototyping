@@ -21,7 +21,7 @@ public class UILightSensor : MonoBehaviour {
 	void Start()
 	{
         //player = GameObject.FindGameObjectWithTag ("LightHit");
-        player = GameManager.Singleton.ActivePlayer;
+
 
         smoothLS = 1f;
 		speedMod = 1f;
@@ -35,10 +35,12 @@ public class UILightSensor : MonoBehaviour {
 	void SetLightSensor()
 	{
 		float areaWidth = LS_area.GetComponent<RectTransform> ().sizeDelta.x;
+		player = GameManager.Singleton.Detective;
         if (player != null)
         {
              currentLighting = player.GetComponent<LightSensor>().LightingTotal;
         }
+		//Debug.Log (currentLighting);
 
 		if (currentLighting < smoothLS) 
 		{

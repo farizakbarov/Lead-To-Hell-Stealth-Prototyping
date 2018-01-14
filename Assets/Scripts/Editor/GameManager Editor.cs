@@ -75,6 +75,9 @@ public class GameManagerEditor : Editor {
     SerializedProperty DistanceNearModifier;
     SerializedProperty DistanceFarModifier;
 
+	SerializedProperty EnableAIAlertBars;
+	SerializedProperty EnableAIStatusIndicators;
+
 
 
     void OnEnable()
@@ -145,6 +148,10 @@ public class GameManagerEditor : Editor {
          DistanceNearModifier = serializedObject.FindProperty("DistanceNearModifier");
          DistanceFarModifier = serializedObject.FindProperty("DistanceFarModifier");
 
+
+		EnableAIAlertBars = serializedObject.FindProperty("EnableAIAlertBars");
+		EnableAIStatusIndicators = serializedObject.FindProperty("EnableAIStatusIndicators");
+
     }
 
     public override void OnInspectorGUI()
@@ -187,6 +194,8 @@ public class GameManagerEditor : Editor {
         EditorGUILayout.LabelField("AI:", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(EnableAISightSwitch);
         EditorGUILayout.PropertyField(EnableAIHearing);
+		EditorGUILayout.PropertyField(EnableAIAlertBars);
+		EditorGUILayout.PropertyField(EnableAIStatusIndicators);
 
         EditorGUILayout.PropertyField(PlayerLighting);
 

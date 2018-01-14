@@ -103,6 +103,8 @@ public class LTHMoveAnimator : MonoBehaviour
     public float AlertLevel;
     //public float AlertLevelPercentage;
 
+	public float CaughtDistance = 3f;
+
 
     //getting component references
     void Start()
@@ -534,6 +536,7 @@ public class LTHMoveAnimator : MonoBehaviour
     void CheckIfCaught()
     {
         
+		//if the player is inside a safe zone, eject him.
         if (RadiusScript.PlayerInRadius)
         {
             if (GameManager.Singleton.PlayerSafe)
@@ -542,8 +545,10 @@ public class LTHMoveAnimator : MonoBehaviour
             }
         }
 
-        //Debug.Log(GameManager.Singleton.PlayerInSight);
-        if (GameManager.Singleton.PlayerInSight)
+		//if (GameManager.Singleton.PlayerInSight)
+
+		//If the player is close to the AI, he is caught.
+		if(Vector3.Distance(this.transform.position, GameManager.Singleton.ActivePlayer.transform.position) < agent.stoppingDistance)
         {
             FSM.Fsm.Event("CAUGHT");
 
@@ -555,6 +560,7 @@ public class LTHMoveAnimator : MonoBehaviour
                 NavMoveScript.Pause();
             }
             agent.isStopped = true;
+			FSM.Fsm.Event("FINISHED");
             
         }
     }
@@ -573,7 +579,7 @@ public class LTHMoveAnimator : MonoBehaviour
         }
     }
 
-    //Function for telling the animator to animate, and making the nav mesh move at the same speed as the animations are moving.
+    //function for taking the desidered movement from the nav mesh agent, and passing it over to the locomotion code so that the desired animations are played back to move the character
     public virtual void SetupAgentLocomotion()
     {
         if (agent != null && agent.enabled)
@@ -595,7 +601,7 @@ public class LTHMoveAnimator : MonoBehaviour
         }
     }
 
-    //method override for root motion on the animator
+	//Function for telling the locomotion code to move the character based upon the animations
     void OnAnimatorMove()
     {
         //init variables
