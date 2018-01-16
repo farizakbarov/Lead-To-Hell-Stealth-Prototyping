@@ -78,6 +78,8 @@ public class GameManagerEditor : Editor {
 	SerializedProperty EnableAIAlertBars;
 	SerializedProperty EnableAIStatusIndicators;
 
+    SerializedProperty LastSightingVisible;
+
 
 
     void OnEnable()
@@ -152,6 +154,9 @@ public class GameManagerEditor : Editor {
 		EnableAIAlertBars = serializedObject.FindProperty("EnableAIAlertBars");
 		EnableAIStatusIndicators = serializedObject.FindProperty("EnableAIStatusIndicators");
 
+
+        LastSightingVisible = serializedObject.FindProperty("LastSightingVisible");
+
     }
 
     public override void OnInspectorGUI()
@@ -189,7 +194,7 @@ public class GameManagerEditor : Editor {
 
         EditorGUILayout.PropertyField(Flashlight);
 
-
+        EditorGUILayout.PropertyField(LastSightingVisible);
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("AI:", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(EnableAISightSwitch);

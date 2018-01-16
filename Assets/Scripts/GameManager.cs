@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour {
     public bool EnableAIAlertBars;
     public bool EnableAIStatusIndicators;
 
+    public bool LastSightingVisible;
+
     public void OnEnable(){
 		if(Singleton == null){
 			Singleton = this;
@@ -260,6 +262,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 
         if (PlayerInSight)
         {

@@ -61,7 +61,7 @@ public class AISight : MonoBehaviour
 
         }
 
-        if (UseAlertBar)
+        if (UseAlertBar && GameManager.Singleton.EnableAISightSwitch)
         {
             //find out the distance to the player
             DistanceToPlayer = Vector3.Distance(transform.position, GameManager.Singleton.ActivePlayer.transform.position);

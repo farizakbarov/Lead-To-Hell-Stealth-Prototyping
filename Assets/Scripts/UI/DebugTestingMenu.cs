@@ -40,6 +40,8 @@ public class DebugTestingMenu : MonoBehaviour
     public InputField DistanceFarModifier;
     public InputField NightModifier;
 
+    public Image LastSightingBox;
+
     // Use this for initialization
     void Start()
     {
@@ -176,6 +178,15 @@ public class DebugTestingMenu : MonoBehaviour
         else
         {
             PlayerStealthToggle.color = Color.red;
+        }
+
+        if(GameManager.Singleton.LastSightingVisible)
+        {
+            LastSightingBox.color = Color.green;
+        }
+        else
+        {
+            LastSightingBox.color = Color.red;
         }
 
     }
@@ -330,4 +341,25 @@ public class DebugTestingMenu : MonoBehaviour
     {
         GameManager.Singleton.NightModifer = float.Parse(NightModifier.text);
     }
+
+    public void ToggleLastSightingVisiblity()
+    {
+        GameManager.Singleton.LastSightingVisible = !GameManager.Singleton.LastSightingVisible;
+
+        if (GameManager.Singleton.LastSighting != null)
+        {
+            if (GameManager.Singleton.LastSightingVisible)
+            {
+                GameManager.Singleton.LastSighting.GetComponent<Renderer>().enabled = true;
+            }
+            else
+            {
+                GameManager.Singleton.LastSighting.GetComponent<Renderer>().enabled = false;
+            }
+        }
+
+       
+    }
+
+    
 }
