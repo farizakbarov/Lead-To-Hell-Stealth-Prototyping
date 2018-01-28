@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 
 
     public LTH_SaveData LTH_GameSettings;
+	public LTH_QualitySettings LTH_QualityData;
 	
 	public static GameManager Singleton;
     public List<Transform> AllAi = new List<Transform>();
@@ -66,13 +67,13 @@ public class GameManager : MonoBehaviour {
 	public GameObject ScreenFader;
 
     public bool Paused;
-    public bool Quality_aa;
+    /*public bool Quality_aa;
     public bool Quality_LensEffects;
     public bool Quality_Dof;
-    public bool Quality_AO;
+  public bool Quality_AO;
     public bool Quality_MotionBlur;
     public bool BlackAndWhiteMode;
-    public int AA_Type;
+    public int AA_Type;*/
 
 
     public GameObject GameplayUI;

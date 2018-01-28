@@ -1,17 +1,16 @@
 fileFormatVersion: 2
 guid: 537c4281e53134f47bb53c4eaaabf863
-timeCreated: 1508021503
+timeCreated: 1502133230
 licenseType: Free
 SubstanceImporter:
-  externalObjects: {}
   serializedVersion: 5
   materialInstances:
   - serializedVersion: 16
     name: LTH_Paper_Hirez_PBR
     prototypeName: paper_001
     shaderName: 
-    shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: _NORMALMAP _PARALLAXMAP _SHADOW_ON
+    shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+    shaderKeywords: _NORMALMAP _PARALLAXMAP _SHADOW_ON _SPECGLOSSMAP
     renderQueue: -1
     lightmapFlags: 4
     inputs:
@@ -22,7 +21,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: $randomseed
       value:
         scalar[0]: 0
@@ -30,7 +28,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: luminosity
       value:
         scalar[0]: 0.5
@@ -38,7 +35,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: contrast
       value:
         scalar[0]: 0
@@ -46,7 +42,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: hue_shift
       value:
         scalar[0]: 0
@@ -54,7 +49,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: saturation
       value:
         scalar[0]: 0.5
@@ -62,7 +56,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: normal_intensity
       value:
         scalar[0]: 0.3
@@ -70,7 +63,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: normal_format
       value:
         scalar[0]: 0
@@ -78,7 +70,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: ao_spreading
       value:
         scalar[0]: 0.511
@@ -86,7 +77,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: height_range
       value:
         scalar[0]: 0.199
@@ -94,7 +84,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: height_position
       value:
         scalar[0]: 0.5
@@ -102,7 +91,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: blue_lines
       value:
         scalar[0]: 0
@@ -110,7 +98,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: red_line
       value:
         scalar[0]: 0
@@ -118,7 +105,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: blue_lines_amount
       value:
         scalar[0]: 22
@@ -126,7 +112,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: creases
       value:
         scalar[0]: 1
@@ -134,7 +119,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: dirtiness
       value:
         scalar[0]: 0
@@ -142,7 +126,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: ink_stains
       value:
         scalar[0]: 0
@@ -150,7 +133,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: ink_stains_opacity
       value:
         scalar[0]: 0.134
@@ -158,7 +140,6 @@ SubstanceImporter:
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: paper_color
       value:
         scalar[0]: 0.890105
@@ -166,7 +147,6 @@ SubstanceImporter:
         scalar[2]: 0.890105
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: blue_lines_color
       value:
         scalar[0]: 0.517647
@@ -174,7 +154,6 @@ SubstanceImporter:
         scalar[2]: 0.788235
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: red_lines_color
       value:
         scalar[0]: 0.862745
@@ -182,7 +161,6 @@ SubstanceImporter:
         scalar[2]: 0.566644
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     - name: ink_stains_color
       value:
         scalar[0]: 0
@@ -190,7 +168,6 @@ SubstanceImporter:
         scalar[2]: 0.219593
         scalar[3]: 0
         texture: {instanceID: 0}
-        stringvalue: 
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
@@ -225,15 +202,15 @@ SubstanceImporter:
           texture: {instanceID: 0}
           scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
-      - _MetallicGlossMap:
-          texture: {instanceID: 0}
-          scale: {x: 1, y: 1}
-          offset: {x: 0, y: 0}
       - _OcclusionMap:
           texture: {instanceID: 0}
           scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - _ParallaxMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _SpecGlossMap:
           texture: {instanceID: 0}
           scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
@@ -307,19 +284,19 @@ SubstanceImporter:
     textureAssignments:
     - shaderProp: _MainTex
       material: {instanceID: 0}
-      baseUID: 2664446097
+      baseUID: 2664446831
     - shaderProp: _BumpMap
       material: {instanceID: 0}
       baseUID: 2664446099
-    - shaderProp: _MetallicGlossMap
-      material: {instanceID: 0}
-      baseUID: 2664446107
     - shaderProp: _OcclusionMap
       material: {instanceID: 0}
       baseUID: 2664446109
     - shaderProp: _ParallaxMap
       material: {instanceID: 0}
       baseUID: 2664446111
+    - shaderProp: _SpecGlossMap
+      material: {instanceID: 0}
+      baseUID: 2664446101
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 

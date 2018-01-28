@@ -12,7 +12,7 @@ public class GameManagerEditor : Editor {
     SerializedProperty MainPlayerCamera;
     SerializedProperty ActivePlayer;
     SerializedProperty Detective;
-    SerializedProperty Dog;
+//    SerializedProperty Dog;
 
     SerializedProperty Stealth;
 
@@ -35,13 +35,13 @@ public class GameManagerEditor : Editor {
     SerializedProperty ScreenFader;
 
     SerializedProperty Paused;
-    SerializedProperty Quality_aa;
+    /*SerializedProperty Quality_aa;
     SerializedProperty Quality_LensEffects;
     SerializedProperty Quality_Dof;
     SerializedProperty Quality_AO;
     SerializedProperty Quality_MotionBlur;
     SerializedProperty BlackAndWhiteMode;
-    SerializedProperty AA_Type;
+    SerializedProperty AA_Type;*/
 
     SerializedProperty GameplayUI;
 
@@ -87,6 +87,8 @@ public class GameManagerEditor : Editor {
 
     SerializedProperty LTH_GameSettings;
 
+	SerializedProperty LTH_QualityData;
+
 
 
     void OnEnable()
@@ -95,7 +97,7 @@ public class GameManagerEditor : Editor {
         MainPlayerCamera = serializedObject.FindProperty("MainPlayerCamera");
         ActivePlayer = serializedObject.FindProperty("ActivePlayer");
         Detective = serializedObject.FindProperty("Detective");
-        Dog = serializedObject.FindProperty("Dog");
+        //Dog = serializedObject.FindProperty("Dog");
 
         Stealth = serializedObject.FindProperty("Stealth");
 
@@ -118,13 +120,13 @@ public class GameManagerEditor : Editor {
         ScreenFader = serializedObject.FindProperty("ScreenFader");
 
         Paused = serializedObject.FindProperty("Paused");
-        Quality_aa = serializedObject.FindProperty("Quality_aa");
+        /*Quality_aa = serializedObject.FindProperty("Quality_aa");
         Quality_LensEffects = serializedObject.FindProperty("Quality_LensEffects");
         Quality_Dof = serializedObject.FindProperty("Quality_Dof");
         Quality_AO = serializedObject.FindProperty("Quality_AO");
         Quality_MotionBlur = serializedObject.FindProperty("Quality_MotionBlur");
         BlackAndWhiteMode = serializedObject.FindProperty("BlackAndWhiteMode");
-        AA_Type = serializedObject.FindProperty("AA_Type");
+        AA_Type = serializedObject.FindProperty("AA_Type");*/
 
        AllAi = serializedObject.FindProperty("AllAi");
        ListOfType1s = serializedObject.FindProperty("ListOfType1s");
@@ -148,6 +150,9 @@ public class GameManagerEditor : Editor {
 
          LTH_GameSettings = serializedObject.FindProperty("LTH_GameSettings");
 
+		LTH_QualityData = serializedObject.FindProperty("LTH_QualityData");
+
+
     }
 
     public override void OnInspectorGUI()
@@ -155,6 +160,7 @@ public class GameManagerEditor : Editor {
         serializedObject.Update();
         //DrawDefaultInspector();
         EditorGUILayout.PropertyField(LTH_GameSettings);
+		EditorGUILayout.PropertyField(LTH_QualityData);
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("Main Object Referances", EditorStyles.boldLabel);
        // EditorGUILayout.PropertyField(GameplayTimeline);
@@ -233,13 +239,13 @@ public class GameManagerEditor : Editor {
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("Pause Menu Globals", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(Paused);
-        EditorGUILayout.PropertyField(Quality_aa);
+        /*EditorGUILayout.PropertyField(Quality_aa);
         EditorGUILayout.PropertyField(Quality_LensEffects);
         EditorGUILayout.PropertyField(Quality_Dof);
         EditorGUILayout.PropertyField(Quality_AO);
         EditorGUILayout.PropertyField(Quality_MotionBlur);
         EditorGUILayout.PropertyField(BlackAndWhiteMode);
-        EditorGUILayout.PropertyField(AA_Type);
+        EditorGUILayout.PropertyField(AA_Type);*/
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");

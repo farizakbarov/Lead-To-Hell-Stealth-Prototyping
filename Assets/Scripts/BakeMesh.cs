@@ -99,7 +99,7 @@ public class BakeMesh : MonoBehaviour {
         meshFilter.mesh = frameMesh;
 
         // Setup mesh renderer
-        MeshRenderer meshRenderer = Mesh.GetComponent<MeshRenderer>();
+//        MeshRenderer meshRenderer = Mesh.GetComponent<MeshRenderer>();
         //meshRenderer.sharedMaterials = m_skinnedMeshRenderer.sharedMaterials;
         // meshRenderer.material = GhostMat;
         // StartCoroutine("FadeOut");
