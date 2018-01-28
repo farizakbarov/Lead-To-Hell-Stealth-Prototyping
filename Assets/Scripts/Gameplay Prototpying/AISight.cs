@@ -61,7 +61,7 @@ public class AISight : MonoBehaviour
 
         }
 
-        if (UseAlertBar && GameManager.Singleton.EnableAISightSwitch)
+        if (UseAlertBar && GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && GameManager.Singleton.ActivePlayer != null)
         {
             //find out the distance to the player
             DistanceToPlayer = Vector3.Distance(transform.position, GameManager.Singleton.ActivePlayer.transform.position);
@@ -70,12 +70,12 @@ public class AISight : MonoBehaviour
             //modify the DistanceModifier value based upon how close/far away the player is
             if (DistanceToPlayer <= DistanceClose)
             {
-                DistanceModifier = GameManager.Singleton.DistanceNearModifier;
+                DistanceModifier = GameManager.Singleton.LTH_GameSettings.DistanceNearModifier;
                 // Debug.Log("near");
             }
             else if (DistanceToPlayer >= DistnaceFar)
             {
-                DistanceModifier = GameManager.Singleton.DistanceFarModifier;
+                DistanceModifier = GameManager.Singleton.LTH_GameSettings.DistanceFarModifier;
             }
             else
             {
@@ -85,33 +85,33 @@ public class AISight : MonoBehaviour
             //modify the ShadowModifier value based if the player is in shadow or not.
             if (GameManager.Singleton.PlayerLighting <= 0.5f)
             {
-                GameManager.Singleton.ShadowModifier = 1.0f - GameManager.Singleton.ShadowBonus;
+                GameManager.Singleton.ShadowModifier = 1.0f - GameManager.Singleton.LTH_GameSettings.ShadowBonus;
             }
             else
             {
                 GameManager.Singleton.ShadowModifier = 1.0f;
             }
 
-            if(GameManager.Singleton.Difficulty == GameManager.Difficulties.Easy)
+            if(GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Easy)
             {
-                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.EasyModifier;
+                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.LTH_GameSettings.EasyModifier;
 
-            }else if(GameManager.Singleton.Difficulty == GameManager.Difficulties.Medium)
+            }else if(GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Medium)
             {
-                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.MediumModifier;
+                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.LTH_GameSettings.MediumModifier;
             }
             else
             {
-                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.HardModifer;
+                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.LTH_GameSettings.HardModifer;
             }
 
-            if(GameManager.Singleton.TimeOfDay == GameManager.TimeOfDays.Day)
+            if(GameManager.Singleton.LTH_GameSettings.TimeOfDay == LTH_SaveData.TimeOfDays.Day)
             {
-                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.DayModifier;
+                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.LTH_GameSettings.DayModifier;
             }
             else
             {
-                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.NightModifer;
+                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.LTH_GameSettings.NightModifer;
             }
 
             if (MainAIScript != null)
@@ -173,7 +173,7 @@ public class AISight : MonoBehaviour
 
     public void FoundPlayer()
     {
-        if (GameManager.Singleton.EnableAISightSwitch && DectectionOn && !GameManager.Singleton.PlayerSafe)
+        if (GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && DectectionOn && !GameManager.Singleton.PlayerSafe)
         {
             if (myFSM != null)
             {

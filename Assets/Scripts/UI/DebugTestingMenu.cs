@@ -45,11 +45,11 @@ public class DebugTestingMenu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (GameManager.Singleton.Difficulty == GameManager.Difficulties.Easy)
+        if (GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Easy)
         {
             Difficulty.value = 0;
         }
-        else if (GameManager.Singleton.Difficulty == GameManager.Difficulties.Medium)
+        else if (GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Medium)
         {
             Difficulty.value = 1;
         }
@@ -58,13 +58,55 @@ public class DebugTestingMenu : MonoBehaviour
             Difficulty.value = 2;
         }
 
-        EasyModifier.text = GameManager.Singleton.EasyModifier.ToString();
-        MediumModifier.text = GameManager.Singleton.MediumModifier.ToString();
-        HardModifier.text = GameManager.Singleton.HardModifer.ToString();
-        DistanceFarModifier.text = GameManager.Singleton.DistanceFarModifier.ToString();
-        DistanceNearModifier.text = GameManager.Singleton.DistanceNearModifier.ToString();
-        ShadowModifier.text = GameManager.Singleton.ShadowBonus.ToString();
-        NightModifier.text = GameManager.Singleton.NightModifer.ToString();
+        EasyModifier.text = GameManager.Singleton.LTH_GameSettings.EasyModifier.ToString();
+        MediumModifier.text = GameManager.Singleton.LTH_GameSettings.MediumModifier.ToString();
+        HardModifier.text = GameManager.Singleton.LTH_GameSettings.HardModifer.ToString();
+        DistanceFarModifier.text = GameManager.Singleton.LTH_GameSettings.DistanceFarModifier.ToString();
+        DistanceNearModifier.text = GameManager.Singleton.LTH_GameSettings.DistanceNearModifier.ToString();
+        ShadowModifier.text = GameManager.Singleton.LTH_GameSettings.ShadowBonus.ToString();
+        NightModifier.text = GameManager.Singleton.LTH_GameSettings.NightModifer.ToString();
+
+
+      /**  if (GameManager.Singleton.LoadFromPlayerPrefs)
+        {
+
+            //if (PlayerPrefs.HasKey("Sliding"))
+            // {
+            GameManager.Singleton.Detective.GetComponent<CharacterSlide>().SlidingEnabled = GameManager.Singleton.GetPersistentVar<bool>("Sliding", false);
+            // }
+
+
+
+            GameManager.Singleton.Detective.GetComponent<LTH_ThirdPersonController>().ToggleSneak = GameManager.Singleton.GetPersistentVar<bool>("Sneak", true);
+
+
+            GameManager.Singleton.Detective.GetComponent<ThirdPersonController>().EnableRolling = GameManager.Singleton.GetPersistentVar<bool>("Rolling", true);
+
+
+
+            OnScreenSight.SetActive(GameManager.Singleton.GetPersistentVar<bool>("OnScreenSight", true));
+
+            LightSensor.SetActive(GameManager.Singleton.GetPersistentVar<bool>("LightSensorUI", true));
+
+
+            GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars = GameManager.Singleton.GetPersistentVar<bool>("AIAlertBars", true);
+
+            GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators = GameManager.Singleton.GetPersistentVar < bool >("AIStatus", true);
+
+            Difficulty.value = GameManager.Singleton.GetPersistentVar<int>("Difficulty", 0);
+
+
+           GameManager.Singleton.EnableAISightSwitch = GameManager.Singleton.GetPersistentVar<bool>("AISight", true);
+
+
+            GameManager.Singleton.EnableAIHearing = GameManager.Singleton.GetPersistentVar<bool>("AIHearing", true);
+
+
+
+
+    
+            GameManager.Singleton.LTH_GameSettings.EasyModifier = GameManager.Singleton.GetPersistentVar<float>("EasyModifier", 0);
+        }*/
 
 
     }
@@ -89,7 +131,7 @@ public class DebugTestingMenu : MonoBehaviour
             Menu.SetActive(false);
         }
 
-        if (PlaymakerGUI.drawStateLabels)
+        if (GameManager.Singleton.LTH_GameSettings.EnableAIPlaymakerLabels)
         {
             AIStatusLabelButton.color = Color.green;
         }
@@ -98,7 +140,7 @@ public class DebugTestingMenu : MonoBehaviour
             AIStatusLabelButton.color = Color.red;
         }
 
-        if (OnScreenSight.activeSelf)
+        if (GameManager.Singleton.LTH_GameSettings.SpottedUI)
         {
             ScreenSightButton.color = Color.green;
         }
@@ -107,7 +149,7 @@ public class DebugTestingMenu : MonoBehaviour
             ScreenSightButton.color = Color.red;
         }
 
-        if (LightSensor.activeSelf)
+        if (GameManager.Singleton.LTH_GameSettings.LightSensorUI)
         {
             LightSensorButton.color = Color.green;
         }
@@ -117,7 +159,7 @@ public class DebugTestingMenu : MonoBehaviour
         }
 
 
-        if (GameManager.Singleton.EnableAIAlertBars)
+        if (GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars)
         {
             AIAlertButton.color = Color.green;
         }
@@ -126,7 +168,7 @@ public class DebugTestingMenu : MonoBehaviour
             AIAlertButton.color = Color.red;
         }
 
-        if (GameManager.Singleton.EnableAIStatusIndicators)
+        if (GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators)
         {
             AIStatusButton.color = Color.green;
         }
@@ -135,7 +177,7 @@ public class DebugTestingMenu : MonoBehaviour
             AIStatusButton.color = Color.red;
         }
 
-        if (GameManager.Singleton.EnableAISightSwitch)
+        if (GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch)
         {
             AISight.color = Color.green;
         }
@@ -144,7 +186,7 @@ public class DebugTestingMenu : MonoBehaviour
             AISight.color = Color.red;
         }
 
-        if (GameManager.Singleton.EnableAIHearing)
+        if (GameManager.Singleton.LTH_GameSettings.EnableAIHearing)
         {
             AIHearing.color = Color.green;
         }
@@ -153,34 +195,37 @@ public class DebugTestingMenu : MonoBehaviour
             AIHearing.color = Color.red;
         }
 
-        if (GameManager.Singleton.Detective.GetComponent<ThirdPersonController>().EnableRolling)
+        if (GameManager.Singleton.ActivePlayer != null)
         {
-            PlayerRolling.color = Color.green;
-        }
-        else
-        {
-            PlayerRolling.color = Color.red;
+            if (GameManager.Singleton.LTH_GameSettings.RollingAbility)
+            {
+                PlayerRolling.color = Color.green;
+            }
+            else
+            {
+                PlayerRolling.color = Color.red;
+            }
+
+            if (GameManager.Singleton.LTH_GameSettings.SlidingAbility)
+            {
+                PlayerSlide.color = Color.green;
+            }
+            else
+            {
+                PlayerSlide.color = Color.red;
+            }
+
+            if (GameManager.Singleton.LTH_GameSettings.SneakToggle)
+            {
+                PlayerStealthToggle.color = Color.green;
+            }
+            else
+            {
+                PlayerStealthToggle.color = Color.red;
+            }
         }
 
-        if (GameManager.Singleton.Detective.GetComponent<CharacterSlide>().SlidingEnabled)
-        {
-            PlayerSlide.color = Color.green;
-        }
-        else
-        {
-            PlayerSlide.color = Color.red;
-        }
-
-        if (GameManager.Singleton.Detective.GetComponent<LTH_ThirdPersonController>().ToggleSneak)
-        {
-            PlayerStealthToggle.color = Color.green;
-        }
-        else
-        {
-            PlayerStealthToggle.color = Color.red;
-        }
-
-        if(GameManager.Singleton.LastSightingVisible)
+        if (GameManager.Singleton.LTH_GameSettings.LastSightingVisible)
         {
             LastSightingBox.color = Color.green;
         }
@@ -193,75 +238,58 @@ public class DebugTestingMenu : MonoBehaviour
 
     public void ToggleSlidingAbility()
     {
-        if (GameManager.Singleton.Detective.GetComponent<CharacterSlide>().SlidingEnabled) {
-            GameManager.Singleton.Detective.GetComponent<CharacterSlide>().SlidingEnabled = false;
-        }
-        else{
-            GameManager.Singleton.Detective.GetComponent<CharacterSlide>().SlidingEnabled = true;
-        }
+
+        GameManager.Singleton.LTH_GameSettings.SlidingAbility = !GameManager.Singleton.LTH_GameSettings.SlidingAbility;
+
+
+        GameManager.Singleton.Detective.GetComponent<CharacterSlide>().SlidingEnabled = GameManager.Singleton.LTH_GameSettings.SlidingAbility;
+
     }
 
     public void SneakToggle()
     {
-        if (GameManager.Singleton.Detective.GetComponent<LTH_ThirdPersonController>().ToggleSneak)
-        {
-            GameManager.Singleton.Detective.GetComponent<LTH_ThirdPersonController>().ToggleSneak = false;
-        }
-        else
-        {
-            GameManager.Singleton.Detective.GetComponent<LTH_ThirdPersonController>().ToggleSneak = true;
-        }
+        GameManager.Singleton.LTH_GameSettings.SneakToggle = !GameManager.Singleton.LTH_GameSettings.SneakToggle;
+
+
+        GameManager.Singleton.Detective.GetComponent<LTH_ThirdPersonController>().ToggleSneak = GameManager.Singleton.LTH_GameSettings.SneakToggle;
+
     }
 
 
 
     public void ToggleAIStateLabels()
     {
-        if (PlaymakerGUI.drawStateLabels)
-        {
-            PlaymakerGUI.drawStateLabels = false;
-        }
-        else
-        {
-            PlaymakerGUI.drawStateLabels = true;
-        }
+        GameManager.Singleton.LTH_GameSettings.EnableAIPlaymakerLabels = !GameManager.Singleton.LTH_GameSettings.EnableAIPlaymakerLabels;
+
+
+        PlaymakerGUI.drawStateLabels = GameManager.Singleton.LTH_GameSettings.EnableAIPlaymakerLabels;
+
     }
 
     public void ToggleRollingAblitiy()
     {
-        if (GameManager.Singleton.Detective.GetComponent<ThirdPersonController>().EnableRolling)
-        {
-            GameManager.Singleton.Detective.GetComponent<ThirdPersonController>().EnableRolling = false;
-        }
-        else
-        {
-            GameManager.Singleton.Detective.GetComponent<ThirdPersonController>().EnableRolling = true;
-        }
+        GameManager.Singleton.LTH_GameSettings.RollingAbility = !GameManager.Singleton.LTH_GameSettings.RollingAbility;
+
+
+        GameManager.Singleton.Detective.GetComponent<ThirdPersonController>().EnableRolling = GameManager.Singleton.LTH_GameSettings.RollingAbility;
     }
+
 
 
     public void ToggleOnScreenSight()
     {
-        if (OnScreenSight.activeSelf == true)
-        {
-            OnScreenSight.SetActive(false);
-        }
-        else
-        {
-            OnScreenSight.SetActive(true);
-        }
+        GameManager.Singleton.LTH_GameSettings.SpottedUI = !GameManager.Singleton.LTH_GameSettings.SpottedUI;
+
+        OnScreenSight.SetActive(GameManager.Singleton.LTH_GameSettings.SpottedUI);
+
     }
 
     public void ToggleLightSensorUI()
     {
-        if (LightSensor.activeSelf)
-        {
-            LightSensor.SetActive(false);
-        }
-        else
-        {
-            LightSensor.SetActive(true);
-        }
+        GameManager.Singleton.LTH_GameSettings.LightSensorUI = !GameManager.Singleton.LTH_GameSettings.LightSensorUI;
+
+        LightSensor.SetActive(GameManager.Singleton.LTH_GameSettings.LightSensorUI);
+
     }
 
 
@@ -269,97 +297,104 @@ public class DebugTestingMenu : MonoBehaviour
     {
         // Debug.Log(GameManager.Singleton.ListOfType2s.Count);
 
-        GameManager.Singleton.EnableAIAlertBars = !GameManager.Singleton.EnableAIAlertBars;
+        GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars = !GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars;
+
     }
 
     public void ToggleAIStatusIndicators()
     {
-        GameManager.Singleton.EnableAIStatusIndicators = !GameManager.Singleton.EnableAIStatusIndicators;
+        GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators = !GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators;
     }
 
     public void ChangeDifficulty()
     {
         if (Difficulty.value == 0)
         {
-            GameManager.Singleton.Difficulty = GameManager.Difficulties.Easy;
+            GameManager.Singleton.LTH_GameSettings.Difficulty = LTH_SaveData.Difficulties.Easy;
 
         }
         else if (Difficulty.value == 1)
         {
-            GameManager.Singleton.Difficulty = GameManager.Difficulties.Medium;
+            GameManager.Singleton.LTH_GameSettings.Difficulty = LTH_SaveData.Difficulties.Medium;
         }
         else
         {
-            GameManager.Singleton.Difficulty = GameManager.Difficulties.Hard;
+            GameManager.Singleton.LTH_GameSettings.Difficulty = LTH_SaveData.Difficulties.Hard;
         }
-        Debug.Log(GameManager.Singleton.Difficulty);
+
+        int value = Difficulty.value;
+
+        Debug.Log(GameManager.Singleton.LTH_GameSettings.Difficulty);
     }
 
     public void ToggleAISight()
     {
-        GameManager.Singleton.EnableAISightSwitch = !GameManager.Singleton.EnableAISightSwitch;
+        GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch = !GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch;
+
+
     }
 
     public void ToggleAIhearing()
     {
-        GameManager.Singleton.EnableAIHearing = !GameManager.Singleton.EnableAIHearing;
+        GameManager.Singleton.LTH_GameSettings.EnableAIHearing = !GameManager.Singleton.LTH_GameSettings.EnableAIHearing;
+
     }
 
 
     public void SetEasyModifier()
     {
-        GameManager.Singleton.EasyModifier = float.Parse(EasyModifier.text);
-        Debug.Log(GameManager.Singleton.EasyModifier);
+        GameManager.Singleton.LTH_GameSettings.EasyModifier = float.Parse(EasyModifier.text);
+
+        Debug.Log(GameManager.Singleton.LTH_GameSettings.EasyModifier);
     }
 
     public void SetMediumModifier()
     {
-        GameManager.Singleton.MediumModifier = float.Parse(MediumModifier.text);
-        Debug.Log(GameManager.Singleton.MediumModifier);
+        GameManager.Singleton.LTH_GameSettings.MediumModifier = float.Parse(MediumModifier.text);
+
+        Debug.Log(GameManager.Singleton.LTH_GameSettings.MediumModifier);
     }
 
     public void SetHardModifier()
     {
-        GameManager.Singleton.HardModifer = float.Parse(HardModifier.text);
-        Debug.Log(GameManager.Singleton.HardModifer);
+        GameManager.Singleton.LTH_GameSettings.HardModifer = float.Parse(HardModifier.text);
+
+        Debug.Log(GameManager.Singleton.LTH_GameSettings.HardModifer);
     }
 
     public void SetInShadowModifier()
     {
-        GameManager.Singleton.ShadowBonus = float.Parse(ShadowModifier.text);
+        GameManager.Singleton.LTH_GameSettings.ShadowBonus = float.Parse(ShadowModifier.text);
     }
 
     public void SetDisanceNearModifier()
     {
-        GameManager.Singleton.DistanceNearModifier = float.Parse(DistanceNearModifier.text);
+        GameManager.Singleton.LTH_GameSettings.DistanceNearModifier = float.Parse(DistanceNearModifier.text);
+
     }
     public void SetDistanceFarModifier()
     {
-        GameManager.Singleton.DistanceFarModifier = float.Parse(DistanceFarModifier.text);
+        GameManager.Singleton.LTH_GameSettings.DistanceFarModifier = float.Parse(DistanceFarModifier.text);
+
     }
     public void SetNightModifier()
     {
-        GameManager.Singleton.NightModifer = float.Parse(NightModifier.text);
+        GameManager.Singleton.LTH_GameSettings.NightModifer = float.Parse(NightModifier.text);
     }
 
     public void ToggleLastSightingVisiblity()
     {
-        GameManager.Singleton.LastSightingVisible = !GameManager.Singleton.LastSightingVisible;
+        GameManager.Singleton.LTH_GameSettings.LastSightingVisible = !GameManager.Singleton.LTH_GameSettings.LastSightingVisible;
 
         if (GameManager.Singleton.LastSighting != null)
         {
-            if (GameManager.Singleton.LastSightingVisible)
-            {
-                GameManager.Singleton.LastSighting.GetComponent<Renderer>().enabled = true;
-            }
-            else
-            {
-                GameManager.Singleton.LastSighting.GetComponent<Renderer>().enabled = false;
-            }
+
+            GameManager.Singleton.LastSighting.GetComponent<Renderer>().enabled = GameManager.Singleton.LTH_GameSettings.LastSightingVisible;
+
         }
 
-       
+
     }
 
-    
+
 }

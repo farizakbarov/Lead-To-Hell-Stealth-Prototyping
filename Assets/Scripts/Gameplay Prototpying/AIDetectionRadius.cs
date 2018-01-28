@@ -69,7 +69,7 @@ public class AIDetectionRadius : MonoBehaviour
                 }
             }
 
-			if (GameManager.Singleton.EnableAIHearing) {
+			if (GameManager.Singleton.LTH_GameSettings.EnableAIHearing) {
                 if (myFSM != null)
                 {
                     if (GameManager.Singleton.PlayerIsRunning && myFSM.ActiveStateName != "Seeking" && myFSM.ActiveStateName != "Distracted")
@@ -106,6 +106,7 @@ public class AIDetectionRadius : MonoBehaviour
         if (other.tag == "Player")
         {
             GameManager.Singleton.PlayerInSight = false;
+            //other.GetComponent<BakeMesh>().BakeGhostMesh();
             PlayerInRadius = false;
         }
 

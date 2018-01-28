@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 114960265660996312}
   - component: {fileID: 114119269712584954}
   - component: {fileID: 114977578267586494}
+  - component: {fileID: 114863634808336104}
   m_Layer: 10
   m_Name: LTH_Detective_Stealth
   m_TagString: Player
@@ -422,7 +423,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1734385464288380}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 30.17999, y: 0.0000011920929, z: -7.3153687}
+  m_LocalPosition: {x: 30.00291, y: 0.0000011920929, z: -7.490176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4475103725956310}
@@ -1043,6 +1044,21 @@ MonoBehaviour:
   SmokeOn: 0
   Radius: {fileID: 1380971377708580}
   Timer: 5
+--- !u!114 &114863634808336104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734385464288380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04ff1a289708924484ce4933e9d7b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skinnedMeshRenderer: {fileID: 137848508988208512}
+  GhostMaterial: {fileID: 2100000, guid: a6c67ee583ea4784fbff943fb366679d, type: 2}
+  storedColor: {r: 0, g: 0, b: 0, a: 0}
+  StoredAlpha: 0
 --- !u!114 &114912019517200418
 MonoBehaviour:
   m_ObjectHideFlags: 1

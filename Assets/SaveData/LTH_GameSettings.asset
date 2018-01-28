@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f62408a49fb0042947b07dc3a481e4, type: 3}
+  m_Name: LTH_GameSettings
+  m_EditorClassIdentifier: 
+  objectName: LTH_SaveData
+  Difficulty: 1
+  EnableAISightSwitch: 1
+  EnableAIHearing: 1
+  EnableAIAlertBars: 1
+  EnableAIStatusIndicators: 1
+  EnableAIPlaymakerLabels: 0
+  LastSightingVisible: 1
+  EnableGhostMesh: 1
+  GhostMeshTimeout: 3
+  GhostMeshFadeOutDuration: 2
+  ShadowBonus: 0.25
+  SlidingAbility: 1
+  RollingAbility: 1
+  SneakToggle: 0
+  TimeOfDay: 0
+  DayModifier: 1
+  NightModifer: 0.75
+  EasyModifier: 0.5
+  MediumModifier: 1
+  HardModifer: 2
+  DistanceNearModifier: 2
+  DistanceFarModifier: 0.25
+  LightSensorUI: 1
+  SpottedUI: 1

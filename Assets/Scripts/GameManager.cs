@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using CoverShooter;
+using System;
 
 public class GameManager : MonoBehaviour {
+
+
+    public LTH_SaveData LTH_GameSettings;
 	
 	public static GameManager Singleton;
     public List<Transform> AllAi = new List<Transform>();
@@ -40,8 +44,8 @@ public class GameManager : MonoBehaviour {
 	
 	//public bool CharacterSwitch;
 
-	public bool EnableAISightSwitch;
-	public bool EnableAIHearing;
+	//public bool EnableAISightSwitch;
+	//public bool EnableAIHearing;
     //public bool Stay;
 
     //public bool PlayerHasBeenSighted;
@@ -73,38 +77,42 @@ public class GameManager : MonoBehaviour {
 
     public GameObject GameplayUI;
 
-    public enum Difficulties { Easy, Medium, Hard };
+    //public enum Difficulties { Easy, Medium, Hard };
 
-    public Difficulties Difficulty = Difficulties.Medium;
+    //public Difficulties Difficulty = Difficulties.Medium;
 
-    public enum TimeOfDays { Day, Night };
+    //public enum TimeOfDays { Day, Night };
 
-    public TimeOfDays TimeOfDay = TimeOfDays.Day;
+    //public TimeOfDays TimeOfDay = TimeOfDays.Day;
 
     public float PlayerLighting;
 
 
     public float ShadowModifier;
-    public float ShadowBonus = 0.25f;
+   // public float ShadowBonus = 0.25f;
 
 
     public float DifficultyModifier;
-    public float EasyModifier = 0.5f;
-    public float MediumModifier = 1.0f;
-    public float HardModifer = 2.0f;
+   // public float EasyModifier = 0.5f;
+   // public float MediumModifier = 1.0f;
+   // public float HardModifer = 2.0f;
 
 
     public float TimeOfDayModifier;
-    public float DayModifier = 1.0f;
-    public float NightModifer = 0.75f;
+   // public float DayModifier = 1.0f;
+    //public float NightModifer = 0.75f;
 
-    public float DistanceNearModifier = 2.0f;
-    public float DistanceFarModifier = 0.25f;
+    //public float DistanceNearModifier = 2.0f;
+   // public float DistanceFarModifier = 0.25f;
 
-    public bool EnableAIAlertBars;
-    public bool EnableAIStatusIndicators;
+    //public bool EnableAIAlertBars;
+    //public bool EnableAIStatusIndicators;
 
-    public bool LastSightingVisible;
+    //public bool LastSightingVisible;
+
+    public GameObject GhostParent;
+    public GameObject GhostMesh;
+
 
     public void OnEnable(){
 		if(Singleton == null){
@@ -271,7 +279,7 @@ public class GameManager : MonoBehaviour {
         }
 
 		if(Input.GetKeyDown(KeyCode.Keypad1)){
-			EnableAISightSwitch = !EnableAISightSwitch;
+            LTH_GameSettings.EnableAISightSwitch = !LTH_GameSettings.EnableAISightSwitch;
 		}
 
 		/*if(PlayerCaught && FailMsg !=null){
@@ -379,5 +387,87 @@ public class GameManager : MonoBehaviour {
 		}
 		
 	}
+
+    /// <summary>
+    /// Sets <variable> to <value> based on its type T and additionally
+    /// stores it in the registry or plist using key <varName>
+    /// </summary>
+    /// <auth: Isaac Dart (isaac@mantle.tech) >
+    public void SetPersistentVar<T>(string varName, ref T variable)
+    {
+
+            //variable = value;
+
+            Type varType = variable.GetType();
+            if (varType == typeof(int))
+            {
+                int intVal = Convert.ToInt32(variable);
+                PlayerPrefs.SetInt("i_" + varName, intVal);
+            }
+            else if (varType == typeof(bool))
+            {
+                int intVal = Convert.ToInt32(variable);
+                PlayerPrefs.SetInt("b_" + varName, intVal);
+            }
+            else if (varType == typeof(float))
+            {
+                float floatVal = (float)(Convert.ToDouble(variable));
+                PlayerPrefs.SetFloat("f_" + varName, floatVal);
+            }
+            else
+            {
+                string stringVal = Convert.ToString(variable);
+                PlayerPrefs.SetString("s_" + varName, stringVal);
+            }
+
+           // Debug.Log("Saved: " + varName + ", Value: " + variable);
+            PlayerPrefs.Save();
+        
+
+    }
+
+    /// <summary>
+    /// Returns a value of type T from the registry or plist using <varName>
+    /// </summary>
+    /// <auth: Isaac Dart (isaac@mantle.tech) >
+    public T GetPersistentVar<T>(string varName, T defaultValue)
+    {
+
+            T variable = defaultValue;
+
+
+            Type varType = variable.GetType();
+            if (varType == typeof(int))
+            {
+                int defaultIntVal = Convert.ToInt32(defaultValue);
+                int intVal = PlayerPrefs.GetInt("i_" + varName, defaultIntVal);
+                variable = (T)Convert.ChangeType(intVal, varType);
+            }
+            else if (varType == typeof(bool))
+            {
+                int defaultIntVal = Convert.ToInt32(defaultValue);
+                int intVal = PlayerPrefs.GetInt("b_" + varName, defaultIntVal);
+                bool boolVal = intVal != 0;
+                variable = (T)Convert.ChangeType(boolVal, varType);
+            }
+            else if (varType == typeof(float))
+            {
+                float defaultFloatVal = (float)(Convert.ToDouble(defaultValue));
+                float floatVal = PlayerPrefs.GetFloat("f_" + varName, defaultFloatVal);
+                variable = (T)Convert.ChangeType(floatVal, varType);
+            }
+            else
+            {
+                string defaultStringVal = Convert.ToString(defaultValue);
+                string stringVal = PlayerPrefs.GetString("s_" + varName, defaultStringVal);
+                variable = (T)Convert.ChangeType(stringVal, varType);
+            }
+        
+
+            return variable;
+        }
+
+            
+    
 
 }

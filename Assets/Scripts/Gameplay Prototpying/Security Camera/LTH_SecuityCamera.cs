@@ -34,7 +34,7 @@ public class LTH_SecuityCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f && GameManager.Singleton.EnableAISightSwitch)
+        if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f && GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch)
         {
             GameManager.Singleton.PlayerInSight = true;
             controller.isDynamic = false;

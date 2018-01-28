@@ -371,7 +371,7 @@ public class LTHMoveAnimator : MonoBehaviour
     private void Update()
     {
 
-        if (!GameManager.Singleton.EnableAIAlertBars)
+        if (!GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars)
         {
             AlertBar.transform.parent.parent.gameObject.SetActive(false);
         }
@@ -473,7 +473,7 @@ public class LTHMoveAnimator : MonoBehaviour
 
         if (FSM != null)
         {
-            if (GameManager.Singleton.EnableAIStatusIndicators)
+            if (GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators)
             {
                 if (myIndicator != null)
                 {
