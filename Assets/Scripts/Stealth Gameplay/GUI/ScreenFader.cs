@@ -13,8 +13,18 @@ public class ScreenFader : MonoBehaviour
     private Color myColor;
 
 
+    void Start()
+    {
+        if (GameManager.Singleton.ScreenFader == null)
+        {
+            GameManager.Singleton.ScreenFader = this.gameObject;
+        }
+    }
+
     void Awake()
     {
+
+
 
         // Set the texture so that it is the the size of the screen and covers it.
         //GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
@@ -22,6 +32,7 @@ public class ScreenFader : MonoBehaviour
 
         if (GameManager.Singleton.FadingEnabled)
         {
+            
             if (sceneStarting)
             {
                 GetComponent<Image>().color = Color.black;
@@ -57,7 +68,7 @@ public class ScreenFader : MonoBehaviour
     {
         // Lerp the colour of the texture between itself and transparent.
 
-        GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, Color.black, fadeSpeed * Time.time);
+        GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, Color.black, fadeSpeed * Time.deltaTime);
     }
 
 
@@ -73,8 +84,10 @@ public class ScreenFader : MonoBehaviour
     {
         // Fade the texture to clear.
         // myImage.CrossFadeAlpha(0.01f, fadeSpeed, false);
+        Color color = GetComponent<Image>().color;
 
-        GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, Color.clear, fadeSpeed * Time.time);
+        // GetComponent<Image>().color = Color.Lerp(GetComponent<Image>().color, Color.clear, fadeSpeed * Time.deltaTime);
+        GetComponent<Image>().color = new Color(color.r, color.g, color.b, color.a - (fadeSpeed * Time.deltaTime));
 
         // If the texture is almost clear...
         if (GetComponent<Image>().color.a <= 0.05f)

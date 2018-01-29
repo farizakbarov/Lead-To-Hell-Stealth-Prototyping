@@ -15,8 +15,16 @@ public class LevelStart : MonoBehaviour {
 	public GameObject Camera;
 	private GameObject SpawnedCamera;
 
-	// Use this for initialization
-	void Start () {
+    public bool SpawnGhostMesh;
+    public GameObject GhostMeshPrefab;
+    private GameObject SpawnedGhostMesh;
+
+    public bool SpawnUI;
+    public GameObject UIPrefab;
+    private GameObject SpawnedUI;
+
+    // Use this for initialization
+    void Start () {
         SpawnedPlayer = Instantiate(Player, transform.position, transform.rotation) as GameObject;
         GameManager.Singleton.ActivePlayer = SpawnedPlayer;
         GameManager.Singleton.Detective = SpawnedPlayer;
@@ -30,9 +38,21 @@ public class LevelStart : MonoBehaviour {
 
         GameManager.Singleton.MainPlayerCamera.GetComponent<ThirdPersonCamera>().Target = SpawnedPlayer.GetComponent<CharacterMotor>();
         GameManager.Singleton.MainPlayerCamera.GetComponent<ThirdPersonCamera>().Controller = SpawnedPlayer.GetComponent<ThirdPersonController>();
-   
 
-	}
+        if (SpawnGhostMesh)
+        {
+            SpawnedGhostMesh = Instantiate(GhostMeshPrefab, transform.position + new Vector3(0, -100, 0), transform.rotation) as GameObject;
+            GameManager.Singleton.GhostParent = SpawnedGhostMesh;
+            GameManager.Singleton.GhostMesh = SpawnedGhostMesh.transform.GetChild(0).gameObject;
+        }
+
+        if (SpawnUI)
+        {
+            SpawnedUI = Instantiate(UIPrefab, transform.position, transform.rotation) as GameObject;
+        }
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
