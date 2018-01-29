@@ -30,8 +30,6 @@ public class LTH_PauseDropDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (GameManager.Singleton.Paused)
         {
 
@@ -71,26 +69,19 @@ public class LTH_PauseDropDown : MonoBehaviour
                         PP = GameManager.Singleton.MainPlayerCamera.GetComponent<PostProcessingBehaviour>();
                     }
 
-                    if(PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.ExtremePerformance)
-                    {
-                        myDropdown.value = 0;
-                    }
-                    else if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.Performance)
-                    {
-                        myDropdown.value = 1;
-                    }
-                    else if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.Default)
-                    {
-                        myDropdown.value = 2;
-                    }
-                    else if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.Quality)
-                    {
-                        myDropdown.value = 3;
-                    }
-                    else
-                    {
-                        myDropdown.value = 4;
-                    }
+					if (PP != null) {
+						if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.ExtremePerformance) {
+							myDropdown.value = 0;
+						} else if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.Performance) {
+							myDropdown.value = 1;
+						} else if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.Default) {
+							myDropdown.value = 2;
+						} else if (PP.profile.antialiasing.settings.fxaaSettings.preset == AntialiasingModel.FxaaPreset.Quality) {
+							myDropdown.value = 3;
+						} else {
+							myDropdown.value = 4;
+						}
+					}
 
                 }
                 else
@@ -150,22 +141,17 @@ public class LTH_PauseDropDown : MonoBehaviour
                         PP = GameManager.Singleton.MainPlayerCamera.GetComponent<PostProcessingBehaviour>();
                     }
 
-                    if (PP.profile.ambientOcclusion.settings.sampleCount == AmbientOcclusionModel.SampleCount.Lowest)
-                    {
-                        myDropdown.value = 0;
-                    }
-                    else if (PP.profile.ambientOcclusion.settings.sampleCount == AmbientOcclusionModel.SampleCount.Low)
-                    {
-                        myDropdown.value = 1;
-                    }
-                    else if (PP.profile.ambientOcclusion.settings.sampleCount == AmbientOcclusionModel.SampleCount.Medium)
-                    {
-                        myDropdown.value = 2;
-                    }
-                    else
-                    {
-                        myDropdown.value = 3;
-                    }
+					if (PP != null) {
+						if (PP.profile.ambientOcclusion.settings.sampleCount == AmbientOcclusionModel.SampleCount.Lowest) {
+							myDropdown.value = 0;
+						} else if (PP.profile.ambientOcclusion.settings.sampleCount == AmbientOcclusionModel.SampleCount.Low) {
+							myDropdown.value = 1;
+						} else if (PP.profile.ambientOcclusion.settings.sampleCount == AmbientOcclusionModel.SampleCount.Medium) {
+							myDropdown.value = 2;
+						} else {
+							myDropdown.value = 3;
+						}
+					}
                 }
                 else
                 {

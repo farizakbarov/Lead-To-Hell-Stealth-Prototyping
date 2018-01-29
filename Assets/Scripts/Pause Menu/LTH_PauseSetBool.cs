@@ -16,14 +16,39 @@ public class LTH_PauseSetBool : MonoBehaviour {
     private Toggle myToggle;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         myToggle = GetComponent<Toggle>();
+
+		if (AA)
+		{
+			myToggle.isOn = GameManager.Singleton.LTH_QualityData.Quality_aa;
+		}
+		if (AO)
+		{
+			myToggle.isOn = GameManager.Singleton.LTH_QualityData.Quality_AO;
+		}
+		if (LensEffects)
+		{
+			myToggle.isOn = GameManager.Singleton.LTH_QualityData.Quality_LensEffects;
+		}
+		if (DOF)
+		{
+			myToggle.isOn = GameManager.Singleton.LTH_QualityData.Quality_Dof;
+		}
+		if (MB)
+		{
+			myToggle.isOn = GameManager.Singleton.LTH_QualityData.Quality_MotionBlur;
+		}
+		if (BlackAndWhite)
+		{
+			myToggle.isOn = GameManager.Singleton.LTH_QualityData.BlackAndWhiteMode;
+		}
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (AA)
+       /* if (AA)
         {
 			myToggle.isOn = GameManager.Singleton.LTH_QualityData.Quality_aa;
         }
@@ -46,6 +71,6 @@ public class LTH_PauseSetBool : MonoBehaviour {
         if (BlackAndWhite)
         {
 			myToggle.isOn = GameManager.Singleton.LTH_QualityData.BlackAndWhiteMode;
-        }
+        }*/
     }
 }

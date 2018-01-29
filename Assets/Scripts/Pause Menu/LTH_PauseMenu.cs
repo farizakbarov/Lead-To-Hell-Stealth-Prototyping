@@ -11,6 +11,7 @@ public class LTH_PauseMenu : MonoBehaviour
 
     // public bool Paused;
     public bool GraphicsMenu;
+	//public bool DebugMenu;
     public GameObject MainMenuParent;
     public GameObject GraphicsMenuParent;
     public GameObject ShadowDropdown;
@@ -20,12 +21,15 @@ public class LTH_PauseMenu : MonoBehaviour
     public GameObject AATypeDropdown;
     public GameObject AAQualityDropdown;
 
+	public GameObject DebugMenu;
+
     // Use this for initialization
     void Start()
     {
 
         MainMenuParent.SetActive(false);
         GraphicsMenuParent.SetActive(false);
+		DebugMenu.SetActive(false);
 
 
     }
@@ -34,7 +38,7 @@ public class LTH_PauseMenu : MonoBehaviour
     void Update()
     {
         //check if pause button (escape key) is pressed
-        if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start"))
+        if (Input.GetKeyDown("escape"))
         {
 
             //check if game is already paused		
@@ -46,6 +50,7 @@ public class LTH_PauseMenu : MonoBehaviour
                 AudioListener.volume = 1;
                 MainMenuParent.SetActive(false);
                 GraphicsMenuParent.SetActive(false);
+				DebugMenu.SetActive (false);
                 //Screen.showCursor = false;	
 
                 /*for(var cam in ListOfPhysics){
@@ -62,6 +67,7 @@ public class LTH_PauseMenu : MonoBehaviour
                 Time.timeScale = 0;
                 MainMenuParent.SetActive(true);
                 GraphicsMenuParent.SetActive(false);
+				DebugMenu.SetActive (false);
                 /*for(var cam in ListOfPhysics){
                     //cam.SetActive (false);	
                     cam.GetComponent(InteractiveCloth).enabled = false;				
@@ -94,13 +100,27 @@ public class LTH_PauseMenu : MonoBehaviour
     {
         MainMenuParent.SetActive(false);
         GraphicsMenuParent.SetActive(true);
+		DebugMenu.SetActive (false);
     }
 
     public void HideGraphicsMenu()
     {
         MainMenuParent.SetActive(true);
         GraphicsMenuParent.SetActive(false);
+		DebugMenu.SetActive (false);
     }
+
+	public void ShowDebugMenu(){
+		DebugMenu.SetActive (true);
+		MainMenuParent.SetActive(false);
+		GraphicsMenuParent.SetActive(false);
+	}
+
+	public void HideDebugMenu(){
+		DebugMenu.SetActive (false);
+		MainMenuParent.SetActive(true);
+		GraphicsMenuParent.SetActive(false);
+	}
 
     public void Toggle_AA()
     {

@@ -115,7 +115,7 @@ public class DebugTestingMenu : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+       /* if (Input.GetKeyDown(KeyCode.Escape))
         {
             GameManager.Singleton.Paused = !GameManager.Singleton.Paused;
         }
@@ -129,7 +129,7 @@ public class DebugTestingMenu : MonoBehaviour
         {
             Time.timeScale = 1;
             Menu.SetActive(false);
-        }
+        }*/
 
         if (GameManager.Singleton.LTH_GameSettings.EnableAIPlaymakerLabels)
         {

@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee20ec4cf50e45c88a8bf54500acd56, type: 3}
   m_Name: LTH_QualitySettings
   m_EditorClassIdentifier: 
-  Quality_aa: 0
-  Quality_LensEffects: 0
+  Quality_aa: 1
+  Quality_LensEffects: 1
   Quality_Dof: 0
-  Quality_AO: 0
-  Quality_MotionBlur: 0
+  Quality_AO: 1
+  Quality_MotionBlur: 1
   BlackAndWhiteMode: 0
   AA_Type: 0
