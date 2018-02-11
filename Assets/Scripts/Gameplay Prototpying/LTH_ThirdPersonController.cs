@@ -60,6 +60,8 @@ public class LTH_ThirdPersonController : MonoBehaviour {
             controller.EnableExposionPreview = true;
         }
 
+        GameManager.Singleton.PlayerIsRunning = isRunning;
+
 
         var animatorMovement = anim.deltaPosition / Time.deltaTime;
         var animatorSpeed = animatorMovement.magnitude;

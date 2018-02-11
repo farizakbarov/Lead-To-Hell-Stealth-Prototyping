@@ -4,6 +4,7 @@ using UnityEngine;
 using SensorToolkit;
 using SWS;
 using CoverShooter;
+using UnityEngine.AI;
 
 public class AIDetectionRadius : MonoBehaviour
 {
@@ -13,18 +14,21 @@ public class AIDetectionRadius : MonoBehaviour
     public bool UseFOVSight = true;
     public TriggerSensor mySensor;
     private LTHMoveAnimator MoveScript;
+    private SphereCollider col;
 
     public float ThrowableDetectionThreshold1 = 3.0f;
 
-    public bool Testing;
-
     public bool LastSightingInRadius;
+
+    NavMeshAgent nav;
 
     // Use this for initialization
     void Start()
     {
        myFSM = transform.parent.GetComponent<PlayMakerFSM>();
         MoveScript = transform.parent.GetComponent<LTHMoveAnimator>();
+        nav = transform.parent.GetComponent<NavMeshAgent>();
+        col = GetComponent<SphereCollider>();
 
     }
 
@@ -69,14 +73,20 @@ public class AIDetectionRadius : MonoBehaviour
                 }
             }
 
-			if (GameManager.Singleton.LTH_GameSettings.EnableAIHearing) {
+            //Debug.Log(CalculatePathLength(GameManager.Singleton.ActivePlayer.transform.position));
+
+            if (GameManager.Singleton.LTH_GameSettings.EnableAIHearing) {
                 if (myFSM != null)
                 {
                     if (GameManager.Singleton.PlayerIsRunning && myFSM.ActiveStateName != "Seeking" && myFSM.ActiveStateName != "Distracted")
                     {
-                        //Debug.Log ("Heard Player");
-                        GameManager.Singleton.PlayerInSight = true;
-                        MoveScript.HeardPlayer(true);
+                       
+                        if (CalculatePathLength(GameManager.Singleton.ActivePlayer.transform.position) <= col.radius)
+                        {
+                            Debug.Log("Heard Player");
+                            GameManager.Singleton.PlayerInSight = true;
+                            MoveScript.HeardPlayer(true);
+                        }
                     }
                 }
 			}
@@ -115,4 +125,36 @@ public class AIDetectionRadius : MonoBehaviour
             MoveScript.PointsOfInterest.Remove(other.gameObject);
         }
     }
+
+    float CalculatePathLength(Vector3 TargetPos)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (nav.enabled)
+        {
+            nav.CalculatePath(TargetPos, path);
+        }
+
+        Vector3[] allWaypoints = new Vector3[path.corners.Length + 2];
+
+        allWaypoints[0] = transform.position;
+        allWaypoints[allWaypoints.Length - 1] = TargetPos;
+
+        for (int i=0; i<path.corners.Length; i++)
+        {
+            allWaypoints[i + 1] = path.corners[i];
+        }
+
+        float pathLength = 0f;
+
+        for (int i = 0; i < allWaypoints.Length -1; i++)
+        {
+            pathLength += Vector3.Distance(allWaypoints[i], allWaypoints[i + 1]);
+        }
+
+        return pathLength;
+
+    }
 }
+
+

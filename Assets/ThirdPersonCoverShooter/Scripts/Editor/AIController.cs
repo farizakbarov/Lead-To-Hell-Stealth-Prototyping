@@ -112,7 +112,7 @@ namespace CoverShooter
 
             switch (current.GetTypeForControl(controlId))
             {
-                case EventType.keyDown:
+                case EventType.KeyDown:
                     if (current.keyCode == KeyCode.Delete)
                         if (_lastSelectedController == controller && _lastSelectedController.Waypoints != null && _lastSelectedWaypoint >= 0 && _lastSelectedWaypoint < _lastSelectedController.Waypoints.Length)
                         {
@@ -125,10 +125,10 @@ namespace CoverShooter
                         }
                     break;
 
-                case EventType.mouseDown:
-                case EventType.mouseDrag:
+                case EventType.MouseDown:
+                case EventType.MouseDrag:
                     if (current.button == 0)
-                        if ((GUIUtility.hotControl == 0 && current.GetTypeForControl(controlId) != EventType.mouseDrag && HandleUtility.nearestControl == controlId) || 
+                        if ((GUIUtility.hotControl == 0 && current.GetTypeForControl(controlId) != EventType.MouseDrag && HandleUtility.nearestControl == controlId) || 
                             GUIUtility.hotControl == controlId)
                         {
                             _dontDrawPreview = false;
@@ -136,7 +136,7 @@ namespace CoverShooter
                             if (hasMousePosition)
                             {
                                 if (!_wasMouseTooFarAway)
-                                    if (current.type == EventType.mouseDown)
+                                    if (current.type == EventType.MouseDown)
                                     {
                                         GUIUtility.hotControl = controlId;
                                         hasToSelect = true;
@@ -147,12 +147,12 @@ namespace CoverShooter
                         }
                     break;
 
-                case EventType.mouseUp:
+                case EventType.MouseUp:
                     if (GUIUtility.hotControl == controlId)
                         GUIUtility.hotControl = 0;
                     break;
 
-                case EventType.mouseMove:
+                case EventType.MouseMove:
                     if (HandleUtility.nearestControl != controlId)
                     {
                         hasMousePosition = false;
@@ -164,7 +164,7 @@ namespace CoverShooter
                     SceneView.RepaintAll();
                     break;
 
-                case EventType.layout:
+                case EventType.Layout:
                     if (!_wasMouseTooFarAway)
                         HandleUtility.AddDefaultControl(controlId);
                     break;
