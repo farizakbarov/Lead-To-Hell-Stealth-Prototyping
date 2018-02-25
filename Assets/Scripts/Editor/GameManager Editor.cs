@@ -24,6 +24,8 @@ public class GameManagerEditor : Editor {
     SerializedProperty PlayerCaught;
     SerializedProperty PlayerSafe;
     SerializedProperty PlayerIsRunning;
+	SerializedProperty PlayerIsNotMoving;
+	SerializedProperty PlayerIsWalking;
     SerializedProperty LastSighting;
     SerializedProperty AlertBar;
     SerializedProperty Flashlight;
@@ -109,6 +111,10 @@ public class GameManagerEditor : Editor {
         PlayerCaught = serializedObject.FindProperty("PlayerCaught");
         PlayerSafe = serializedObject.FindProperty("PlayerSafe");
         PlayerIsRunning = serializedObject.FindProperty("PlayerIsRunning");
+		PlayerIsNotMoving = serializedObject.FindProperty("PlayerIsNotMoving");
+		PlayerIsWalking = serializedObject.FindProperty("PlayerIsWalking");
+
+
         LastSighting = serializedObject.FindProperty("LastSighting");
         AlertBar = serializedObject.FindProperty("AlertBar");
         Flashlight = serializedObject.FindProperty("Flashlight");
@@ -193,6 +199,9 @@ public class GameManagerEditor : Editor {
         EditorGUILayout.PropertyField(PlayerCaught);
         EditorGUILayout.PropertyField(PlayerSafe);
         EditorGUILayout.PropertyField(PlayerIsRunning);
+
+		EditorGUILayout.PropertyField(PlayerIsNotMoving);
+		EditorGUILayout.PropertyField(PlayerIsWalking);
 
         EditorGUILayout.PropertyField(Flashlight);
 

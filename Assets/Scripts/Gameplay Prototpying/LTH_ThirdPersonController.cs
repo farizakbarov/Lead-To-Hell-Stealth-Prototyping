@@ -16,8 +16,7 @@ public class LTH_ThirdPersonController : MonoBehaviour {
     public float StealthRunSpeed = 1.5f;
 
     public bool isSneaking = false;
-    public bool isRunning;
-    public bool isWalking;
+	public bool isNotMoving;
 
     public bool ToggleSneak = true;
     public bool AutoCoverEnabled = true;
@@ -59,10 +58,7 @@ public class LTH_ThirdPersonController : MonoBehaviour {
             PaperThrowable.SetActive(false);
             controller.EnableExposionPreview = true;
         }
-
-        GameManager.Singleton.PlayerIsRunning = isRunning;
-
-
+			
         var animatorMovement = anim.deltaPosition / Time.deltaTime;
         var animatorSpeed = animatorMovement.magnitude;
 
@@ -71,24 +67,30 @@ public class LTH_ThirdPersonController : MonoBehaviour {
         {
             if (animatorSpeed > 3.0)
             {
-                isRunning = true;
+				GameManager.Singleton.PlayerIsRunning = true;
             }
         }
         else
         {
-            isRunning = false;
+			GameManager.Singleton.PlayerIsRunning = false;
         }
 
-        //If he's not sneaking or running, he is walking.
-        if (!isSneaking && !isRunning)
+        //If he's moving but not running, he is walking.
+		if (!GameManager.Singleton.PlayerIsRunning && animatorSpeed > 0.2)
         {
-            isWalking = true;
+			GameManager.Singleton.PlayerIsWalking = true;
         }
         else
         {
-            isWalking = false;
+			GameManager.Singleton.PlayerIsWalking = false;
         }
 
+		//if he is not running or walking, he is standing still
+		if (!GameManager.Singleton.PlayerIsRunning && !GameManager.Singleton.PlayerIsWalking) {
+			GameManager.Singleton.PlayerIsNotMoving = true;
+		} else {
+			GameManager.Singleton.PlayerIsNotMoving = false;
+		}
 
         //the ability to toggle between sneaking and walking/running, instead of holding down the button
         if (ToggleSneak)
@@ -126,7 +128,7 @@ public class LTH_ThirdPersonController : MonoBehaviour {
 
 
         //While the player is running, 
-        if (isRunning)
+		if (GameManager.Singleton.PlayerIsRunning)
         {
             //modify the cover settings so that he can vault over things from a greater distance.
             //Disable auto cover
@@ -148,7 +150,7 @@ public class LTH_ThirdPersonController : MonoBehaviour {
             }
         }
 
-        if (isWalking)
+		if (GameManager.Singleton.PlayerIsWalking)
         {
             if (DisableAutoCoverWhenWalking)
             {

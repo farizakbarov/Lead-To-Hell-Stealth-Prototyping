@@ -4,6 +4,8 @@ using UnityEngine;
 using PlayMaker;
 using SensorToolkit;
 
+/* This script attaches to the AI's cone of vison, and contains the logic to detect the player */
+
 public class AISight : MonoBehaviour
 {
 
@@ -12,6 +14,8 @@ public class AISight : MonoBehaviour
     public bool RearFOV;
     private TriggerSensor mySensor;
     public LTHMoveAnimator MainAIScript;
+
+	public bool PeripheralVision;
 
 
     public bool UseAlertBar = true;
@@ -22,10 +26,6 @@ public class AISight : MonoBehaviour
     private float DistanceModifier;
     public float DistanceClose = 5f;
     public float DistnaceFar = 15f;
-
-    
-
-
 
     public bool SeekFlip = true;
 
@@ -38,6 +38,11 @@ public class AISight : MonoBehaviour
 
 
     }
+
+	void CanSeePlayer(){
+		MainAIScript.AlertLevel += AlertAdd * DistanceModifier * GameManager.Singleton.ShadowModifier * GameManager.Singleton.DifficultyModifier * GameManager.Singleton.TimeOfDayModifier;
+		GameManager.Singleton.PlayerInSight = true;
+	}
 
     // Update is called once per frame
     void Update()
@@ -119,8 +124,13 @@ public class AISight : MonoBehaviour
                 //If the player is visible, start adding to the alert level + its modifiers
                 if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
                 {
-                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * GameManager.Singleton.ShadowModifier * GameManager.Singleton.DifficultyModifier * GameManager.Singleton.TimeOfDayModifier;
-                    GameManager.Singleton.PlayerInSight = true;
+					if (!PeripheralVision) {
+						CanSeePlayer ();
+					} else {
+						if (!GameManager.Singleton.PlayerIsNotMoving) {
+							CanSeePlayer ();
+						}
+					}
                 }
                 else
                 {

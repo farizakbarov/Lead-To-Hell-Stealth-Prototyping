@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour {
 	public bool PlayerCaught;
     public bool PlayerSafe;
 	public bool PlayerIsRunning;
+	public bool PlayerIsWalking;
+	public bool PlayerIsNotMoving;
 	public GameObject LastSighting;
 	//public GameObject AlertBar;
 	public bool Flashlight;

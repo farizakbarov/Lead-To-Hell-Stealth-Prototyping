@@ -63,7 +63,7 @@ public class CharacterSlide : MonoBehaviour {
 
         if (SlidingEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && controller.isRunning)
+			if (Input.GetKeyDown(KeyCode.Z) && GameManager.Singleton.PlayerIsRunning)
             {
                 //Debug.Log("Slide");
                 IsSliding = true;
