@@ -60,31 +60,31 @@ public class AIDetectionRadius : MonoBehaviour
                 if (myFSM.ActiveStateName != "Distracted")
                 {
                     //if the player is visble by their FOV sensor, they are spotted
-                    if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
-                    //if(mySensor.IsDetected(GameManager.Singleton.ActivePlayer))
+                    if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f)
+                    //if(mySensor.IsDetected(GameManager.Singleton.Player))
                     {
                         // Debug.Log("Spotted");
-                        GameManager.Singleton.PlayerInSight = true;
+                        Stealth_GameManager.Singleton.PlayerInSight = true;
                     }
                     else
                     {
-                        GameManager.Singleton.PlayerInSight = false;
+                        Stealth_GameManager.Singleton.PlayerInSight = false;
                     }
                 }
             }
 
-            //Debug.Log(CalculatePathLength(GameManager.Singleton.ActivePlayer.transform.position));
+            //Debug.Log(CalculatePathLength(GameManager.Singleton.Player.transform.position));
 
-            if (GameManager.Singleton.LTH_GameSettings.EnableAIHearing) {
+            if (Stealth_GameManager.Singleton.LTH_GameSettings.EnableAIHearing) {
                 if (myFSM != null)
                 {
                     if (GameManager.Singleton.PlayerIsRunning && myFSM.ActiveStateName != "Seeking" && myFSM.ActiveStateName != "Distracted")
                     {
                        
-                        if (CalculatePathLength(GameManager.Singleton.ActivePlayer.transform.position) <= col.radius)
+                        if (CalculatePathLength(GameManager.Singleton.Player.transform.position) <= col.radius)
                         {
-                            Debug.Log("Heard Player");
-                            GameManager.Singleton.PlayerInSight = true;
+                            // Debug.Log("Heard Player");
+                            Stealth_GameManager.Singleton.PlayerInSight = true;
                             MoveScript.HeardPlayer(true);
                         }
                     }
@@ -102,7 +102,7 @@ public class AIDetectionRadius : MonoBehaviour
                     //Detect the thrown object while it is moving.
                     if (other.GetComponent<Grenade>().myVelocity > ThrowableDetectionThreshold1)
                     {
-                        GameManager.Singleton.LastSighting.transform.position = other.transform.position;
+                        Stealth_GameManager.Singleton.LastSighting.transform.position = other.transform.position;
                         MoveScript.HeardPlayer(false);
                     }
                 }
@@ -115,7 +115,7 @@ public class AIDetectionRadius : MonoBehaviour
         //if the player exits the Radius, he is out of sight.
         if (other.tag == "Player")
         {
-            GameManager.Singleton.PlayerInSight = false;
+            Stealth_GameManager.Singleton.PlayerInSight = false;
             //other.GetComponent<BakeMesh>().BakeGhostMesh();
             PlayerInRadius = false;
         }

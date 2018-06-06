@@ -129,7 +129,7 @@ namespace SensorToolkit
         new void addCollider(Collider other)
         {
             var newDetected = base.addCollider(other);
-            triggerStayLag.Add(other, 0);
+            triggerStayLag[other] = 0;
             if (newDetected != null)
             {
                 OnDetected.Invoke(newDetected);

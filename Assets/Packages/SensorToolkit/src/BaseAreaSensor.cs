@@ -127,54 +127,54 @@ namespace SensorToolkit
             else return 0f;
         }
 
-	    // Returns a list of transforms on the given object that passed line of sight tests. Will only return
-	    // results for objects that have a LOSTargets component.
-	    public List<Transform> GetVisibleTransforms(GameObject go)
-	    {
-		    RayCastTargets targets;
-		    if (go != null && rayCastTargets.TryGetValue(go, out targets)) 
-		    {
-			    return targets.GetVisibleTransforms();
-		    } 
-		    else 
-		    {
-			    return new List<Transform>();
-		    }
-	    }
+        // Returns a list of transforms on the given object that passed line of sight tests. Will only return
+        // results for objects that have a LOSTargets component.
+        public List<Transform> GetVisibleTransforms(GameObject go)
+        {
+            RayCastTargets targets;
+            if (go != null && rayCastTargets.TryGetValue(go, out targets))
+            {
+                return targets.GetVisibleTransforms();
+            }
+            else
+            {
+                return new List<Transform>();
+            }
+        }
 
-	    // Returns a list of positions on a given object that passed line of sight tests.
-	    public List<Vector2> GetVisiblePositions(GameObject go)
-	    {
-		    RayCastTargets targets;
-		    if (go != null && rayCastTargets.TryGetValue (go, out targets)) 
-		    {
-			    return targets.GetVisibleTargetPositions();
-		    } 
-		    else 
-		    {
-			    return new List<Vector2>();
-		    }
-	    }        
-	    // Maps a RigidBody GameObject to a list of it's colliders that have been detected. These colliders
+        // Returns a list of positions on a given object that passed line of sight tests.
+        public List<Vector2> GetVisiblePositions(GameObject go)
+        {
+            RayCastTargets targets;
+            if (go != null && rayCastTargets.TryGetValue(go, out targets))
+            {
+                return targets.GetVisibleTargetPositions();
+            }
+            else
+            {
+                return new List<Vector2>();
+            }
+        }
+        // Maps a RigidBody GameObject to a list of it's colliders that have been detected. These colliders
         // may be attached to children GameObjects.
-        Dictionary<GameObject, List<Collider2D>> gameObjectColliders;
+        Dictionary<GameObject, List<Collider2D>> gameObjectColliders = new Dictionary<GameObject, List<Collider2D>>();
 
         // Maps a GameObject to a list of it's colliders that have been detected.
-        Dictionary<GameObject, List<Collider2D>> rigidBodyColliders;
+        Dictionary<GameObject, List<Collider2D>> rigidBodyColliders = new Dictionary<GameObject, List<Collider2D>>();
 
         // Maps a GameObject to a list of raycast target positions for calculating line of sight
-        Dictionary<GameObject, RayCastTargets> rayCastTargets;
+        Dictionary<GameObject, RayCastTargets> rayCastTargets = new Dictionary<GameObject, RayCastTargets>();
 
         // Maps a detected object to its computed visibility from line of sight tests
-        Dictionary<GameObject, float> objectVisibility;
+        Dictionary<GameObject, float> objectVisibility = new Dictionary<GameObject, float>();
 
         // A list of results from all the raycast tests
-        List<RayCastResult> raycastResults;
+        List<RayCastResult> raycastResults = new List<RayCastResult>();
 
         // List of temporary values for modifying collections
-        List<GameObject> gameObjectList;
+        List<GameObject> gameObjectList = new List<GameObject>();
 
-        DistanceFromPointComparer distanceComparer;
+        DistanceFromPointComparer distanceComparer = new DistanceFromPointComparer();
 
         protected static ListCache<Collider2D> colliderListCache = new ListCache<Collider2D>();
         protected static ListCache<Vector2> vector2ListCache = new ListCache<Vector2>();
@@ -202,12 +202,12 @@ namespace SensorToolkit
             IList<Transform> targetTransforms;
             List<Vector2> targetPoints;
             List<Vector2> returnPoints;
-	        List<bool> isTargetVisible;
+            List<bool> isTargetVisible;
             public RayCastTargets()
             {
                 returnPoints = new List<Vector2>();
-		        isTargetVisible = new List<bool>();            
-	        }
+                isTargetVisible = new List<bool>();
+            }
 
             public bool IsTransforms()
             {
@@ -219,7 +219,7 @@ namespace SensorToolkit
                 this.go = go;
                 targetTransforms = targets;
                 targetPoints = null;
-				isTargetVisible.Clear(); for (int i = 0; i < targets.Count; i++) isTargetVisible.Add(false);
+                isTargetVisible.Clear(); for (int i = 0; i < targets.Count; i++) isTargetVisible.Add(false);
             }
 
             public void Set(GameObject go, List<Vector2> targets)
@@ -227,43 +227,43 @@ namespace SensorToolkit
                 this.go = go;
                 targetTransforms = null;
                 targetPoints = targets;
-				isTargetVisible.Clear(); for (int i = 0; i < targets.Count; i++) isTargetVisible.Add(false);
+                isTargetVisible.Clear(); for (int i = 0; i < targets.Count; i++) isTargetVisible.Add(false);
             }
 
-			public List<Transform> GetVisibleTransforms()
-			{
-				var visibleList = new List<Transform>();
-				for (int i = 0; i < isTargetVisible.Count; i++) 
-				{
-					if (isTargetVisible[i]) visibleList.Add(targetTransforms[i]);
-				}
-				return visibleList;
-			}
+            public List<Transform> GetVisibleTransforms()
+            {
+                var visibleList = new List<Transform>();
+                for (int i = 0; i < isTargetVisible.Count; i++)
+                {
+                    if (isTargetVisible[i]) visibleList.Add(targetTransforms[i]);
+                }
+                return visibleList;
+            }
 
-			public List<Vector2> GetVisibleTargetPositions()
-			{
-				var visibleList = new List<Vector2>();
-				if (targetTransforms != null) 
-				{
-					for (int i = 0; i < isTargetVisible.Count; i++)
-					{
-						if (isTargetVisible[i]) visibleList.Add(targetTransforms[i].position);
-					}
-				} 
-				else 
-				{
-					for (int i = 0; i < isTargetVisible.Count; i++)
-					{
-						if (isTargetVisible[i]) visibleList.Add(go.transform.TransformPoint(targetPoints[i]));
-					}
-				}
-				return visibleList;
-			}
+            public List<Vector2> GetVisibleTargetPositions()
+            {
+                var visibleList = new List<Vector2>();
+                if (targetTransforms != null)
+                {
+                    for (int i = 0; i < isTargetVisible.Count; i++)
+                    {
+                        if (isTargetVisible[i]) visibleList.Add(targetTransforms[i].position);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < isTargetVisible.Count; i++)
+                    {
+                        if (isTargetVisible[i]) visibleList.Add(go.transform.TransformPoint(targetPoints[i]));
+                    }
+                }
+                return visibleList;
+            }
 
-			public void SetIsTargetVisible(int i, bool isVisible)
-			{
-				isTargetVisible[i] = isVisible;
-			}
+            public void SetIsTargetVisible(int i, bool isVisible)
+            {
+                isTargetVisible[i] = isVisible;
+            }
 
             public IList<Vector2> getTargetPoints()
             {
@@ -294,13 +294,12 @@ namespace SensorToolkit
 
         protected virtual void OnEnable()
         {
-            rigidBodyColliders = new Dictionary<GameObject, List<Collider2D>>();
-            gameObjectColliders = new Dictionary<GameObject, List<Collider2D>>();
-            rayCastTargets = new Dictionary<GameObject, RayCastTargets>();
-            objectVisibility = new Dictionary<GameObject, float>();
-            raycastResults = new List<RayCastResult>();
-            gameObjectList = new List<GameObject>();
-            distanceComparer = new DistanceFromPointComparer();
+            rigidBodyColliders.Clear();
+            gameObjectColliders.Clear();
+            rayCastTargets.Clear();
+            objectVisibility.Clear();
+            raycastResults.Clear();
+            gameObjectList.Clear();
         }
 
         protected GameObject addCollider(Collider2D c)
@@ -326,7 +325,7 @@ namespace SensorToolkit
             }
             else if (RequiresLineOfSight && newDetection != null)
             {
-                bool prevDetected = !objectVisibility.ContainsKey(newDetection) || objectVisibility[newDetection] < MinimumVisibility;
+                bool prevDetected = objectVisibility.ContainsKey(newDetection) && objectVisibility[newDetection] >= MinimumVisibility;
                 var targets = getRayCastTargets(newDetection);
                 if (TestLOSTargetsOnly && !targets.IsTransforms()) return null;
                 objectVisibility[newDetection] = testObjectVisibility(newDetection, targets);
@@ -470,8 +469,8 @@ namespace SensorToolkit
         float testObjectVisibility(GameObject go, RayCastTargets targets)
         {
             int nSuccess = 0;
-			var rayCastTargets = getRayCastTargets(go);
-			IList<Vector2> testPoints = rayCastTargets.getTargetPoints();
+            var rayCastTargets = getRayCastTargets(go);
+            IList<Vector2> testPoints = rayCastTargets.getTargetPoints();
             for (int i = 0; i < testPoints.Count; i++)
             {
                 var testPoint = testPoints[i];
@@ -483,13 +482,13 @@ namespace SensorToolkit
                 if (isInLineOfSight(go, testPoint, out obstructionPoint))
                 {
                     nSuccess++;
-					rayCastTargets.SetIsTargetVisible(i, true);
+                    rayCastTargets.SetIsTargetVisible(i, true);
                 }
                 else
                 {
                     result.isObstructed = true;
                     result.obstructionPoint = obstructionPoint;
-					rayCastTargets.SetIsTargetVisible(i, false);
+                    rayCastTargets.SetIsTargetVisible(i, false);
                 }
                 raycastResults.Add(result);
             }
@@ -497,7 +496,7 @@ namespace SensorToolkit
             return nSuccess / (float)testPoints.Count;
         }
 
-		RayCastTargets getRayCastTargets(GameObject go)
+        RayCastTargets getRayCastTargets(GameObject go)
         {
             RayCastTargets rts;
             if (rayCastTargets.TryGetValue(go, out rts))

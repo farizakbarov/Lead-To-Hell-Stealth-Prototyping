@@ -107,7 +107,14 @@ namespace SensorToolkit.PlayMaker
                         storeComponent.Value = sensor.GetNearestByComponent(t);
                     }
                 }
-                if (storeComponent.Value != null) storeNearest.Value = (storeComponent.Value as UnityEngine.Component).gameObject;
+                if (storeComponent.Value != null)
+                {
+                    storeNearest.Value = (storeComponent.Value as UnityEngine.Component).gameObject;
+                }
+                else
+                {
+                    storeNearest.Value = null;
+                }
             }
             else
             {

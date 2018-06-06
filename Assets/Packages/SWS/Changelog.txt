@@ -1,6 +1,14 @@
 **************************************
 CHANGELOG (v5 and above)
 **************************************
+v5.4.2
+- DOTween updated to 1.1.710
+- removed defines for old Unity versions
+
+v5.4.1
+- DOTween updated to 1.1.640, fixing an issue with the first waypoint
+  when creating paths very far away from the scene origin
+
 v5.4
 - added button to continue editing paths on the PathManager components
 - added dropdown for custom waypoint placement keys to WaypointManager

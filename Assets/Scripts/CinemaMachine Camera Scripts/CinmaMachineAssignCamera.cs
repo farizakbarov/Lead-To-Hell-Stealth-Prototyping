@@ -61,7 +61,7 @@ public class CinmaMachineAssignCamera : MonoBehaviour
 
                 if (AssignPlayerCam)
                 {
-                    director.SetReferenceValue(myName, GameManager.Singleton.GameplayTimeline.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
+                    director.SetReferenceValue(myName, Stealth_GameManager.Singleton.GameplayTimeline.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>());
                 }
                 else
                 {

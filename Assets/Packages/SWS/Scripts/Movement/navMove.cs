@@ -8,9 +8,7 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-#if UNITY_5_5_OR_NEWER
 using UnityEngine.AI;
-#endif
 
 namespace SWS
 {
@@ -98,27 +96,11 @@ namespace SWS
         //whether the tween was paused
         private bool waiting = false;
 
-        private bool FirstStart = true;
-
 
         //initialize components
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-        }
-
-        public void StartOrPause()
-        {
-            if (FirstStart)
-            {
-                StartMove();
-                FirstStart = false;
-            }
-            else
-            {
-                Resume();
-               // StartCoroutine(NextWaypoint());
-            }
         }
 
 
@@ -170,11 +152,7 @@ namespace SWS
         private IEnumerator Move()
         {
             //enable agent updates
-            #if UNITY_5_6_OR_NEWER
             agent.isStopped = false;
-            #else
-            agent.Resume();
-            #endif
             agent.updateRotation = updateRotation;
 
             //if move to path is enabled,
@@ -379,12 +357,7 @@ namespace SWS
         {
             StopCoroutine(Wait());
             waiting = true;
-
-            #if UNITY_5_6_OR_NEWER
             agent.isStopped = true;
-            #else
-            agent.Stop();
-            #endif
 
             if (seconds > 0)
                 StartCoroutine(Wait(seconds));
@@ -406,12 +379,7 @@ namespace SWS
         {
 			StopCoroutine(Wait());
             waiting = false;
-            
-            #if UNITY_5_6_OR_NEWER
             agent.isStopped = false;
-            #else
-            agent.Resume();
-            #endif
         }
         
         
@@ -461,11 +429,7 @@ namespace SWS
             StopAllCoroutines();
             if (agent.enabled)
             {
-                #if UNITY_5_6_OR_NEWER
                 agent.isStopped = true;
-                #else
-                agent.Stop();
-                #endif
             }
         }
 

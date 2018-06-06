@@ -4,12 +4,9 @@
  * 	otherwise make available to any third party the Service or the Content. */
 
 using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
 using SWS;
-#if UNITY_5_5_OR_NEWER
 using UnityEngine.AI;
-#endif
 
 /// <summary>
 /// Example: some methods invoked by events, demonstrating runtime adjustments.

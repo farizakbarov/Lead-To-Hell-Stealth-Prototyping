@@ -287,22 +287,12 @@ namespace SWS
                 Handles.color = m_Color2.colorValue;
                 size = Mathf.Clamp(size, 0, 1.2f);
                 
-                #if UNITY_5_6_OR_NEWER
                 Handles.FreeMoveHandle(wpPos, Quaternion.identity, size, Vector3.zero, (controlID, position, rotation, hSize, eventType) => 
                 {
                     Handles.SphereHandleCap(controlID, position, rotation, hSize, eventType);
                     if(controlID == GUIUtility.hotControl && GUIUtility.hotControl != 0)
                         activeNode = i;
                 });
-                #else
-                Handles.FreeMoveHandle(wpPos, Quaternion.identity, size, Vector3.zero, (controlID, position, rotation, hSize) => 
-                {
-                    Handles.SphereCap(controlID, position, rotation, hSize);
-                    if(controlID == GUIUtility.hotControl && GUIUtility.hotControl != 0)
-                        activeNode = i;
-                });
-                #endif
-
                 Handles.RadiusHandle(waypoints[i].rotation, wpPos, size / 2);
             }
             
@@ -416,12 +406,7 @@ namespace SWS
                     //draw arrow handle on current position with interpolated rotation
                     size = Mathf.Clamp(HandleUtility.GetHandleSize(segments[i][j]) * 0.4f, 0, 1.2f);
                     lerpVal = j / (float)segments[i].Count;
-                    
-                    #if UNITY_5_6_OR_NEWER
                     Handles.ArrowHandleCap(0, segments[i][j], Quaternion.Lerp(waypoints[i].rotation, waypoints[i + 1].rotation, lerpVal), size, EventType.Repaint);
-                    #else
-                    Handles.ArrowCap(0, segments[i][j], Quaternion.Lerp(waypoints[i].rotation, waypoints[i + 1].rotation, lerpVal), size);
-                    #endif
                 }
             }
         }

@@ -32,7 +32,7 @@ namespace Greyman{
         private void Start()
         {
             
-            foreach (Transform trans in GameManager.Singleton.AllAi)
+            foreach (Transform trans in Stealth_GameManager.Singleton.AllAi)
             {
                 FixedTarget myTarget = new FixedTarget();
                 myTarget.target = trans;

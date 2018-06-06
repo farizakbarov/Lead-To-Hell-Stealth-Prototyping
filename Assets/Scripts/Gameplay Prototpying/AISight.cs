@@ -61,21 +61,21 @@ public class AISight : MonoBehaviour
 
         }
 
-        if (UseAlertBar && GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && GameManager.Singleton.ActivePlayer != null)
+        if (UseAlertBar && Stealth_GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && GameManager.Singleton.Player != null)
         {
             //find out the distance to the player
-            DistanceToPlayer = Vector3.Distance(transform.position, GameManager.Singleton.ActivePlayer.transform.position);
+            DistanceToPlayer = Vector3.Distance(transform.position, GameManager.Singleton.Player.transform.position);
 
 
             //modify the DistanceModifier value based upon how close/far away the player is
             if (DistanceToPlayer <= DistanceClose)
             {
-                DistanceModifier = GameManager.Singleton.LTH_GameSettings.DistanceNearModifier;
+                DistanceModifier = Stealth_GameManager.Singleton.LTH_GameSettings.DistanceNearModifier;
                 // Debug.Log("near");
             }
             else if (DistanceToPlayer >= DistnaceFar)
             {
-                DistanceModifier = GameManager.Singleton.LTH_GameSettings.DistanceFarModifier;
+                DistanceModifier = Stealth_GameManager.Singleton.LTH_GameSettings.DistanceFarModifier;
             }
             else
             {
@@ -83,48 +83,48 @@ public class AISight : MonoBehaviour
             }
 
             //modify the ShadowModifier value based if the player is in shadow or not.
-            if (GameManager.Singleton.PlayerLighting <= 0.5f)
+            if (Stealth_GameManager.Singleton.PlayerLighting <= 0.5f)
             {
-                GameManager.Singleton.ShadowModifier = 1.0f - GameManager.Singleton.LTH_GameSettings.ShadowBonus;
+                Stealth_GameManager.Singleton.ShadowModifier = 1.0f - Stealth_GameManager.Singleton.LTH_GameSettings.ShadowBonus;
             }
             else
             {
-                GameManager.Singleton.ShadowModifier = 1.0f;
+                Stealth_GameManager.Singleton.ShadowModifier = 1.0f;
             }
 
-            if(GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Easy)
+            if(Stealth_GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Easy)
             {
-                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.LTH_GameSettings.EasyModifier;
+                Stealth_GameManager.Singleton.DifficultyModifier = Stealth_GameManager.Singleton.LTH_GameSettings.EasyModifier;
 
-            }else if(GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Medium)
+            }else if(Stealth_GameManager.Singleton.LTH_GameSettings.Difficulty == LTH_SaveData.Difficulties.Medium)
             {
-                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.LTH_GameSettings.MediumModifier;
+                Stealth_GameManager.Singleton.DifficultyModifier = Stealth_GameManager.Singleton.LTH_GameSettings.MediumModifier;
             }
             else
             {
-                GameManager.Singleton.DifficultyModifier = GameManager.Singleton.LTH_GameSettings.HardModifer;
+                Stealth_GameManager.Singleton.DifficultyModifier = Stealth_GameManager.Singleton.LTH_GameSettings.HardModifer;
             }
 
-            if(GameManager.Singleton.LTH_GameSettings.TimeOfDay == LTH_SaveData.TimeOfDays.Day)
+            if(Stealth_GameManager.Singleton.LTH_GameSettings.TimeOfDay == LTH_SaveData.TimeOfDays.Day)
             {
-                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.LTH_GameSettings.DayModifier;
+                Stealth_GameManager.Singleton.TimeOfDayModifier = Stealth_GameManager.Singleton.LTH_GameSettings.DayModifier;
             }
             else
             {
-                GameManager.Singleton.TimeOfDayModifier = GameManager.Singleton.LTH_GameSettings.NightModifer;
+                Stealth_GameManager.Singleton.TimeOfDayModifier = Stealth_GameManager.Singleton.LTH_GameSettings.NightModifer;
             }
 
             if (MainAIScript != null)
             {
                 //If the player is visible, start adding to the alert level + its modifiers
-                if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
+                if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f)
                 {
-                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * GameManager.Singleton.ShadowModifier * GameManager.Singleton.DifficultyModifier * GameManager.Singleton.TimeOfDayModifier;
-                    GameManager.Singleton.PlayerInSight = true;
+                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * Stealth_GameManager.Singleton.ShadowModifier * Stealth_GameManager.Singleton.DifficultyModifier * Stealth_GameManager.Singleton.TimeOfDayModifier;
+                    Stealth_GameManager.Singleton.PlayerInSight = true;
                 }
                 else
                 {
-                    GameManager.Singleton.PlayerInSight = false;
+                    Stealth_GameManager.Singleton.PlayerInSight = false;
                     if (myFSM.Fsm.ActiveStateName != "GameOver")
                     {
                         //if the player is not visible, decrease the alert level.
@@ -173,7 +173,7 @@ public class AISight : MonoBehaviour
 
     public void FoundPlayer()
     {
-        if (GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && DectectionOn && !GameManager.Singleton.PlayerSafe)
+        if (Stealth_GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && DectectionOn && !Stealth_GameManager.Singleton.PlayerSafe)
         {
             if (myFSM != null)
             {
@@ -187,7 +187,7 @@ public class AISight : MonoBehaviour
                 }
                 else
                 {
-                    if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
+                    if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f)
                     {
                         if (!UseAlertBar)
                         {
@@ -216,7 +216,7 @@ public class AISight : MonoBehaviour
             myFSM.Fsm.Event("LOSTPLAYER");
 
         }
-        GameManager.Singleton.PlayerInSight = false;
+        Stealth_GameManager.Singleton.PlayerInSight = false;
 
     }
 

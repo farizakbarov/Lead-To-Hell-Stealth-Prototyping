@@ -369,10 +369,6 @@ public partial class PlayMakerUtils {
 				#if UNITY_WEBGL
 				// proceduralMaterial not supported
 				#else
-				if (valueType.Equals(typeof(ProceduralMaterial))) // we are ok
-				{
-					ok = true;
-				}
 				#endif
 				if (valueType.Equals(typeof(double))) // we are ok
 				{
@@ -444,13 +440,7 @@ public partial class PlayMakerUtils {
 			FsmMaterial _target= fromFsm.Variables.GetFsmMaterial(fsmVar.variableName);
 			_target.Value = (Material)value;
 
-		#if UNITY_WEBGL
-		// proceduralMaterial not supported
-		#else
-		}else if(valueType == typeof(ProceduralMaterial) ){
-			FsmMaterial _target= fromFsm.Variables.GetFsmMaterial(fsmVar.variableName);
-			_target.Value = (ProceduralMaterial)value;
-		#endif
+		
 
 		}else if(valueType == typeof(Object) || storageType == typeof(Object) ){
 			FsmObject _target= fromFsm.Variables.GetFsmObject(fsmVar.variableName);

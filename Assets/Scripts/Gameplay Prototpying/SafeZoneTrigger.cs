@@ -20,7 +20,7 @@ public class SafeZoneTrigger : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            GameManager.Singleton.PlayerSafe = false;
+            Stealth_GameManager.Singleton.PlayerSafe = false;
         }
         
     }

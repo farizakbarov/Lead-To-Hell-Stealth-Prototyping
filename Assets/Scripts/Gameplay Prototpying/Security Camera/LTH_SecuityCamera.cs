@@ -34,9 +34,9 @@ public class LTH_SecuityCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f && GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch)
+        if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f && Stealth_GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch)
         {
-            GameManager.Singleton.PlayerInSight = true;
+            Stealth_GameManager.Singleton.PlayerInSight = true;
             controller.isDynamic = false;
             controller.TrackPlayer = true;
             if (!Alerted)
@@ -65,7 +65,7 @@ public class LTH_SecuityCamera : MonoBehaviour {
             //Need to only set PlayerInSight back to false once. not every frame because that interferes with AI detection 
             if (SightFlip)
             {
-                GameManager.Singleton.PlayerInSight = false;
+                Stealth_GameManager.Singleton.PlayerInSight = false;
                 SightFlip = false;
             }
             
@@ -87,7 +87,7 @@ public class LTH_SecuityCamera : MonoBehaviour {
     IEnumerator WaitAndPrint()
     {
         yield return new WaitForSeconds(DetectTime);
-        if (mySensor.GetVisibility(GameManager.Singleton.ActivePlayer) > 0.5f)
+        if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f)
         {
             mylight.color = AlertColor;
             FindNearestType2();
@@ -102,7 +102,7 @@ public class LTH_SecuityCamera : MonoBehaviour {
     {
 
         //loop through all the type 2s in the scene
-        foreach (GameObject obj in GameManager.Singleton.ListOfType2s)
+        foreach (GameObject obj in Stealth_GameManager.Singleton.ListOfType2s)
         {
             float distance2 = Vector3.Distance(this.transform.position, obj.transform.position);
 

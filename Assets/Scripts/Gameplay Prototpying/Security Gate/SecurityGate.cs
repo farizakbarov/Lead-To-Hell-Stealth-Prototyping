@@ -27,7 +27,7 @@ public class SecurityGate : MonoBehaviour {
         {
             if (GateOn)
             {
-                GameManager.Singleton.PlayerInSight = true;
+                Stealth_GameManager.Singleton.PlayerInSight = true;
                 FindNearestType2();
             }
         }
@@ -45,7 +45,7 @@ public class SecurityGate : MonoBehaviour {
         {
             if (GateOn)
             {
-                GameManager.Singleton.PlayerInSight = false;
+                Stealth_GameManager.Singleton.PlayerInSight = false;
             }
         }
     }
@@ -61,7 +61,7 @@ public class SecurityGate : MonoBehaviour {
     {
 
         //loop through all the type 2s in the scene
-        foreach (GameObject obj in GameManager.Singleton.ListOfType2s)
+        foreach (GameObject obj in Stealth_GameManager.Singleton.ListOfType2s)
         {
             float distance2 = Vector3.Distance(this.transform.position, obj.transform.position);
 

@@ -15,12 +15,20 @@ namespace SensorToolkit.PlayMaker
         public FsmOwnerDefault gameObject;
 
         [UIHint(UIHint.Variable)]
+        [Tooltip("Optional. The gameobject that should be moved to.")]
+        public FsmGameObject destinationGameObject;
+
+        [UIHint(UIHint.Variable)]
         [Tooltip("Optional. The position that should be moved to.")]
         public FsmVector3 destinationPosition;
 
         [UIHint(UIHint.Variable)]
         [Tooltip("Optional. The direction that should be faced towards.")]
         public FsmVector3 directionToFace;
+
+        [UIHint(UIHint.Variable)]
+        [Tooltip("Optional. The gameobject that should be faced towards.")]
+        public FsmGameObject gameObjectToFace;
 
         [Tooltip("If checked will clear the direction to face setting. Will cause the object to stop strafing.")]
         public FsmBool ClearDirectionToFace;
@@ -32,7 +40,9 @@ namespace SensorToolkit.PlayMaker
         {
             gameObject = null;
             destinationPosition = null;
+            destinationGameObject = null;
             directionToFace = null;
+            gameObjectToFace = null;
             ClearDirectionToFace = false;
             everyFrame = false;
         }
@@ -59,6 +69,14 @@ namespace SensorToolkit.PlayMaker
             if (destinationPosition != null)
             {
                 steeringRig.Destination = destinationPosition.Value;
+            }
+            if (destinationGameObject != null)
+            {
+                steeringRig.DestinationTransform = destinationGameObject.Value.transform;
+            }
+            else
+            {
+                steeringRig.DestinationTransform = null;
             }
             if (directionToFace != null)
             {

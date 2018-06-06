@@ -84,10 +84,10 @@ public class SafeZone_Detect : MonoBehaviour
                 FacingSafeZone = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && Hit.layer == 13 && !GameManager.Singleton.PlayerSafe)
+            if (Input.GetKeyDown(KeyCode.F) && Hit.layer == 13 && !Stealth_GameManager.Singleton.PlayerSafe)
             {
-                GameManager.Singleton.PlayerSafe = true;
-                GameManager.Singleton.PlayerInSight = false;
+                Stealth_GameManager.Singleton.PlayerSafe = true;
+                Stealth_GameManager.Singleton.PlayerInSight = false;
                 this.gameObject.layer = 12;
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.gameObject.GetComponent<Collider>());
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.transform.parent.GetComponent<Collider>());
@@ -137,7 +137,7 @@ public class SafeZone_Detect : MonoBehaviour
             if (percentageComplete >= 1.0f)
             {
                 MoveToExit = false;
-                GameManager.Singleton.PlayerSafe = false;
+                Stealth_GameManager.Singleton.PlayerSafe = false;
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.gameObject.GetComponent<Collider>(), false);
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.transform.parent.GetComponent<Collider>(), false);
                 this.gameObject.layer = 10;
@@ -147,7 +147,7 @@ public class SafeZone_Detect : MonoBehaviour
 
         if (ExitEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.F) && GameManager.Singleton.PlayerSafe)
+            if (Input.GetKeyDown(KeyCode.F) && Stealth_GameManager.Singleton.PlayerSafe)
             {
                 ExitSafeZone();
             }

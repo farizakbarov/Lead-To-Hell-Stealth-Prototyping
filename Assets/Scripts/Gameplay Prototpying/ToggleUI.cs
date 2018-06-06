@@ -30,14 +30,14 @@ public class ToggleUI : MonoBehaviour {
 
 
         if (choice == choices.DisableCoverRun){
-            value = GameManager.Singleton.ActivePlayer.GetComponent<LTH_ThirdPersonController>().DisableAutoCoverWhenRunning;
+            value = GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>().DisableAutoCoverWhenRunning;
         }else if (choice == choices.Cover)
         {
-            value = GameManager.Singleton.ActivePlayer.GetComponent<LTH_ThirdPersonController>().AutoCoverEnabled;
+            value = GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>().AutoCoverEnabled;
         }
         else
         {
-            value = GameManager.Singleton.ActivePlayer.GetComponent<LTH_ThirdPersonController>().ToggleSneak;
+            value = GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>().ToggleSneak;
         }
         
         myToggle.isOn = value;

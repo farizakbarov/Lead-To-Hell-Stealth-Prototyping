@@ -23,19 +23,23 @@ public class AboutSWSEditor : EditorWindow
 
     void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(70, 20, 300, 100));
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(90);
         GUILayout.Label("Simple Waypoint System", EditorStyles.boldLabel);
+        GUILayout.EndHorizontal();
+   
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(90);
         GUILayout.Label("by Rebound Games");
-        GUILayout.EndArea();
-        GUILayout.Space(70);
-
+        GUILayout.EndHorizontal();        
+        GUILayout.Space(20);
 
         GUILayout.Label("Info", EditorStyles.boldLabel);
 		GUILayout.BeginHorizontal();
         GUILayout.Label("Homepage");
         if (GUILayout.Button("Visit", GUILayout.Width(100)))
         {
-            Help.BrowseURL("www.rebound-games.com");
+            Help.BrowseURL("https://www.rebound-games.com");
         }
         GUILayout.EndHorizontal();
 		
@@ -61,7 +65,7 @@ public class AboutSWSEditor : EditorWindow
         GUILayout.Label("Script Reference");
         if (GUILayout.Button("Visit", GUILayout.Width(100)))
         {
-            Help.BrowseURL("www.rebound-games.com/docs/sws/");
+            Help.BrowseURL("https://www.rebound-games.com/docs/sws/");
         }
         GUILayout.EndHorizontal();
 		
@@ -69,7 +73,7 @@ public class AboutSWSEditor : EditorWindow
         GUILayout.Label("Support Forum");
         if (GUILayout.Button("Visit", GUILayout.Width(100)))
         {
-            Help.BrowseURL("http://www.rebound-games.com/forum/");
+            Help.BrowseURL("https://www.rebound-games.com/forum/");
         }
         GUILayout.EndHorizontal();
 
@@ -77,7 +81,7 @@ public class AboutSWSEditor : EditorWindow
         GUILayout.Label("Unity Forum");
         if (GUILayout.Button("Visit", GUILayout.Width(100)))
         {
-            Help.BrowseURL("http://forum.unity3d.com/threads/115086-Simple-Waypoint-System-%28SWS%29-RELEASED");
+            Help.BrowseURL("https://forum.unity3d.com/threads/115086-Simple-Waypoint-System-%28SWS%29-RELEASED");
         }
         GUILayout.EndHorizontal();
         GUILayout.Space(5);
@@ -87,7 +91,7 @@ public class AboutSWSEditor : EditorWindow
         GUILayout.Label("Rate/Review");
         if (GUILayout.Button("Visit", GUILayout.Width(100)))
         {
-            UnityEditorInternal.AssetStore.Open("content/2506");
+            Help.BrowseURL("https://www.assetstore.unity3d.com/#!/content/2506");
         }
         GUILayout.EndHorizontal();
     }

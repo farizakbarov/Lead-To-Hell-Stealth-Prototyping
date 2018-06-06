@@ -25,8 +25,8 @@ public class Shadow_Vignette : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameManager.Singleton.Detective != null) {
-			mySensor = GameManager.Singleton.Detective.GetComponent<LightSensor> ();
+		if (GameManager.Singleton.Player != null) {
+			mySensor = GameManager.Singleton.Player.GetComponent<LightSensor> ();
 		
 			VignetteModel.Settings VignetteSettings = ppProfile.vignette.settings;
 

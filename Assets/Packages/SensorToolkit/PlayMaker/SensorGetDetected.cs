@@ -118,6 +118,10 @@ namespace SensorToolkit.PlayMaker
                 {
                     storeDetected.Values = storeComponents.Values.Select(c => (c as UnityEngine.Component).gameObject).ToArray();
                 }
+                else
+                {
+                    storeDetected.Values = null;
+                }
             }
             else
             {

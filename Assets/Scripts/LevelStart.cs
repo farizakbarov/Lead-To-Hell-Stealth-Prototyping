@@ -26,8 +26,8 @@ public class LevelStart : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SpawnedPlayer = Instantiate(Player, transform.position, transform.rotation) as GameObject;
-        GameManager.Singleton.ActivePlayer = SpawnedPlayer;
-        GameManager.Singleton.Detective = SpawnedPlayer;
+        GameManager.Singleton.Player = SpawnedPlayer;
+        //GameManager.Singleton.Detective = SpawnedPlayer;
         SpawnedPlayer.GetComponent<ThirdPersonController>().ExplosionPreview = ExplosionPreview;
         SpawnedPlayer.GetComponent<ThirdPersonController>().PathPreview = PathPreview;
 
@@ -42,8 +42,8 @@ public class LevelStart : MonoBehaviour {
         if (SpawnGhostMesh)
         {
             SpawnedGhostMesh = Instantiate(GhostMeshPrefab, transform.position + new Vector3(0, -100, 0), transform.rotation) as GameObject;
-            GameManager.Singleton.GhostParent = SpawnedGhostMesh;
-            GameManager.Singleton.GhostMesh = SpawnedGhostMesh.transform.GetChild(0).gameObject;
+            Stealth_GameManager.Singleton.GhostParent = SpawnedGhostMesh;
+            Stealth_GameManager.Singleton.GhostMesh = SpawnedGhostMesh.transform.GetChild(0).gameObject;
         }
 
         if (SpawnUI)

@@ -30,6 +30,10 @@ namespace SensorToolkit
         [Range(0, 8)]
         public int Resolution = 0;
 
+        // Returns the generated collider mesh so that it can be rendered.
+        public Mesh FOVMesh { get { return mesh; } }
+
+        Mesh mesh;
         MeshCollider mc;
         Vector3[] pts;
         int[] triangles;
@@ -49,8 +53,13 @@ namespace SensorToolkit
         public void CreateCollider()
         {
             pts = new Vector3[4 + (2+Resolution)*(2+Resolution)];
-            // Unity doesn't actually need all the triangles to cook the convex hull, so only add enough to make it happy.
-            triangles = new int[2*3];
+            // There are 2 triangles on the base
+            var baseTriangleIndices = 2 * 3;
+            // The arc is (Resolution+2) vertices to each side, making (Resolution+1)*(Resolution+1) boxes of 2 tris each
+            var arcTriangleIndices = (Resolution + 1) * (Resolution + 1) * 2 * 3;
+            // There are 4 sides to the cone, and each side has Resolution+2 triangles
+            var sideTriangleIndices = (Resolution + 2) * 3;
+            triangles = new int[baseTriangleIndices + arcTriangleIndices + sideTriangleIndices*4];
 
             // Base points
             pts[0] = new Vector3(-BaseSize / 2f, -BaseSize / 2f, 0f); // Bottom Left
@@ -68,10 +77,82 @@ namespace SensorToolkit
                     float ax = Mathf.Lerp(-ElevationAngle / 2f, ElevationAngle / 2f, (float)y / (float)(Resolution + 1));
                     Vector3 p = Quaternion.Euler(ax, ay, 0f) * Vector3.forward * Length;
                     pts[i] = p;
+
+                    if (x < (1+Resolution) && y < (1+Resolution))
+                    {
+                        var ti = baseTriangleIndices + (y * (Resolution + 1) + x) * 3 * 2;
+                        triangles[ti] = i + 1 + (2 + Resolution); // top right
+                        triangles[ti + 1] = i + 1; // bottom right
+                        triangles[ti + 2] = i; // bottom left
+                        triangles[ti + 3] = i + (2 + Resolution); // top left
+                        triangles[ti + 4] = i + (2 + Resolution) + 1; // top right
+                        triangles[ti + 5] = i; // bottom left
+                    }
                 }
             }
 
-            Mesh mesh = new Mesh();
+            // Top and bottom side triangles
+            for (int x = 0; x < 2+Resolution; x++)
+            {
+                var iTop = 4 + x;
+                var iBottom = 4 + (1 + Resolution) * (2 + Resolution) + x;
+
+                var tiTop = baseTriangleIndices + arcTriangleIndices + x*3;
+                var tiBottom = tiTop + sideTriangleIndices;
+                if (x == 0)
+                {
+                    triangles[tiTop] = 2;
+                    triangles[tiTop+1] = 3;
+                    triangles[tiTop + 2] = iTop;
+
+                    triangles[tiBottom] = 0;
+                    triangles[tiBottom + 1] = 1;
+                    triangles[tiBottom + 2] = iBottom;
+                }
+                else
+                {
+                    triangles[tiTop] = iTop;
+                    triangles[tiTop + 1] = 2;
+                    triangles[tiTop + 2] = iTop-1;
+
+                    triangles[tiBottom] = 1;
+                    triangles[tiBottom + 1] = iBottom;
+                    triangles[tiBottom + 2] = iBottom-1;
+                }
+            }
+
+            // Left and right side triangles
+            var yIncr = 2 + Resolution;
+            for (int y = 0; y < 2 + Resolution; y++)
+            {
+                var iLeft = 4 + y*(2+Resolution);
+                var iRight = iLeft + (1+Resolution);
+
+                var tiLeft = baseTriangleIndices + arcTriangleIndices + sideTriangleIndices*2 + y*3;
+                var tiRight = tiLeft + sideTriangleIndices;
+                if (y == 0)
+                {
+                    triangles[tiLeft] = 3;
+                    triangles[tiLeft + 1] = 0;
+                    triangles[tiLeft + 2] = iLeft;
+
+                    triangles[tiRight] = 1;
+                    triangles[tiRight + 1] = 2;
+                    triangles[tiRight + 2] = iRight;
+                }
+                else
+                {
+                    triangles[tiLeft] = 0;
+                    triangles[tiLeft + 1] = iLeft;
+                    triangles[tiLeft + 2] = iLeft - yIncr;
+
+                    triangles[tiRight] = iRight;
+                    triangles[tiRight + 1] = 1;
+                    triangles[tiRight + 2] = iRight - yIncr;
+                }
+            }
+
+            mesh = new Mesh();
             releaseMesh();
             mc.sharedMesh = mesh;
             mesh.vertices = pts;

@@ -37,7 +37,7 @@ public class LightSensor : MonoBehaviour {
 		ErrorCallbacks ();
 		CountLighting ();
 
-        GameManager.Singleton.PlayerLighting = LightingTotal;
+        Stealth_GameManager.Singleton.PlayerLighting = LightingTotal;
 
     }
 

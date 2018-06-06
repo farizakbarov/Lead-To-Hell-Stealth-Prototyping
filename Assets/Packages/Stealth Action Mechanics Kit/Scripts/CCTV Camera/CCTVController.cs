@@ -53,10 +53,10 @@ public class CCTVController : MonoBehaviour
         else
         {
 
-           Quaternion targetRotation = Quaternion.LookRotation((GameManager.Singleton.ActivePlayer.transform.position + new Vector3(0, 1.5f, 0)) - cameraPivot.transform.position);
+           Quaternion targetRotation = Quaternion.LookRotation((GameManager.Singleton.Player.transform.position + new Vector3(0, 1.5f, 0)) - cameraPivot.transform.position);
             // targetRotation = targetRotation * Quaternion.Euler(-90, 0, 0);
 
-            /*Transform target = GameManager.Singleton.ActivePlayer.transform;
+            /*Transform target = GameManager.Singleton.Player.transform;
             target.transform.position = target.transform.position + new Vector3(0,1,0);*/
 
 
@@ -77,7 +77,7 @@ public class CCTVController : MonoBehaviour
 
             //atargetRotation = Quaternion.Euler(new Vector3(0, 0, targetRotation.eulerAngles.z));
 
-            //cameraPivot.transform.LookAt(GameManager.Singleton.ActivePlayer.transform);
+            //cameraPivot.transform.LookAt(GameManager.Singleton.Player.transform);
 
             // cameraPivot.transform.rotation = targetRotation;
 
@@ -86,7 +86,7 @@ public class CCTVController : MonoBehaviour
             // Smoothly rotate towards the target point.
             // Cam.transform.rotation = Quaternion.Slerp(Cam.transform.rotation, targetRotation, speed * Time.time);
             // Cam.transform.rotation *= Quaternion.Euler(-90, 0, 0);
-            /*Cam.transform.LookAt(GameManager.Singleton.ActivePlayer.transform);
+            /*Cam.transform.LookAt(GameManager.Singleton.Player.transform);
             Cam.transform.rotation *= Quaternion.Euler(-90, 0, 0);*/
         }
     }

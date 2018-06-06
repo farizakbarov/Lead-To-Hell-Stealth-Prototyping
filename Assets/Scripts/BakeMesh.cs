@@ -29,7 +29,7 @@ public class BakeMesh : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (GameManager.Singleton.GhostParent != null)
+        if (Stealth_GameManager.Singleton.GhostParent != null)
         {
 
             if (Input.GetKeyDown(KeyCode.B))
@@ -39,14 +39,14 @@ public class BakeMesh : MonoBehaviour {
         }
 
 
-        if (GameManager.Singleton.PlayerInSight != checkbool)
+        if (Stealth_GameManager.Singleton.PlayerInSight != checkbool)
         {
-            checkbool = GameManager.Singleton.PlayerInSight;
+            checkbool = Stealth_GameManager.Singleton.PlayerInSight;
 
            // print("my bool has changed to: " + GameManager.Singleton.PlayerInSight);
-            if (GameManager.Singleton.PlayerInSight == false)
+            if (Stealth_GameManager.Singleton.PlayerInSight == false)
             {
-                if (GameManager.Singleton.LTH_GameSettings.EnableGhostMesh)
+                if (Stealth_GameManager.Singleton.LTH_GameSettings.EnableGhostMesh)
                 {
                     BakeGhostMesh();
                 }
@@ -57,7 +57,7 @@ public class BakeMesh : MonoBehaviour {
 
         if (BeginFade)
         {
-             GhostMaterial.color =  Color.Lerp(GhostMaterial.color, Color.clear, GameManager.Singleton.LTH_GameSettings.GhostMeshFadeOutSpeed * Time.time); ;
+             GhostMaterial.color =  Color.Lerp(GhostMaterial.color, Color.clear, Stealth_GameManager.Singleton.LTH_GameSettings.GhostMeshFadeOutSpeed * Time.time); ;
 
 
             // If the texture is almost clear...
@@ -79,8 +79,8 @@ public class BakeMesh : MonoBehaviour {
 
     public void BakeGhostMesh()
     {
-        Parent = GameManager.Singleton.GhostParent.transform;
-        Mesh = GameManager.Singleton.GhostMesh;
+        Parent = Stealth_GameManager.Singleton.GhostParent.transform;
+        Mesh = Stealth_GameManager.Singleton.GhostMesh;
 
         Mesh frameMesh = new Mesh();
         // frameMesh.name = frameName;
@@ -109,7 +109,7 @@ public class BakeMesh : MonoBehaviour {
     IEnumerator FadeOut()
     {
         // suspend execution for 5 seconds
-        yield return new WaitForSeconds(GameManager.Singleton.LTH_GameSettings.GhostMeshTimeout);
+        yield return new WaitForSeconds(Stealth_GameManager.Singleton.LTH_GameSettings.GhostMeshTimeout);
         //GhostMaterial.color.a = 
         BeginFade = true;
     }

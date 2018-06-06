@@ -35,7 +35,7 @@ public class UILightSensor : MonoBehaviour {
 	void SetLightSensor()
 	{
 		float areaWidth = LS_area.GetComponent<RectTransform> ().sizeDelta.x;
-		player = GameManager.Singleton.Detective;
+		player = GameManager.Singleton.Player;
         if (player != null)
         {
              currentLighting = player.GetComponent<LightSensor>().LightingTotal;

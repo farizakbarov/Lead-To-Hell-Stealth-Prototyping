@@ -320,22 +320,12 @@ namespace SWS
                 Handles.color = script.color2;
                 size = Mathf.Clamp(size, 0, 1.2f);
                 
-                #if UNITY_5_6_OR_NEWER
                 Handles.FreeMoveHandle(wpPos, Quaternion.identity, size, Vector3.zero, (controlID, position, rotation, hSize, eventType) => 
                 {
                     Handles.SphereHandleCap(controlID, position, rotation, hSize, eventType);
                     if(controlID == GUIUtility.hotControl && GUIUtility.hotControl != 0)
                         activeNode = i;
                 });
-                #else
-                Handles.FreeMoveHandle(wpPos, Quaternion.identity, size, Vector3.zero, (controlID, position, rotation, hSize) => 
-                {
-                    Handles.SphereCap(controlID, position, rotation, hSize);
-                    if(controlID == GUIUtility.hotControl && GUIUtility.hotControl != 0)
-                        activeNode = i;
-                });
-                #endif
-
                 Handles.RadiusHandle(point.wp.rotation, wpPos, size / 2);
             }
             
@@ -361,12 +351,7 @@ namespace SWS
                             size = Mathf.Clamp(size, 0, 0.5f);
                             wpPos = point.cp[i].position;
                             
-                            #if UNITY_5_6_OR_NEWER
                             Handles.SphereHandleCap(activeNode, wpPos, Quaternion.identity, size, EventType.Repaint);
-                            #else
-                            Handles.SphereCap(activeNode, wpPos, Quaternion.identity, size);
-                            #endif
-
                             wpPos = Handles.PositionHandle(wpPos, Quaternion.identity);
                             if (Vector3.Distance(point.cp[i].position, wpPos) > 0.01f)
                             {
@@ -473,12 +458,7 @@ namespace SWS
                     //draw arrow handle on current position with interpolated rotation
                     size = Mathf.Clamp(HandleUtility.GetHandleSize(segments[i][j]) * 0.4f, 0, 1.2f);
                     lerpVal = j / (float)segments[i].Count;
-
-                    #if UNITY_5_6_OR_NEWER
                     Handles.ArrowHandleCap(0, segments[i][j], Quaternion.Lerp(script.bPoints[i].wp.rotation, script.bPoints[i + 1].wp.rotation, lerpVal), size, EventType.Repaint);
-                    #else
-                    Handles.ArrowCap( 0, segments[i][j], Quaternion.Lerp(script.bPoints[i].wp.rotation, script.bPoints[i+1].wp.rotation, lerpVal), size);
-                    #endif
                 }
             }
         }

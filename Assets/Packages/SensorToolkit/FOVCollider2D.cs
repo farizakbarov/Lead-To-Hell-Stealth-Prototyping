@@ -26,8 +26,12 @@ namespace SensorToolkit
         [Range(0, 16)]
         public int Resolution = 0;
 
+        // Returns the generated collider mesh so that it can be rendered.
+        public Mesh FOVMesh { get { return mesh; } }
+
         PolygonCollider2D pc;
         Vector2[] pts;
+        Mesh mesh;
 
         void OnEnable()
         {
@@ -57,6 +61,36 @@ namespace SensorToolkit
             }
 
             pc.points = pts;
+
+            // Create a mesh, in case we want to render fov cone
+            var pts3D = new Vector3[4 + Resolution];
+            for (int i = 0; i < pts3D.Length; i++)
+            {
+                pts3D[i] = pts[i];
+            }
+
+            var triangles = new int[(2 + Resolution) * 3];
+            for (int i = 0; i < (2+Resolution); i++)
+            {
+                var ti = i * 3;
+                if (i == 0)
+                {
+                    triangles[ti] = 1;
+                    triangles[ti + 1] = 0;
+                    triangles[ti + 2] = 2;
+                }
+                else
+                {
+                    triangles[ti] = i+1;
+                    triangles[ti + 1] = 0;
+                    triangles[ti + 2] = i + 2;
+                }
+            }
+
+            mesh = new Mesh();
+            mesh.vertices = pts3D;
+            mesh.triangles = triangles;
+            mesh.name = "FOV2DColliderPoints";
         }
 
         void OnDrawGizmosSelected()

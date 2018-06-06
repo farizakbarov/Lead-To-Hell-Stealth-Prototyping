@@ -22,7 +22,7 @@ public class CinemaMachineInvertedControls : MonoBehaviour
     void Start()
     {
         cam = GetComponent<CinemachineFreeLook>();
-        cam.m_HeadingBias = GameManager.Singleton.ActivePlayer.transform.eulerAngles.y;
+        cam.m_HeadingBias = GameManager.Singleton.Player.transform.eulerAngles.y;
     }
 
     // Update is called once per frame

@@ -88,11 +88,7 @@ namespace SWS
         {
             //set initial LineRenderer size based on spacing
             int size = Mathf.RoundToInt(1f / spacing) + 1;
-            #if UNITY_5_5_OR_NEWER
             line.positionCount = size;
-            #else
-            line.SetVertexCount(size);
-            #endif
             float t = 0f;
             int i = 0;
 
@@ -110,11 +106,7 @@ namespace SWS
         void DrawLinear()
         {
             //set initial size based on waypoint count
-             #if UNITY_5_5_OR_NEWER
             line.positionCount = points.Length;
-            #else
-            line.SetVertexCount(points.Length);
-            #endif
             float t = 0f;
             int i = 0;
 

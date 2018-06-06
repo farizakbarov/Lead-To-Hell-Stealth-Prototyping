@@ -105,11 +105,13 @@ public class LTHMoveAnimator : MonoBehaviour
 
 	public float CaughtDistance = 3f;
 
+    private bool FirstStart = true;
+
 
     //getting component references
     void Start()
     {
-        GameManager.Singleton.AllAi.Add(this.transform);
+        Stealth_GameManager.Singleton.AllAi.Add(this.transform);
 
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -126,29 +128,31 @@ public class LTHMoveAnimator : MonoBehaviour
 
         FSM = GetComponent<PlayMakerFSM>();
 
-
-
-
-
-
+        
         //Add the AI to the lists in the gamemangaer
         if (FSM != null)
         {
             if (FSM.Fsm.Variables.GetFsmEnum("AI Type").ToString() == "Type1")
             {
-                GameManager.Singleton.AddType1(this.gameObject);
+                Stealth_GameManager.Singleton.AddType1(this.gameObject);
             }
             else
             {
-                GameManager.Singleton.AddType2(this.gameObject);
+                Stealth_GameManager.Singleton.AddType2(this.gameObject);
             }
 
-            FSM.Fsm.Variables.GetFsmGameObject("Player").Value = GameManager.Singleton.ActivePlayer;
+            FSM.Fsm.Variables.GetFsmGameObject("Player").Value = GameManager.Singleton.Player;
         }
 
         //InvokeRepeating("IteratePoint", 0.0f, PointsOfIntrestTimer);
 
-        // HomeLocation = FSM.Fsm.Variables.GetFsmGameObject("StartLocation").Value;
+        if (HomeLocation == null)
+        {
+            GameObject SpawnedObj = new GameObject("HomeLocation " + this.gameObject.name);
+            SpawnedObj.transform.position = this.transform.position;
+            SpawnedObj.transform.rotation = this.transform.rotation;
+            HomeLocation = SpawnedObj.transform;
+        }
     }
 
     //Function called by the FSM to move the AI back to his home location
@@ -187,7 +191,7 @@ public class LTHMoveAnimator : MonoBehaviour
     {
         if (location != null)
         {
-
+            NavMoveScript.Pause();
             TurnOnSpot = false;
             TurnAroundSwitch = false;
             Sweeping = false;
@@ -203,7 +207,8 @@ public class LTHMoveAnimator : MonoBehaviour
     //Function the FSM calls for Running after the Player after he has been spotted
     public void SeekPlayer()
     {
-            //Debug.Log("Begin seeking PlaYER");
+        //Debug.Log("Begin seeking PlaYER");
+            NavMoveScript.Pause();
             TurnOnSpot = false;
             TurnAroundSwitch = false;
             Sweeping = false;
@@ -259,7 +264,7 @@ public class LTHMoveAnimator : MonoBehaviour
     {
         TurnOnSpot = true;
         MatchForward = false;
-        ObjectToTurnTo = GameManager.Singleton.ActivePlayer;
+        ObjectToTurnTo = GameManager.Singleton.Player;
     }
 
     //function that actually turns the character.
@@ -371,7 +376,7 @@ public class LTHMoveAnimator : MonoBehaviour
     private void Update()
     {
 
-        if (!GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars)
+        if (!Stealth_GameManager.Singleton.LTH_GameSettings.EnableAIAlertBars)
         {
             AlertBar.transform.parent.parent.gameObject.SetActive(false);
         }
@@ -402,7 +407,7 @@ public class LTHMoveAnimator : MonoBehaviour
             //if the AI is seeking out the Player
             if (isSeeking)
             {
-                agent.SetDestination(GameManager.Singleton.LastSighting.transform.position);
+                agent.SetDestination(Stealth_GameManager.Singleton.LastSighting.transform.position);
                 //Debug.Log("Seeking");
             }
 
@@ -473,7 +478,7 @@ public class LTHMoveAnimator : MonoBehaviour
 
         if (FSM != null)
         {
-            if (GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators)
+            if (Stealth_GameManager.Singleton.LTH_GameSettings.EnableAIStatusIndicators)
             {
                 if (myIndicator != null)
                 {
@@ -504,6 +509,21 @@ public class LTHMoveAnimator : MonoBehaviour
         }
 
 
+    }
+
+
+    public void StartPatrolling()
+    {
+        if (FirstStart)
+        {
+            NavMoveScript.StartMove();
+            FirstStart = false;
+        }
+        else
+        {
+            NavMoveScript.Resume();
+        }
+       
     }
 
     // Function for checking to see if the Agent has finished moving to their destination
@@ -539,16 +559,16 @@ public class LTHMoveAnimator : MonoBehaviour
 		//if the player is inside a safe zone, eject him.
         if (RadiusScript.PlayerInRadius)
         {
-            if (GameManager.Singleton.PlayerSafe)
+            if (Stealth_GameManager.Singleton.PlayerSafe)
             {
-                GameManager.Singleton.ActivePlayer.GetComponent<SafeZone_Detect>().ExitSafeZone();
+                GameManager.Singleton.Player.GetComponent<SafeZone_Detect>().ExitSafeZone();
             }
         }
 
 		//if (GameManager.Singleton.PlayerInSight)
 
 		//If the player is close to the AI, he is caught.
-		if(Vector3.Distance(this.transform.position, GameManager.Singleton.ActivePlayer.transform.position) < agent.stoppingDistance)
+		if(Vector3.Distance(this.transform.position, GameManager.Singleton.Player.transform.position) < agent.stoppingDistance)
         {
             FSM.Fsm.Event("CAUGHT");
 
@@ -569,7 +589,7 @@ public class LTHMoveAnimator : MonoBehaviour
     //Function the FSM calls During the end of the Alert state timer, Checks to see if the player is still in sight or not.
     public void AlertCheck()
     {
-        if (GameManager.Singleton.PlayerInSight)
+        if (Stealth_GameManager.Singleton.PlayerInSight)
         {
             FSM.Fsm.Event("NOTICED");
         }
@@ -646,7 +666,7 @@ public class LTHMoveAnimator : MonoBehaviour
     {
 
         //loop through all the type 2s in the scene
-        foreach (GameObject obj in GameManager.Singleton.ListOfType2s)
+        foreach (GameObject obj in Stealth_GameManager.Singleton.ListOfType2s)
         {
             float distance2 = Vector3.Distance(this.transform.position, obj.transform.position);
 
@@ -668,7 +688,7 @@ public class LTHMoveAnimator : MonoBehaviour
     {
         if (DetectPlayer)
         {
-            if (GameManager.Singleton.PlayerInSight)
+            if (Stealth_GameManager.Singleton.PlayerInSight)
             {
                 FSM.Fsm.Event("SPOTTED");
             }
@@ -701,7 +721,7 @@ public class LTHMoveAnimator : MonoBehaviour
         ()
     {
         LookAt = true;
-        LookAtTarget = GameManager.Singleton.LastSighting;
+        LookAtTarget = Stealth_GameManager.Singleton.LastSighting;
     }
 
     public void StopTracking()

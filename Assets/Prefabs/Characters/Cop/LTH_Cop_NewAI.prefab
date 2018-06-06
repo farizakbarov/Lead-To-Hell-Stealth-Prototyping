@@ -184,7 +184,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674114187571596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.757061, y: -0.0000049533296, z: 25.518314}
+  m_LocalPosition: {x: 9.639033, y: 0.0000008940697, z: -5.305765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4678561800395336}
@@ -316,9 +316,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
 --- !u!64 &64947398643627486
@@ -330,9 +330,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
 --- !u!95 &95613752972434308
@@ -365,6 +365,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DectectionOn: 1
   RearFOV: 0
+  MainAIScript: {fileID: 0}
+  UseAlertBar: 1
+  AlertAdd: 0.01
+  CoolDown: 0.01
+  DistanceClose: 5
+  DistnaceFar: 15
+  SeekFlip: 1
 --- !u!114 &114282520402352110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,11 +453,31 @@ MonoBehaviour:
         networkSync: 0
         value: 3
       - useVariable: 1
+        name: Caught Wait
+        tooltip: The time Type1 AI's wait after catching the player to return back
+          to seeking.
+        showInInspector: 1
+        networkSync: 0
+        value: 1
+      - useVariable: 1
         name: Distraction Time
         tooltip: The Amount of time the AI is distracted for
         showInInspector: 1
         networkSync: 0
         value: 10
+      - useVariable: 1
+        name: HearingCountdown
+        tooltip: 
+        showInInspector: 1
+        networkSync: 0
+        value: 1
+      - useVariable: 1
+        name: Looking Time
+        tooltip: The Amount Time the AI will spend looking for the player after losing
+          him
+        showInInspector: 1
+        networkSync: 0
+        value: 30
       - useVariable: 1
         name: Sweep Interval
         tooltip: The amount of time a Sweeping AI Rotates
@@ -459,13 +486,19 @@ MonoBehaviour:
         value: 4
       - useVariable: 1
         name: Wait Time
-        tooltip: The Time the AI waits before returning back to Idle if lost sight
-          of the player
+        tooltip: The Time the AI waits before begining search if lost sight of the
+          player
         showInInspector: 1
         networkSync: 0
         value: 5
       intVariables: []
       boolVariables:
+      - useVariable: 1
+        name: FirstStart
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 1
       - useVariable: 1
         name: Patrol
         tooltip: 
@@ -491,12 +524,6 @@ MonoBehaviour:
         showInInspector: 0
         networkSync: 0
         value: {fileID: 0}
-      - useVariable: 1
-        name: StartLocation
-        tooltip: 
-        showInInspector: 1
-        networkSync: 0
-        value: {fileID: 0}
       objectVariables: []
       materialVariables: []
       textureVariables: []
@@ -507,13 +534,13 @@ MonoBehaviour:
         tooltip: 
         showInInspector: 1
         networkSync: 0
-        enumName: SWS.LTHMoveAnimator+AITypes
+        enumName: LTHMoveAnimator+AITypes
         intValue: 1
       categories:
       - 
       - Idle Options
       - Timers
-      variableCategoryIDs: 020000000200000002000000020000000100000001000000000000000100000000000000
+      variableCategoryIDs: 020000000200000002000000020000000200000002000000020000000000000001000000010000000000000000000000
     description: 
     docUrl: 
     showStateLabel: 1
@@ -552,6 +579,7 @@ MonoBehaviour:
     handleFixedUpdate: 0
     handleLateUpdate: 0
     handleApplicationEvents: 0
+    handleUiEvents: 0
     handleLegacyNetworking: 0
     handleAnimatorMove: 0
     handleAnimatorIK: 0
@@ -578,6 +606,9 @@ MonoBehaviour:
   IndicatorOffset: {x: 0, y: 0, z: 0}
   PointsOfIntrestTimer: 2
   PointsOfInterest: []
+  AlertBar: {fileID: 0}
+  AlertLevel: 0
+  CaughtDistance: 3
 --- !u!114 &114311090604737150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,7 +624,6 @@ MonoBehaviour:
   UseFOVSight: 1
   mySensor: {fileID: 114935154399179138}
   ThrowableDetectionThreshold1: 3
-  Testing: 0
   LastSightingInRadius: 0
 --- !u!114 &114318014467114152
 MonoBehaviour:
@@ -776,6 +806,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DectectionOn: 1
   RearFOV: 1
+  MainAIScript: {fileID: 0}
+  UseAlertBar: 1
+  AlertAdd: 0.01
+  CoolDown: 0.01
+  DistanceClose: 5
+  DistnaceFar: 15
+  SeekFlip: 1
 --- !u!135 &135841260907068892
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -815,12 +852,12 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 754805259, guid: 51f775babed14ac4ea45f9e2bdd350b8, type: 3}
-  - {fileID: -412727268, guid: 51f775babed14ac4ea45f9e2bdd350b8, type: 3}
-  - {fileID: -1137737793, guid: 51f775babed14ac4ea45f9e2bdd350b8, type: 3}
-  - {fileID: -1211010947, guid: 51f775babed14ac4ea45f9e2bdd350b8, type: 3}
-  - {fileID: -1883183474, guid: 51f775babed14ac4ea45f9e2bdd350b8, type: 3}
-  - {fileID: 425624362, guid: 51f775babed14ac4ea45f9e2bdd350b8, type: 3}
+  - {fileID: 2100000, guid: 76f4d435d1a60e545a8e525d153f963a, type: 2}
+  - {fileID: 2100000, guid: 37a4b542967ed884f8802a6b645e5074, type: 2}
+  - {fileID: 2100000, guid: d3514dd7a393f2641b22196a0a0b34bd, type: 2}
+  - {fileID: 2100000, guid: 37a4b542967ed884f8802a6b645e5074, type: 2}
+  - {fileID: 2100000, guid: 32ab406164f952343ba24fba3a1b913e, type: 2}
+  - {fileID: 2100000, guid: cae00725a54992743a7fb82e97d4c05b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

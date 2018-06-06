@@ -36,3 +36,20 @@ ChangeLog
 - Added LOSTargets to Stealth example
 - Minor fix to Physics layers in examples
 - Made steering rig gizmos bigger
+
+1.3.2
+- FOVCollider and FOVCollider2D now expose their mesh through the FOVMesh property so it can be rendered.
+- Added RenderFOVCollider and RenderFOVCollider2D for easily rendering fov colliders
+- Fix for occasional error occuring with trigger sensor when gameobjects are rapidly activated and deactivated
+
+1.3.3
+- TriggerSensor2D must have a rigid body with sleep mode never sleep.
+- New playmaker actions for controlling steering rig.
+
+1.3.4
+- Fix bug causing null reference exception
+
+1.3.5
+- Added a copy of SpaceDemo with 10x scale to demonstrate how to configure its sensors at a larger scale.
+- Fixed a bug causing detection events to not fire when LOS testing was enabled.
+- A fix to several SensorGetDetected actions with a bug ocurring when 'Store Component' field is used.

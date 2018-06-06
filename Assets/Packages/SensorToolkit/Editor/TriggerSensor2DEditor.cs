@@ -176,9 +176,13 @@ namespace SensorToolkit
             {
                 EditorGUILayout.HelpBox("Needs active Trigger Collider to detect GameObjects!", MessageType.Warning);
             }
-            if (triggerSensor.DetectionMode == SensorMode.Colliders && triggerSensor.GetComponent<Rigidbody2D>() == null)
+            if (triggerSensor.GetComponent<Rigidbody2D>() == null)
             {
-                EditorGUILayout.HelpBox("In order to detect GameObjects without RigidBodies the TriggerSensor must itself have a RigidBody! Recommend adding a kinematic RigidBody.", MessageType.Warning);
+                EditorGUILayout.HelpBox("In order to detect GameObjects properly the TriggerSensor must itself have a RigidBody. Recommend adding a kinematic RigidBody.", MessageType.Warning);
+            }
+            else if (triggerSensor.GetComponent<Rigidbody2D>().sleepMode != RigidbodySleepMode2D.NeverSleep)
+            {
+                EditorGUILayout.HelpBox("The rigidbody which owns the trigger collider should have its 'Sleeping Mode' parameter set to 'Never Sleep'", MessageType.Warning);
             }
         }
 

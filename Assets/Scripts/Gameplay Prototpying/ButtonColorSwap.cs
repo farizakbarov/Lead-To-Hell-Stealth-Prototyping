@@ -19,7 +19,7 @@ public class ButtonColorSwap : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        controller = GameManager.Singleton.ActivePlayer.GetComponent<LTH_ThirdPersonController>();
+        controller = GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>();
         myButton = GetComponent<Image>();
     }
 	

@@ -58,9 +58,13 @@ namespace SensorToolkit
             {
                 Debug.LogWarning("Trigger Sensor cannot detect anything if there are no triggers on the same GameObject.", gameObject);
             }
-            if (DetectionMode == SensorMode.Colliders && GetComponent<Rigidbody>() == null)
+            if (GetComponent<Rigidbody2D>() == null)
             {
-                Debug.LogWarning("In order to detect GameObjects without RigidBodies the TriggerSensor must itself have a RigidBody. Recommend adding a kinematic RigidBody.");
+                Debug.LogWarning("In order to detect GameObjects properly the TriggerSensor must itself have a RigidBody. Recommend adding a kinematic RigidBody.");
+            }
+            else if (GetComponent<Rigidbody2D>().sleepMode != RigidbodySleepMode2D.NeverSleep)
+            {
+                Debug.LogWarning("The rigidbody which owns the trigger collider should have its 'Sleeping Mode' parameter set to 'Never Sleep'");
             }
 
             StartCoroutine(LineOfSightRoutine());
@@ -129,7 +133,7 @@ namespace SensorToolkit
         new void addCollider(Collider2D other)
         {
             var newDetected = base.addCollider(other);
-            triggerStayLag.Add(other, 0);
+            triggerStayLag[other] = 0;
             if (newDetected != null)
             {
                 OnDetected.Invoke(newDetected);

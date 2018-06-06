@@ -14,7 +14,7 @@ public class SpottedUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameManager.Singleton.PlayerInSight)
+        if (Stealth_GameManager.Singleton.PlayerInSight)
         {
             myImage.color = Color.green;
         }

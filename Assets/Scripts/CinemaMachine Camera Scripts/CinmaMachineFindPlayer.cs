@@ -15,12 +15,12 @@ public class CinmaMachineFindPlayer : MonoBehaviour {
         cam = GetComponent<CinemachineVirtualCamera>();
         if (lookat & cam.LookAt == null)
         {
-           cam.LookAt = GameManager.Singleton.ActivePlayer.transform.Find("PlayerCameraTarget");
+           cam.LookAt = GameManager.Singleton.Player.transform.Find("PlayerCameraTarget");
         }
 
         if (follow & cam.Follow == null)
         {
-            cam.Follow = GameManager.Singleton.ActivePlayer.transform.Find("PlayerCameraTarget");
+            cam.Follow = GameManager.Singleton.Player.transform.Find("PlayerCameraTarget");
         }
 
 
