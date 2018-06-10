@@ -12,8 +12,8 @@ public class LTH_PauseDisableEffects : MonoBehaviour {
 	void Start () {
        // glarescript = GetComponent<glareFxChromatic>();
         PP = GetComponent<PostProcessingBehaviour>();
-        
 
+        GameManager.Singleton.ListOfCameras.Add(this.GetComponent<Camera>());
     }
 	
 	// Update is called once per frame

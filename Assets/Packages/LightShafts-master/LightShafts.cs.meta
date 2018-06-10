@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 guid: 0109504c2f6a31b4498a8fd6a490584a
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
   defaultReferences:
   - m_CurrentCamera: {instanceID: 0}
@@ -20,3 +21,5 @@ MonoImporter:
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

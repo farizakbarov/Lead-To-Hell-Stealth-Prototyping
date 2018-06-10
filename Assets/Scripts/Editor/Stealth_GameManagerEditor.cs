@@ -95,9 +95,9 @@ public class Stealth_GameManagerEditor : Editor
 
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("Lists", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(AllAi, new GUIContent("AllAi"));
-        EditorGUILayout.PropertyField(ListOfType1s, new GUIContent("ListOfType1s"));
-        EditorGUILayout.PropertyField(ListOfType2s, new GUIContent("ListOfType2s"));
+        EditorGUILayout.PropertyField(AllAi, new GUIContent("AllAi"), true);
+        EditorGUILayout.PropertyField(ListOfType1s, new GUIContent("ListOfType1s"), true);
+        EditorGUILayout.PropertyField(ListOfType2s, new GUIContent("ListOfType2s"), true);
         EditorGUILayout.EndVertical();
 
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.

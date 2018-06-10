@@ -21,7 +21,7 @@ public class GameManagerEditor : Editor
 	SerializedProperty PlayerIsNotMoving;
 	SerializedProperty PlayerSpeed;
 	SerializedProperty Stealth;
-	SerializedProperty PlayerController;
+	//SerializedProperty PlayerController;
 	SerializedProperty PlayerStart;
 	SerializedProperty Flashlight;
 	SerializedProperty FadingEnabled;
@@ -47,7 +47,7 @@ public class GameManagerEditor : Editor
 		PlayerIsNotMoving = serializedTargetScript.FindProperty("PlayerIsNotMoving");
 		PlayerSpeed = serializedTargetScript.FindProperty("PlayerSpeed");
 		Stealth = serializedTargetScript.FindProperty("Stealth");
-		PlayerController = serializedTargetScript.FindProperty("PlayerController");
+		//PlayerController = serializedTargetScript.FindProperty("PlayerController");
 		PlayerStart = serializedTargetScript.FindProperty("PlayerStart");
 		Flashlight = serializedTargetScript.FindProperty("Flashlight");
 		FadingEnabled = serializedTargetScript.FindProperty("FadingEnabled");
@@ -99,7 +99,7 @@ public class GameManagerEditor : Editor
 
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("Gameobject lists", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(ListOfCameras, new GUIContent("ListOfCameras"));
+        EditorGUILayout.PropertyField(ListOfCameras, new GUIContent("ListOfCameras"), true);
         EditorGUILayout.EndVertical();
 
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.

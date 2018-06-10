@@ -24,7 +24,7 @@ public class Flashlight_toggle : MonoBehaviour {
 		if(!toggle){
 			foreach (GameObject obj in ArrayOfObjects)
 			{
-			    obj.SetActive(false);
+			    obj.GetComponent<Light>().enabled = false;
 			}	
 		}
 		else{
@@ -34,7 +34,7 @@ public class Flashlight_toggle : MonoBehaviour {
 
 			foreach (GameObject obj in ArrayOfObjects)
 			{
-			    obj.SetActive(true);
+			    obj.GetComponent<Light>().enabled = true;
 			}
 		}
 
@@ -49,8 +49,8 @@ public class Flashlight_toggle : MonoBehaviour {
 				toggle = true;
 				foreach (GameObject obj in ArrayOfObjects)
 				{
-				    obj.SetActive(false);
-				}		 
+                    obj.GetComponent<Light>().enabled = false;
+                }		 
 			}
 			else{
 				Debug.Log("Flashlight On");
@@ -62,8 +62,8 @@ public class Flashlight_toggle : MonoBehaviour {
 				toggle = false;
 				foreach (GameObject obj in ArrayOfObjects)
 				{
-				    obj.SetActive(true);
-				}
+                    obj.GetComponent<Light>().enabled = true;
+                }
 			}
 			
 		}

@@ -12,18 +12,25 @@ public partial class LightShafts : MonoBehaviour
 	{
 		CheckMinRequirements();
 
-		if (m_Cameras == null || m_Cameras.Length == 0)
+        if (m_Cameras == null || m_Cameras.Length == 0)
 			m_Cameras = new Camera[]{Camera.main};
 
-        if (UseAllCameras)
-        {
-            m_Cameras = GameManager.Singleton.ListOfCameras.ToArray();
-        }
+        StartCoroutine(WaitAndPrint(1.0F));
 
-		UpdateCameraDepthMode();
+        UpdateCameraDepthMode();
 	}
 
-	void UpdateShadowmap()
+    IEnumerator WaitAndPrint(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (UseAllCameras)
+        {
+            //Debug.Log(GameManager.Singleton.ListOfCameras.Count);
+            m_Cameras = GameManager.Singleton.ListOfCameras.ToArray();
+        }
+    }
+
+    void UpdateShadowmap()
 	{
 		if (m_ShadowmapMode == LightShaftsShadowmapMode.Static && !m_ShadowmapDirty)
 			return;
@@ -209,6 +216,11 @@ public partial class LightShafts : MonoBehaviour
 		m_CurrentCamera = Camera.current;
 		if (!m_MinRequirements || !CheckCamera() || !IsVisible())
 			return;
+
+        if(GetComponent<Light>().enabled == false)
+        {
+            return;
+        }
 
 		// Prepare
 		RenderBuffer depthBuffer = Graphics.activeDepthBuffer;
