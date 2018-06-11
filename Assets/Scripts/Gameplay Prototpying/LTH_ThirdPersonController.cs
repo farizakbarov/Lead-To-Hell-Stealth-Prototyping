@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CoverShooter;
 
-/* This script extends, and customizes the settings for the ThirdPersonController Script to do custom things we want, and easily report what the player is doing
+/* This script extends, and customizes the settings for the ThirdPersonController Script from the cover shooter to do custom things we want, and easily report what the player is doing
  
 It has been abstracted here to it's own script so that it dosn't have to be re-added to ThirdPersonController when an update to that script happens.*/
 
@@ -38,26 +38,35 @@ public class LTH_ThirdPersonController : MonoBehaviour {
         PaperThrowable.SetActive(false);
         FireExtinguisherThrowable.SetActive(false);
     }
+
+    public void PlayDeathAnimation()
+    {
+        anim.SetBool("IsDead", true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Stealth_GameManager.Singleton.HasPaperThrowable)
         {
             _motor.Grenade.Left = PaperThrowable;
             _motor.Grenade.Right = PaperThrowable;
             FireExtinguisherThrowable.SetActive(false);
             
             controller.EnableExposionPreview = false;
-           // controller.ExplosionPreview.SetActive(false);
+            Stealth_GameManager.Singleton.PaperReady = true;
+            _motor.InputTakeGrenade();
+            // controller.ExplosionPreview.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Stealth_GameManager.Singleton.HasFireExtinguisher)
         {
             _motor.Grenade.Left = FireExtinguisherThrowable;
             _motor.Grenade.Right = FireExtinguisherThrowable;
             PaperThrowable.SetActive(false);
             controller.EnableExposionPreview = true;
+            Stealth_GameManager.Singleton.FireExtinguisherReady = true;
+            _motor.InputTakeGrenade();
         }
 
         GameManager.Singleton.PlayerIsRunning = isRunning;

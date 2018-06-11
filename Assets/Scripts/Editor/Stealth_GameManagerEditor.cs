@@ -29,8 +29,11 @@ public class Stealth_GameManagerEditor : Editor
 	SerializedProperty GhostParent;
 	SerializedProperty GhostMesh;
 
-	// Initialization
-	void OnEnable() {
+    SerializedProperty HasPaperThrowable;
+    SerializedProperty HasFireExtinguisher;
+
+    // Initialization
+    void OnEnable() {
 		// Get a reference to the target script and serialize it
 		targetScript = (Stealth_GameManager)target;
 		serializedTargetScript = new SerializedObject(targetScript);
@@ -53,7 +56,9 @@ public class Stealth_GameManagerEditor : Editor
 		TimeOfDayModifier = serializedTargetScript.FindProperty("TimeOfDayModifier");
 		GhostParent = serializedTargetScript.FindProperty("GhostParent");
 		GhostMesh = serializedTargetScript.FindProperty("GhostMesh");
-	}
+         HasPaperThrowable = serializedTargetScript.FindProperty("HasPaperThrowable");
+         HasFireExtinguisher = serializedTargetScript.FindProperty("HasFireExtinguisher");
+    }
 	
 	// Drawing the Custom Inspector
     public override void OnInspectorGUI() {
@@ -82,6 +87,11 @@ public class Stealth_GameManagerEditor : Editor
         EditorGUILayout.PropertyField(PlayerInSight, new GUIContent("PlayerInSight"));
         EditorGUILayout.PropertyField(PlayerCaught, new GUIContent("PlayerCaught"));
         EditorGUILayout.PropertyField(PlayerSafe, new GUIContent("PlayerSafe"));
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.PropertyField(HasPaperThrowable, new GUIContent("Has Paper Throwable"));
+        EditorGUILayout.PropertyField(HasFireExtinguisher, new GUIContent("Has Fire Extinguisher"));
         EditorGUILayout.EndVertical();
 
 

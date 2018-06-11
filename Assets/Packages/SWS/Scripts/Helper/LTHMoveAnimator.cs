@@ -107,6 +107,8 @@ public class LTHMoveAnimator : MonoBehaviour
 
     private bool FirstStart = true;
 
+    public bool CanSeePlayer;
+
 
     //getting component references
     void Start()
@@ -714,6 +716,7 @@ public class LTHMoveAnimator : MonoBehaviour
     public void GameOver()
     {
         GameManager.Singleton.GameOver();
+
     }
 
     //functions for turning on and setting up the IK look at

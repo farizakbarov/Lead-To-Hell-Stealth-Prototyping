@@ -239,9 +239,31 @@ namespace CoverShooter
                     _motor.SetLookTarget(LookTargetInput);
                     _motor.SetFireTarget(FireTargetInput);
                     _motor.InputThrowGrenade(_grenadePath, _grenadePathLength, _motor.Grenade.Step);
+
+                    if (Stealth_GameManager.Singleton.PaperReady)
+                    {
+                        Stealth_GameManager.Singleton.PaperReady = false;
+                        Stealth_GameManager.Singleton.HasPaperThrowable = false;
+                    }
+
+                    if (Stealth_GameManager.Singleton.FireExtinguisherReady)
+                    {
+                        Stealth_GameManager.Singleton.FireExtinguisherReady = false;
+                        Stealth_GameManager.Singleton.HasFireExtinguisher = false;
+
+                    }
+
+
+
+
                 }
 
-                if (Input.GetMouseButtonDown(1)) _motor.InputCancelGrenade();
+                if (Input.GetMouseButtonDown(1))
+                {
+                    Stealth_GameManager.Singleton.FireExtinguisherReady = false;
+                    Stealth_GameManager.Singleton.HasFireExtinguisher = false;
+                    _motor.InputCancelGrenade();
+                }
 
                 _isFiring = false;
                 _isZooming = false;

@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
+        Player.GetComponent<LTH_ThirdPersonController>().PlayDeathAnimation();
         if (FadingEnabled)
         {
             if (FailMsg != null)

@@ -88,6 +88,7 @@ public class SafeZone_Detect : MonoBehaviour
             {
                 Stealth_GameManager.Singleton.PlayerSafe = true;
                 Stealth_GameManager.Singleton.PlayerInSight = false;
+                GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>().isSneaking = false;
                 this.gameObject.layer = 12;
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.gameObject.GetComponent<Collider>());
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.transform.parent.GetComponent<Collider>());

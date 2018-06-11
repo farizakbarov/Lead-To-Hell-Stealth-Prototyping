@@ -34,6 +34,11 @@ public class Stealth_GameManager : MonoBehaviour {
     public GameObject GhostParent;
     public GameObject GhostMesh;
 
+    public bool HasPaperThrowable;
+    public bool HasFireExtinguisher;
+    public bool PaperReady;
+    public bool FireExtinguisherReady;
+
 
     public void OnEnable()
     {
@@ -59,6 +64,21 @@ public class Stealth_GameManager : MonoBehaviour {
         }
     }
 
+    //loop through all the AI in the scene, If any of them can see the player, return true, if none can see him return false
+    private bool IsPlayerInSight()
+    {
+        for (int i = 0; i < AllAi.Count; ++i)
+        {
+            if (AllAi[i].GetComponent<LTHMoveAnimator>().CanSeePlayer == true)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
     // Use this for initialization
     void Start () {
         LastSighting = GameObject.Find("LastSighting");
@@ -71,6 +91,8 @@ public class Stealth_GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        PlayerInSight = IsPlayerInSight();
 
         if (PlayerInSight && LastSighting != null)
         {

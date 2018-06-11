@@ -116,21 +116,26 @@ public class AISight : MonoBehaviour
 
             if (MainAIScript != null)
             {
-                //If the player is visible, start adding to the alert level + its modifiers
-                if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f)
+                if (!Stealth_GameManager.Singleton.PlayerSafe)
                 {
-                    MainAIScript.AlertLevel += AlertAdd * DistanceModifier * Stealth_GameManager.Singleton.ShadowModifier * Stealth_GameManager.Singleton.DifficultyModifier * Stealth_GameManager.Singleton.TimeOfDayModifier;
-                    Stealth_GameManager.Singleton.PlayerInSight = true;
-                }
-                else
-                {
-                    Stealth_GameManager.Singleton.PlayerInSight = false;
-                    if (myFSM.Fsm.ActiveStateName != "GameOver")
+                    //If the player is visible, start adding to the alert level + its modifiers
+                    if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f)
                     {
-                        //if the player is not visible, decrease the alert level.
-                        if (MainAIScript.AlertLevel > 0)
+                        MainAIScript.AlertLevel += AlertAdd * DistanceModifier * Stealth_GameManager.Singleton.ShadowModifier * Stealth_GameManager.Singleton.DifficultyModifier * Stealth_GameManager.Singleton.TimeOfDayModifier;
+                        // Stealth_GameManager.Singleton.PlayerInSight = true;
+                        MainAIScript.CanSeePlayer = true;
+                    }
+                    else
+                    {
+                        //Stealth_GameManager.Singleton.PlayerInSight = false;
+                        MainAIScript.CanSeePlayer = false;
+                        if (myFSM.Fsm.ActiveStateName != "GameOver")
                         {
-                            MainAIScript.AlertLevel -= CoolDown;
+                            //if the player is not visible, decrease the alert level.
+                            if (MainAIScript.AlertLevel > 0)
+                            {
+                                MainAIScript.AlertLevel -= CoolDown;
+                            }
                         }
                     }
                 }
@@ -216,7 +221,8 @@ public class AISight : MonoBehaviour
             myFSM.Fsm.Event("LOSTPLAYER");
 
         }
-        Stealth_GameManager.Singleton.PlayerInSight = false;
+        // Stealth_GameManager.Singleton.PlayerInSight = false;
+        MainAIScript.CanSeePlayer = false;
 
     }
 
