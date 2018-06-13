@@ -55,7 +55,7 @@ public class AIDetectionRadius : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (UseFOVSight)
+            /*********************************if (UseFOVSight)
             {
                 if (myFSM.ActiveStateName != "Distracted")
                 {
@@ -71,7 +71,7 @@ public class AIDetectionRadius : MonoBehaviour
                         Stealth_GameManager.Singleton.PlayerInSight = false;
                     }
                 }
-            }
+            }*/
 
             //Debug.Log(CalculatePathLength(GameManager.Singleton.Player.transform.position));
 
@@ -80,16 +80,24 @@ public class AIDetectionRadius : MonoBehaviour
                 {
                     if (GameManager.Singleton.PlayerIsRunning && myFSM.ActiveStateName != "Seeking" && myFSM.ActiveStateName != "Distracted")
                     {
-                       
                         if (CalculatePathLength(GameManager.Singleton.Player.transform.position) <= col.radius)
                         {
                             // Debug.Log("Heard Player");
-                            Stealth_GameManager.Singleton.PlayerInSight = true;
+                            //tealth_GameManager.Singleton.PlayerInSight = true;
+                            MoveScript.CanHearPlayer = true;
                             MoveScript.HeardPlayer(true);
+                        }
+                        else
+                        {
+                            MoveScript.CanHearPlayer = false;
                         }
                     }
                 }
-			}
+            }
+            else
+            {
+                MoveScript.CanHearPlayer = false;
+            }
         }
 
         if (other.tag == "Throwable")
@@ -115,8 +123,12 @@ public class AIDetectionRadius : MonoBehaviour
         //if the player exits the Radius, he is out of sight.
         if (other.tag == "Player")
         {
-            Stealth_GameManager.Singleton.PlayerInSight = false;
-            //other.GetComponent<BakeMesh>().BakeGhostMesh();
+            //Stealth_GameManager.Singleton.PlayerInSight = false;
+            if (MoveScript.CanSeePlayer)
+            {
+                other.GetComponent<BakeMesh>().BakeGhostMesh();
+            }
+            MoveScript.CanHearPlayer = false;
             PlayerInRadius = false;
         }
 

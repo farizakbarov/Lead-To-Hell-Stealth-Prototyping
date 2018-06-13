@@ -108,6 +108,7 @@ public class LTHMoveAnimator : MonoBehaviour
     private bool FirstStart = true;
 
     public bool CanSeePlayer;
+    public bool CanHearPlayer;
 
 
     //getting component references

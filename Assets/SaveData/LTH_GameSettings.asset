@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: LTH_GameSettings
   m_EditorClassIdentifier: 
   objectName: LTH_SaveData
-  Difficulty: 1
+  Difficulty: 2
   EnableAISightSwitch: 1
   EnableAIHearing: 1
   EnableAIAlertBars: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
   LastSightingVisible: 1
   EnableGhostMesh: 1
   GhostMeshTimeout: 3
-  GhostMeshFadeOutDuration: 2
+  GhostMeshFadeOutSpeed: 2
   ShadowBonus: 0.25
   SlidingAbility: 1
   RollingAbility: 1
@@ -31,8 +31,9 @@ MonoBehaviour:
   NightModifer: 0.75
   EasyModifier: 0.5
   MediumModifier: 1
-  HardModifer: 2
+  HardModifer: 5
   DistanceNearModifier: 2
   DistanceFarModifier: 0.25
   LightSensorUI: 1
   SpottedUI: 1
+  InfinateAmmo: 1

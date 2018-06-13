@@ -23,12 +23,16 @@ public class LTH_SecuityCamera : MonoBehaviour {
 
     private bool SightFlip = true;
 
+    public bool CanSeePlayer;
+
     // Use this for initialization
     void Start () {
         mySensor = GetComponentInChildren<TriggerSensor>();
         controller = GetComponent<CCTVController>();
         mylight = GetComponentInChildren<Light>();
         StartColor = mylight.color;
+
+        Stealth_GameManager.Singleton.AddSecurityCam(this.gameObject);
     }
 	
 	// Update is called once per frame
@@ -36,7 +40,7 @@ public class LTH_SecuityCamera : MonoBehaviour {
 
         if (mySensor.GetVisibility(GameManager.Singleton.Player) > 0.5f && Stealth_GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch)
         {
-            Stealth_GameManager.Singleton.PlayerInSight = true;
+            CanSeePlayer = true;
             controller.isDynamic = false;
             controller.TrackPlayer = true;
             if (!Alerted)
@@ -65,7 +69,8 @@ public class LTH_SecuityCamera : MonoBehaviour {
             //Need to only set PlayerInSight back to false once. not every frame because that interferes with AI detection 
             if (SightFlip)
             {
-                Stealth_GameManager.Singleton.PlayerInSight = false;
+                //Stealth_GameManager.Singleton.PlayerInSight = false;
+                CanSeePlayer = false;
                 SightFlip = false;
             }
             

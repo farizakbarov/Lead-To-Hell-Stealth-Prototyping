@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4879854848687470}
   - component: {fileID: 114112980442411212}
+  - component: {fileID: 114689444542418224}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,50 +52,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2a3a26309fea04bbededf78afc2c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LTH_QualityData: {fileID: 11400000, guid: b8db088ea27f84a6b9f1b6fd11dcbc6e, type: 2}
+  MainPlayerCamera: {fileID: 0}
+  CurrentCamera: {fileID: 0}
+  ListOfCameras: []
+  Player: {fileID: 0}
+  PlayerIsRunning: 0
+  PlayerIsWalking: 0
+  PlayerIsNotMoving: 0
+  PlayerSpeed: 0
+  Stealth: 0
+  PlayerRigidBody: {fileID: 0}
+  PlayerStart: {fileID: 0}
+  Flashlight: 0
+  FadingEnabled: 0
+  ScreenFader: {fileID: 0}
+  FailMsg: {fileID: 0}
+  GameOverTime: 5
+  Paused: 0
+--- !u!114 &114689444542418224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125443523435392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40ae9556d9e209498ade34e09456e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LTH_GameSettings: {fileID: 0}
   AllAi: []
   ListOfType1s: []
   ListOfType2s: []
-  ListOfCameras: []
-  GameplayTimeline: {fileID: 0}
-  MainPlayerCamera: {fileID: 0}
-  ActivePlayer: {fileID: 0}
-  Detective: {fileID: 0}
+  ListOfSecurityCams: []
   Dog: {fileID: 0}
-  Stealth: 0
-  EnableAISightSwitch: 1
-  EnableAIHearing: 1
+  GameplayTimeline: {fileID: 0}
   PlayerInSight: 0
+  LastSighting: {fileID: 0}
   PlayerCaught: 0
   PlayerSafe: 0
-  PlayerIsRunning: 0
-  LastSighting: {fileID: 0}
-  Flashlight: 0
-  FailMsg: {fileID: 0}
-  GameOverTime: 5
-  FadingEnabled: 1
-  ScreenFader: {fileID: 0}
-  Paused: 0
-  Quality_aa: 0
-  Quality_LensEffects: 0
-  Quality_Dof: 0
-  Quality_AO: 0
-  Quality_MotionBlur: 0
-  BlackAndWhiteMode: 0
-  AA_Type: 0
   GameplayUI: {fileID: 0}
-  Difficulty: 1
-  TimeOfDay: 0
   PlayerLighting: 0
   ShadowModifier: 0
-  ShadowBonus: 0.25
   DifficultyModifier: 0
-  EasyModifier: 0.5
-  MediumModifier: 1
-  HardModifer: 2
   TimeOfDayModifier: 0
-  DayModifier: 1
-  NightModifer: 0.75
-  DistanceNearModifier: 2
-  DistanceFarModifier: 0.5
-  EnableAIAlertBars: 0
-  EnableAIStatusIndicators: 0
+  GhostParent: {fileID: 0}
+  GhostMesh: {fileID: 0}
+  HasPaperThrowable: 0
+  HasFireExtinguisher: 0
+  PaperReady: 0
+  FireExtinguisherReady: 0
+  InfinateAmmo: 0

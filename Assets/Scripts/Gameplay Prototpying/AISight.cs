@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayMaker;
 using SensorToolkit;
+using CoverShooter;
 
 public class AISight : MonoBehaviour
 {
@@ -63,6 +64,28 @@ public class AISight : MonoBehaviour
 
         if (UseAlertBar && Stealth_GameManager.Singleton.LTH_GameSettings.EnableAISightSwitch && GameManager.Singleton.Player != null)
         {
+
+            //Debug.Log(mySensor.GetDetectedByTag("Throwable").Count);
+
+            /*//Detection of a throwable Object
+            if (mySensor.GetDetectedByTag("Throwable").Count > 0)
+            {
+                
+                if (myFSM != null)
+                {
+                    //ignore the thrown object if already seeking out the player
+                    if (myFSM.ActiveStateName != "Seeking")
+                    {
+                        //Detect the thrown object while it is moving.
+                        if (mySensor.GetDetectedByTag("Throwable")[0].GetComponent<Grenade>().myVelocity > 3.0f)
+                        {
+                            Stealth_GameManager.Singleton.LastSighting.transform.position = mySensor.GetDetectedByTag("Throwable")[0].transform.position;
+                            MainAIScript.HeardPlayer(false);
+                        }
+                    }
+                }
+            }*/
+
             //find out the distance to the player
             DistanceToPlayer = Vector3.Distance(transform.position, GameManager.Singleton.Player.transform.position);
 
@@ -139,6 +162,9 @@ public class AISight : MonoBehaviour
                         }
                     }
                 }
+
+
+               
 
                 if (myFSM.Fsm.ActiveStateName == "Wait - Lost Player")
                 {

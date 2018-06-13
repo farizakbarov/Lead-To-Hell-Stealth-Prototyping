@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class LTH_Pickup : MonoBehaviour {
 
+    public enum PickupTypes { Paper, FireExtinguisher, TrashBin };
 
-    public bool FireExtinguisher;
-    public bool PaperPickup;
+    public PickupTypes myType;
+
+    public bool Respawn;
+    public float RespawnTime = 15;
+
+    private bool PickupActive = true;
+
+
+    //public bool PickipActive = true;
 
     // Use this for initialization
     void Start () {
@@ -18,24 +26,55 @@ public class LTH_Pickup : MonoBehaviour {
 		
 	}
 
+    IEnumerator Example()
+    {
+       // print(Time.time);
+        yield return new WaitForSeconds(RespawnTime);
+        PickupActive = true;
+        this.transform.parent.gameObject.GetComponent<Renderer>().enabled = true;
+        // print(Time.time);
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (PickupActive)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (other.gameObject.tag == "Player")
             {
-                if (FireExtinguisher)
+                if (Input.GetButtonDown("Interact"))
                 {
-                    Stealth_GameManager.Singleton.HasFireExtinguisher = true;
-                }
 
-                if (PaperPickup)
-                {
-                    Stealth_GameManager.Singleton.HasPaperThrowable = true;
+
+                    if (myType == PickupTypes.TrashBin)
+                    {
+                        GameManager.Singleton.Player.GetComponent<Animator>().SetTrigger("Pickup");
+                        Stealth_GameManager.Singleton.HasPaperThrowable = true;
+                    }
+                    else
+                    {
+                        if (myType == PickupTypes.FireExtinguisher)
+                        {
+                            Stealth_GameManager.Singleton.HasFireExtinguisher = true;
+                        }
+
+                        if (myType == PickupTypes.Paper)
+                        {
+                            Stealth_GameManager.Singleton.HasPaperThrowable = true;
+                        }
+                        if (Respawn)
+                        {
+                            StartCoroutine(Example());
+                        }
+
+                        this.transform.parent.gameObject.GetComponent<Renderer>().enabled = false;
+                        PickupActive = false;
+                    }
+                    //Debug.Log("Pickup");
+
+
+
+
                 }
-                //Debug.Log("Pickup");
-                
-                this.transform.parent.gameObject.SetActive(false);
             }
         }
     }

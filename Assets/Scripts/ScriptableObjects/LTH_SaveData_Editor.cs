@@ -41,6 +41,8 @@ public class LTH_SaveData_Editor : Editor
     SerializedProperty GhostMeshTimeout;
     SerializedProperty GhostMeshFadeOutSpeed;
 
+    SerializedProperty InfinateAmmo;
+
 
     void OnEnable()
     {
@@ -82,7 +84,9 @@ public class LTH_SaveData_Editor : Editor
 
          EnableGhostMesh = serializedObject.FindProperty("EnableGhostMesh");
 
-}
+        InfinateAmmo = serializedObject.FindProperty("InfinateAmmo");
+
+    }
 
     public override void OnInspectorGUI()
     {
@@ -132,6 +136,14 @@ public class LTH_SaveData_Editor : Editor
         EditorGUILayout.PropertyField(LightSensorUI);
         EditorGUILayout.PropertyField(SpottedUI);
         EditorGUILayout.EndVertical();
+
+
+        EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.LabelField("Cheats:", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(InfinateAmmo);
+        EditorGUILayout.EndVertical();
+
+
         serializedObject.ApplyModifiedProperties();
     }
 }

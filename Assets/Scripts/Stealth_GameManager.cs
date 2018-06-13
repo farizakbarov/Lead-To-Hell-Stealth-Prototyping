@@ -12,6 +12,7 @@ public class Stealth_GameManager : MonoBehaviour {
     public List<Transform> AllAi = new List<Transform>();
     public List<GameObject> ListOfType1s = new List<GameObject>();
     public List<GameObject> ListOfType2s = new List<GameObject>();
+    public List<GameObject> ListOfSecurityCams = new List<GameObject>();
 
     public GameObject Dog;
     public GameObject GameplayTimeline;
@@ -39,6 +40,8 @@ public class Stealth_GameManager : MonoBehaviour {
     public bool PaperReady;
     public bool FireExtinguisherReady;
 
+    public bool InfinateAmmo;
+
 
     public void OnEnable()
     {
@@ -64,12 +67,33 @@ public class Stealth_GameManager : MonoBehaviour {
         }
     }
 
+    public void AddSecurityCam(GameObject t)
+    {
+        if (!ListOfSecurityCams.Contains(t))
+        {
+            ListOfSecurityCams.Add(t);
+        }
+    }
+
     //loop through all the AI in the scene, If any of them can see the player, return true, if none can see him return false
     private bool IsPlayerInSight()
     {
         for (int i = 0; i < AllAi.Count; ++i)
         {
             if (AllAi[i].GetComponent<LTHMoveAnimator>().CanSeePlayer == true)
+            {
+                return true;
+            }
+
+             if (AllAi[i].GetComponent<LTHMoveAnimator>().CanHearPlayer == true)
+              {
+                  return true;
+              }
+        }
+
+        for (int i = 0; i < ListOfSecurityCams.Count; ++i)
+        {
+            if (ListOfSecurityCams[i].GetComponent<LTH_SecuityCamera>().CanSeePlayer)
             {
                 return true;
             }
@@ -91,6 +115,11 @@ public class Stealth_GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+            if (LTH_GameSettings.InfinateAmmo)
+            {
+                HasFireExtinguisher = true;
+                HasPaperThrowable = true;
+            }
 
         PlayerInSight = IsPlayerInSight();
 

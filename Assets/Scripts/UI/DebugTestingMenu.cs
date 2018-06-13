@@ -42,6 +42,8 @@ public class DebugTestingMenu : MonoBehaviour
 
     public Image LastSightingBox;
 
+    public Image InfinateAmmo;
+
     // Use this for initialization
     void Start()
     {
@@ -234,6 +236,21 @@ public class DebugTestingMenu : MonoBehaviour
             LastSightingBox.color = Color.red;
         }
 
+        if (Stealth_GameManager.Singleton.LTH_GameSettings.InfinateAmmo)
+        {
+            InfinateAmmo.color = Color.green;
+        }
+        else
+        {
+            InfinateAmmo.color = Color.red;
+        }
+
+        
+    }
+
+    public void ToggleInfinateAmmo()
+    {
+        Stealth_GameManager.Singleton.LTH_GameSettings.InfinateAmmo = !Stealth_GameManager.Singleton.LTH_GameSettings.InfinateAmmo;
     }
 
     public void ToggleSlidingAbility()

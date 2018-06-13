@@ -43,6 +43,8 @@ public class LTH_SaveData : ScriptableObject
     public bool LightSensorUI = true;
     public bool SpottedUI = true;
 
+    public bool InfinateAmmo = false;
+
 
 
 

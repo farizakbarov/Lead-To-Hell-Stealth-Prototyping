@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000004, guid: 0e164434a9424264482cfcac96158fae,
     type: 2}
   m_UseShadowmask: 1
@@ -524,7 +525,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0f82456a35566b043a6eafe6335bf686, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -607,7 +608,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0f82456a35566b043a6eafe6335bf686, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1135,6 +1136,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8876e46801452f64d81773825780d644, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1181072552 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1197587658073702, guid: 80ec3975d2a92a34197feed77347e624,
+    type: 2}
+  m_PrefabInternal: {fileID: 911113195}
 --- !u!1 &1374159351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,33 +1337,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114112980442411212, guid: 5eb0711151738d94a9f8b19e032a4c67,
-        type: 2}
-      propertyPath: MainPlayerCamera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114112980442411212, guid: 5eb0711151738d94a9f8b19e032a4c67,
-        type: 2}
-      propertyPath: GameplayUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114112980442411212, guid: 5eb0711151738d94a9f8b19e032a4c67,
+    - target: {fileID: 114689444542418224, guid: 5eb0711151738d94a9f8b19e032a4c67,
         type: 2}
       propertyPath: LTH_GameSettings
       value: 
       objectReference: {fileID: 11400000, guid: 23f8a99c45a8dda428ff5802abc67071,
         type: 2}
-    - target: {fileID: 114112980442411212, guid: 5eb0711151738d94a9f8b19e032a4c67,
+    - target: {fileID: 114689444542418224, guid: 5eb0711151738d94a9f8b19e032a4c67,
         type: 2}
-      propertyPath: LTH_QualityData
+      propertyPath: GameplayUI
       value: 
-      objectReference: {fileID: 11400000, guid: b8db088ea27f84a6b9f1b6fd11dcbc6e,
-        type: 2}
-    - target: {fileID: 114112980442411212, guid: 5eb0711151738d94a9f8b19e032a4c67,
-        type: 2}
-      propertyPath: FadingEnabled
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1181072552}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5eb0711151738d94a9f8b19e032a4c67, type: 2}
   m_IsPrefabParent: 0

@@ -39,8 +39,8 @@ public class Flashlight_toggle : MonoBehaviour {
 		}
 
 		
-		if(Input.GetKeyDown(KeyCode.V)){
-			if(!toggle){
+		if(Input.GetButtonDown("Flashlight")){
+            if (!toggle){
 				Debug.Log("Flashlight off");
                 if (OffSFX != null)
                 {

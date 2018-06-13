@@ -75,6 +75,8 @@ public class LTH_ThirdPersonController : MonoBehaviour {
         var animatorMovement = anim.deltaPosition / Time.deltaTime;
         var animatorSpeed = animatorMovement.magnitude;
 
+        GameManager.Singleton.PlayerSpeed = animatorSpeed;
+
         //if not sneaking, has the run button hold, and is actually moving fast enough, he is running
         if (!isSneaking && Input.GetKey(KeyCode.LeftShift))
         {
@@ -89,13 +91,28 @@ public class LTH_ThirdPersonController : MonoBehaviour {
         }
 
         //If he's not sneaking or running, he is walking.
-        if (!isSneaking && !isRunning)
+        if (!isSneaking && !isRunning && animatorSpeed > 1.0)
         {
             isWalking = true;
         }
         else
         {
             isWalking = false;
+        }
+
+        GameManager.Singleton.PlayerIsWalking = isWalking;
+
+        //If he isn't walking, or running, he's standing still.
+        //Need to set the Dynamic friction to 1 so that the character dosn't slide down slopes.
+        if(!isWalking && !isRunning)
+        {
+            GameManager.Singleton.PlayerIsNotMoving = true;
+            GetComponent<CapsuleCollider>().material.dynamicFriction = 1;
+        }
+        else
+        {
+            GetComponent<CapsuleCollider>().material.dynamicFriction = 0.0f;
+            GameManager.Singleton.PlayerIsNotMoving = false;
         }
 
 
