@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour {
             }
             StartCoroutine("WaitAndPrint");
         }
+
     }
 
     IEnumerator WaitAndPrint()

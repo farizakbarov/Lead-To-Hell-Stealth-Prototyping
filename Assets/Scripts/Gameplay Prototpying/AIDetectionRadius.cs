@@ -123,11 +123,11 @@ public class AIDetectionRadius : MonoBehaviour
         //if the player exits the Radius, he is out of sight.
         if (other.tag == "Player")
         {
-            //Stealth_GameManager.Singleton.PlayerInSight = false;
-            if (MoveScript.CanSeePlayer)
+            Stealth_GameManager.Singleton.PlayerInSight = false;
+            /*if (MoveScript.CanSeePlayer)
             {
                 other.GetComponent<BakeMesh>().BakeGhostMesh();
-            }
+            }*/
             MoveScript.CanHearPlayer = false;
             PlayerInRadius = false;
         }

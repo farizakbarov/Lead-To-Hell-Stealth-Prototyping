@@ -13,6 +13,7 @@ public class LTH_SafeCamSettings : MonoBehaviour {
 
 
     public CameraState SafeState;
+    public CameraState UnderDeskState;
     private CameraState StoredState;
 
     // Use this for initialization
@@ -25,7 +26,14 @@ public class LTH_SafeCamSettings : MonoBehaviour {
 	void Update () {
         if (Stealth_GameManager.Singleton.PlayerSafe)
         {
-            CamScript.States.Default = SafeState;
+            if (!Stealth_GameManager.Singleton.PlayerUnderDesk)
+            {
+                CamScript.States.Default = SafeState;
+            }
+            else
+            {
+                CamScript.States.Default = UnderDeskState;
+            }
         }
         else
         {

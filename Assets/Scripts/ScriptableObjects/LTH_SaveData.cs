@@ -45,6 +45,8 @@ public class LTH_SaveData : ScriptableObject
 
     public bool InfinateAmmo = false;
 
+    
+
 
 
 

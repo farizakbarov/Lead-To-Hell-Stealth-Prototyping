@@ -37,6 +37,10 @@ public class SafeZone_Detect : MonoBehaviour
 
     private Vector3 ExitDirection;
 
+    public bool IsInTrigger;
+    public Transform MoveLocation;
+    private bool IsInSafeZone;
+
     GameObject Hit;
 
     // Use this for initialization
@@ -65,6 +69,35 @@ public class SafeZone_Detect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (IsInTrigger)
+        {
+            if (Input.GetButtonDown("Interact"))
+            {
+                if (!IsInSafeZone)
+                {
+                    Stealth_GameManager.Singleton.PlayerSafe = true;
+                    Stealth_GameManager.Singleton.PlayerInSight = false;
+                    Stealth_GameManager.Singleton.PlayerUnderDesk = true;
+                    GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>().isSneaking = false;
+                    Physics.IgnoreCollision(this.GetComponent<Collider>(), MoveLocation.gameObject.GetComponent<Collider>());
+                    //Debug.Log("Entered Safe Zone");
+                    MoveToPosition = true;
+                    //ExitEnabled = true;
+                    IsInSafeZone = true;
+                }
+                else
+                {
+                   // Debug.Log("Exited Safe Zone");
+                    Stealth_GameManager.Singleton.PlayerSafe = false;
+                    Stealth_GameManager.Singleton.PlayerUnderDesk = false;
+                    Physics.IgnoreCollision(this.GetComponent<Collider>(), MoveLocation.gameObject.GetComponent<Collider>(), false);
+                    IsInSafeZone = false;
+                }
+            }
+        }
+
+
         var numberOfRaycastHits = Physics.RaycastNonAlloc(transform.position + new Vector3(0, capsule.height * 0.1f, 0),
                                    transform.forward,
                                    _raycastHits,
@@ -79,19 +112,22 @@ public class SafeZone_Detect : MonoBehaviour
         {
             Hit = _raycastHits[i].collider.gameObject;
 
+           // Debug.Log(Hit.gameObject.name);
+
             if (Hit.layer == 13)
             {
                 FacingSafeZone = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && Hit.layer == 13 && !Stealth_GameManager.Singleton.PlayerSafe)
+            if (Input.GetButtonDown("Interact") && Hit.layer == 13 && !Stealth_GameManager.Singleton.PlayerSafe)
             {
                 Stealth_GameManager.Singleton.PlayerSafe = true;
-                Stealth_GameManager.Singleton.PlayerInSight = false;
+                //Stealth_GameManager.Singleton.PlayerInSight = false;
                 GameManager.Singleton.Player.GetComponent<LTH_ThirdPersonController>().isSneaking = false;
                 this.gameObject.layer = 12;
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.gameObject.GetComponent<Collider>());
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.transform.parent.GetComponent<Collider>());
+                Hit.transform.parent.GetComponent<Collider>().enabled = false;
 
 
                 pos = Hit.transform.GetComponent<SafeZoneTrigger>().SafeZoneLocation.position;
@@ -111,7 +147,15 @@ public class SafeZone_Detect : MonoBehaviour
             float timeSinceStarted = Time.time - _timeStartedLerping;
             float percentageComplete = timeSinceStarted / timeTakenDuringLerp;
 
-            transform.position = Vector3.Lerp(transform.position, pos, percentageComplete);
+            if (IsInTrigger)
+            {
+                transform.position = Vector3.Lerp(transform.position, MoveLocation.position, percentageComplete);
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, pos, percentageComplete);
+            }
+            
 
 
             if (percentageComplete >= 1.0f)
@@ -141,6 +185,7 @@ public class SafeZone_Detect : MonoBehaviour
                 Stealth_GameManager.Singleton.PlayerSafe = false;
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.gameObject.GetComponent<Collider>(), false);
                 Physics.IgnoreCollision(this.GetComponent<Collider>(), Hit.transform.parent.GetComponent<Collider>(), false);
+                Hit.transform.parent.GetComponent<Collider>().enabled = true;
                 this.gameObject.layer = 10;
                 percentageComplete = 0;
             }
@@ -148,7 +193,7 @@ public class SafeZone_Detect : MonoBehaviour
 
         if (ExitEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.F) && Stealth_GameManager.Singleton.PlayerSafe)
+            if (Input.GetButtonDown("Interact") && Stealth_GameManager.Singleton.PlayerSafe)
             {
                 ExitSafeZone();
             }

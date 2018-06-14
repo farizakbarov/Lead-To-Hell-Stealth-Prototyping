@@ -19,7 +19,7 @@ MonoBehaviour:
   EnableAIStatusIndicators: 1
   EnableAIPlaymakerLabels: 0
   LastSightingVisible: 1
-  EnableGhostMesh: 1
+  EnableGhostMesh: 0
   GhostMeshTimeout: 3
   GhostMeshFadeOutSpeed: 2
   ShadowBonus: 0.25
@@ -31,7 +31,7 @@ MonoBehaviour:
   NightModifer: 0.75
   EasyModifier: 0.5
   MediumModifier: 1
-  HardModifer: 5
+  HardModifer: 4
   DistanceNearModifier: 2
   DistanceFarModifier: 0.25
   LightSensorUI: 1

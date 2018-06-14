@@ -323,10 +323,12 @@ public class LTHMoveAnimator : MonoBehaviour
             locomotion.Do(0, angle);
 
             //When the angle is less than 3, stop turning.
-            if (Mathf.Abs(angle) < 10)
+            //Debug.Log(Mathf.Abs(angle));
+            if (Mathf.Abs(angle) < 15)
             {
+              //  Debug.Log("Done Turing");
                 //iterate or reset the iterator so next time AI will rotate to the next direciton
-                if (SweepIterator < (ListOfSweepDirections.Count - 1))
+                if (SweepIterator < (ListOfSweepDirections.Count -1))
                 {
                     SweepIterator++;
                 }
@@ -334,9 +336,12 @@ public class LTHMoveAnimator : MonoBehaviour
                 {
                     SweepIterator = 0;
                 }
+
+                SweepTurn = false;
+                FSM.Fsm.Event("DONETURNING");
             }
-            SweepTurn = false;
-            FSM.Fsm.Event("DONETURNING");
+
+           // Debug.Log(SweepIterator);
         }
         else
         {
@@ -449,6 +454,7 @@ public class LTHMoveAnimator : MonoBehaviour
         }
         else if (Sweeping)
         {
+          //  Debug.Log("is sweeping idle");
             Sweep(ListOfSweepDirections[SweepIterator]);
         }
         else

@@ -22,6 +22,7 @@ public class Stealth_GameManager : MonoBehaviour {
 
     public bool PlayerCaught;
     public bool PlayerSafe;
+    public bool PlayerUnderDesk;
     public GameObject GameplayUI;
 
     public float PlayerLighting;
@@ -123,7 +124,7 @@ public class Stealth_GameManager : MonoBehaviour {
 
         PlayerInSight = IsPlayerInSight();
 
-        if (PlayerInSight && LastSighting != null)
+        if (PlayerInSight && LastSighting != null && !PlayerSafe)
         {
             LastSighting.transform.position = GameManager.Singleton.Player.transform.position;
         }
